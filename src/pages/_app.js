@@ -1,5 +1,5 @@
 import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar/navbar";
 import { store } from "@/redux/store";
 import { theme } from "@/utils/theme";
 import { ChakraProvider } from "@chakra-ui/react";
