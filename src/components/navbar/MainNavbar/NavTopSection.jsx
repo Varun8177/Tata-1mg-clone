@@ -156,18 +156,10 @@ const NavTopSection = () => {
               variant="outline"
             />
             <MenuList>
-              <MenuItem icon={<FaUser />} command="⌘T">
-                Profile
-              </MenuItem>
-              <MenuItem icon={<TbDiscount2 />} command="⌘N">
-                Offers
-              </MenuItem>
-              <MenuItem icon={<AiOutlineShoppingCart />} command="⌘⇧N">
-                Cart
-              </MenuItem>
-              <MenuItem icon={<TbHelp />} command="⌘O">
-                Need help?
-              </MenuItem>
+              <MenuItem icon={<FaUser />}>Profile</MenuItem>
+              <MenuItem icon={<TbDiscount2 />}>Offers</MenuItem>
+              <MenuItem icon={<AiOutlineShoppingCart />}>Cart</MenuItem>
+              <MenuItem icon={<TbHelp />}>Need help?</MenuItem>
               {/* medines */}
               <Show breakpoint="(max-width: 397px)">
                 <MenuItem icon={<CiMedicalCross />}>MEDICINES</MenuItem>
