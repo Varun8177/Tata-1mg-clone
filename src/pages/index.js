@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Box, Heading } from '@chakra-ui/react'
+import { Profile } from './profileteja'
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       </Head>
       <Box >
         <Heading>
+          
           1 mg clone
         </Heading>
       </Box>
