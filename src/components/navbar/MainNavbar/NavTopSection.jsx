@@ -249,10 +249,11 @@ const NavTopSection = () => {
                 <Text fontSize={13}>xyz prod...</Text>
                 <Text fontSize={13}>Qty:1</Text>
               </Flex>
-
-              <Text m={"auto"} color={"500"} as={"b"}>
-                Proceed to cart
-              </Text>
+              <MenuItem>
+                <Text m={"auto"} border={"1p solid red"} color={"500"} as={"b"}>
+                  Proceed to cart
+                </Text>
+              </MenuItem>
             </MenuList>
           </Menu>
           <Text
