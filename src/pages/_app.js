@@ -1,4 +1,5 @@
 import Footer from "@/components/footer";
+import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import MainNavbar from "@/components/navbar/MainNavbar/MainNavbar";
 import { store } from "@/redux/store";
 import { theme } from "@/utils/theme";
@@ -8,7 +9,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <Provider store={store}>
-        <MainNavbar />
+        <CartNavbar />
         <Component {...pageProps} />
         <Footer />
       </Provider>
