@@ -12,7 +12,6 @@ import React from "react";
 const CartNavbar = () => {
   return (
     <Flex
-      border={"1px solid red"}
       ml={{
         base: "5px",
         sm: "5px",
