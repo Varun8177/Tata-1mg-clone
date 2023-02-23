@@ -1,8 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Box, Heading } from '@chakra-ui/react'
-import { Profile } from './profileteja'
-
+import Head from "next/head";
+import Image from "next/image";
+import { Box, Center, Heading } from "@chakra-ui/react";
+import { Profile } from "./profileteja";
 
 export default function Home() {
   return (
@@ -13,13 +12,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box >
-        <Heading>
-          
-          1 mg clone
-        </Heading>
-      </Box>
-
+      <Center>
+        <Image
+          src={
+            "https://onemg.gumlet.io/marketing/29087450-0f25-4856-96fc-62f4ea81bbd3.png"
+          }
+            height={600}
+          width={500}
+          alt="caruausal"
+        />
+      </Center>
     </>
-  )
+  );
 }
