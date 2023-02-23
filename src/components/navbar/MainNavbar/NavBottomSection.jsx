@@ -16,10 +16,20 @@ import {
   MenuList,
   Show,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { BsChevronDoubleDown } from "react-icons/bs";
 
 const NavBottomSection = () => {
+  const [HealthResource, setHealthResource] = useState(false);
+  const [Vitamins, setVitamins] = useState(false);
+  const [Diabetes, setDiabetes] = useState(false);
+  const [HealthCare, setHealthCare] = useState(false);
+  const [PersonalCare, setPersonalCare] = useState(false);
+  const [HealthConditions, setHealthConditions] = useState(false);
+  const [Ayurveda, setAyurveda] = useState(false);
+  const [Homeopathy, setHomeopathy] = useState(false);
+  const [Featured, setFeatured] = useState(false);
+  const [Covid, setCovid] = useState(false);
   return (
     <>
       <Show breakpoint="(min-width: 900px)">
@@ -32,8 +42,20 @@ const NavBottomSection = () => {
           m={"auto"}
           justifyContent={"space-evenly"}
         >
-          <Menu>
+          <Menu isOpen={HealthResource}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(true);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               variant={"unstyled"}
               as={Button}
               fontSize={{
@@ -49,6 +71,9 @@ const NavBottomSection = () => {
               Health resource center
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setHealthResource(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -63,8 +88,20 @@ const NavBottomSection = () => {
               <MenuItem>Medicines by therapeutic class</MenuItem>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={Vitamins}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(true);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -80,6 +117,9 @@ const NavBottomSection = () => {
               Vitamins and nutrition
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setVitamins(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -133,8 +173,20 @@ const NavBottomSection = () => {
               </Grid>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={Diabetes}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(true);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -150,6 +202,9 @@ const NavBottomSection = () => {
               Diabetes
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setDiabetes(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -184,8 +239,20 @@ const NavBottomSection = () => {
               </Grid>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={HealthCare}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(true);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -201,6 +268,9 @@ const NavBottomSection = () => {
               Healthcare devices
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setHealthCare(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -234,8 +304,20 @@ const NavBottomSection = () => {
               </Grid>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={PersonalCare}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(true);
+                setVitamins(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -251,6 +333,9 @@ const NavBottomSection = () => {
               personal care
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setPersonalCare(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -318,8 +403,20 @@ const NavBottomSection = () => {
               </Grid>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={HealthConditions}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(true);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -335,6 +432,9 @@ const NavBottomSection = () => {
               Health conditions
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setHealthConditions(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -378,8 +478,20 @@ const NavBottomSection = () => {
               </Grid>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={Ayurveda}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(true);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -395,6 +507,9 @@ const NavBottomSection = () => {
               Ayurveda products
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setAyurveda(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -448,8 +563,20 @@ const NavBottomSection = () => {
               </Grid>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={Homeopathy}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(true);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -465,6 +592,9 @@ const NavBottomSection = () => {
               Homeopathy
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setHomeopathy(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -520,8 +650,20 @@ const NavBottomSection = () => {
               </Grid>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={Featured}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(true);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -537,6 +679,9 @@ const NavBottomSection = () => {
               Featured
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setFeatured(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
@@ -585,8 +730,20 @@ const NavBottomSection = () => {
               </Grid>
             </MenuList>
           </Menu>
-          <Menu>
+          <Menu isOpen={Covid}>
             <MenuButton
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(true);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -602,6 +759,9 @@ const NavBottomSection = () => {
               Covid Essentials
             </MenuButton>
             <MenuList
+              onMouseLeave={() => {
+                setCovid(false);
+              }}
               fontSize={{
                 base: "8px",
                 sm: "10px",
