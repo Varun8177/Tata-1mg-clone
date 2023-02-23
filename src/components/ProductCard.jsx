@@ -1,26 +1,34 @@
 import { Box, Button, Flex, GridItem, Heading, Image, Text } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import React from 'react'
 import { AiFillStar } from 'react-icons/ai';
 
-const ProductCard = () => {
+const ProductCard = (props) => {
+    const router = useRouter();
+    const goToSingleProductPage = () => {
+        router.push(`products/${props.id}`);
+        console.log(props.id);
+    }
     return (
         <GridItem
             w="240px"
-            h='350px'
+            h='auto'
             padding='5'
             textAlign="left"
             bg="white"
+            m='auto'
             boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
+            onClick={goToSingleProductPage}
         >
             <Box maxW={"100%"} h={"150px"} mb={"10px"} align={"center"}>
-                <Image h="100%" src={'https://onemg.gumlet.io/images/f_auto,w_150,c_fit,h_150,q_auto/qh1au45w8u7cfvf3lg3i/tata-1mg-women-s-multivitamin-veg-tablet-with-zinc-vitamin-c-calcium-vitamin-d-and-iron-support-immunity-bones-overall-health.jpg'} alt='' />
+                <Image h="100%" src={props.src} alt='' />
             </Box>
             <Text
                 fontSize="14px"
                 fontWeight='600'
                 mb="5px"
             >
-                Title
+                {props.title.substring(0, 25).concat('...')}
             </Text>
             <Text
                 color="grey"
@@ -28,7 +36,7 @@ const ProductCard = () => {
                 fontWeight="600"
                 mb="10px"
             >
-                pack size
+                {props.packsize}
             </Text>
             <Flex gap={"20px"}>
                 <Button
@@ -39,10 +47,10 @@ const ProductCard = () => {
                     color={"white"}
                     mb={"10px"}
                 >
-                    rating<AiFillStar />
+                    {props.rating}<AiFillStar />
                 </Button>
                 <Text fontSize={"13px"} mb={"10px"} color="grey" fontWeight={600}>
-                    cardRatingDetail
+                    {props.CardRatingDetail}
                 </Text>
             </Flex>
             <Flex gap={"10px"}>
@@ -53,7 +61,7 @@ const ProductCard = () => {
                     textDecor="line-through"
                     fontWeight={600}
                 >
-                    ₹995
+                    ₹{props["strike-price"]}
                 </Text>
                 <Text
                     fontSize={"13px"}
@@ -61,15 +69,15 @@ const ProductCard = () => {
                     color="#1aab2a"
                     fontWeight={600}
                 >
-                    65% OFF
+                    {props["discount-percent"]}
                 </Text>
             </Flex>{" "}
             <Flex align={"center"} justify="space-between">
                 <Heading fontSize={"15px"} mb="2px" fontWeight={600} >
-                    ₹348
+                    ₹{props.price}
                 </Heading>
                 <Button
-                fontWeight={'700'}
+                    fontWeight={'700'}
                     bg="white"
                     size={"sm"}
                     color="#ff6f61"
