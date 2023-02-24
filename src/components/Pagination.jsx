@@ -5,7 +5,7 @@ const Pagination = ({ onPageChange, pageSize, items, currentPage }) => {
     const countPages = Math.ceil(items / pageSize);
     if (countPages === 1) return null;
     const pages = Array.from({ length: countPages }, (_, i) => i + 1);
-    console.log(pages);
+    // console.log(pages);
 
     return (
         <Box
@@ -26,13 +26,37 @@ const Pagination = ({ onPageChange, pageSize, items, currentPage }) => {
                 m='auto'
                 boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
             >
-                <Button>{'< '}Previous</Button>
+                <Button
+                    isDisabled={currentPage === 1}
+                    onClick={() => onPageChange(currentPage - 1)}
+                    size='xs'
+                >
+                    {'< '}Previous
+                </Button>
                 {
                     pages.map((page, i) => {
-                        return <Button key={i + 1} colorScheme='gray' onClick={() => console.log(page)}>{page}</Button>
+                        return <Button
+                            key={i + 1}
+                            onClick={() => onPageChange(page)}
+                            bgColor={currentPage === page ? "#ff6f61" : "#eee"}
+                            color={currentPage === page ? "white" : "black"}
+                            _hover={{
+                                bg: "#fd7c70",
+                                color: 'white'
+                            }}
+                            size='xs'
+                        >
+                            {page}
+                        </Button>
                     })
                 }
-                <Button>Next{' >'}</Button>
+                <Button
+                    onClick={() => onPageChange(currentPage + 1)}
+                    isDisabled={currentPage >= 5}
+                    size='xs'
+                >
+                    Next{' >'}
+                </Button>
             </HStack>
         </Box>
     )

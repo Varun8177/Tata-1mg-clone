@@ -18,17 +18,28 @@ const ProductCard = (props) => {
             bg="white"
             m='auto'
             boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
-            onClick={goToSingleProductPage}
         >
-            <Box maxW={"100%"} h={"150px"} mb={"10px"} align={"center"}>
-                <Image h="100%" src={props.src} alt='' />
+            <Box
+                maxW={"100%"}
+                h={"150px"}
+                mb={"10px"}
+                align={"center"}
+            >
+                <Image h="100%"
+                    src={props.src}
+                    alt={props.id}
+                    onClick={goToSingleProductPage}
+                    cursor='pointer'
+                />
             </Box>
             <Text
                 fontSize="14px"
                 fontWeight='600'
                 mb="5px"
+                onClick={goToSingleProductPage}
+                cursor='pointer'
             >
-                {props.title.substring(0, 25).concat('...')}
+                {props.title.substring(0, 24).concat('...')}
             </Text>
             <Text
                 color="grey"
@@ -46,10 +57,19 @@ const ProductCard = (props) => {
                     size={"xs"}
                     color={"white"}
                     mb={"10px"}
+                    cursor='auto'
+                    _hover={{
+                        bg: "#4dc65b",
+                    }}
                 >
                     {props.rating}<AiFillStar />
                 </Button>
-                <Text fontSize={"13px"} mb={"10px"} color="grey" fontWeight={600}>
+                <Text
+                    fontSize={"13px"}
+                    mb={"10px"}
+                    color="grey"
+                    fontWeight={600}
+                >
                     {props.CardRatingDetail}
                 </Text>
             </Flex>
@@ -71,9 +91,16 @@ const ProductCard = (props) => {
                 >
                     {props["discount-percent"]}
                 </Text>
-            </Flex>{" "}
-            <Flex align={"center"} justify="space-between">
-                <Heading fontSize={"15px"} mb="2px" fontWeight={600} >
+            </Flex>
+            <Flex
+                align={"center"}
+                justify="space-between"
+            >
+                <Heading
+                    fontSize={"15px"}
+                    mb="2px"
+                    fontWeight={600}
+                >
                     ₹{props.price}
                 </Heading>
                 <Button
@@ -81,7 +108,10 @@ const ProductCard = (props) => {
                     bg="white"
                     size={"sm"}
                     color="#ff6f61"
-                    _hover={{ bg: "#ff6f61", color: "white" }}
+                    _hover={{ 
+                        bg: "#ff6f61", 
+                        color: "white" 
+                    }}
                 >
                     ADD
                 </Button>
