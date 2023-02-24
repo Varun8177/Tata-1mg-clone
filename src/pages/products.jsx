@@ -1,5 +1,5 @@
 import FilterAndSort from '@/components/FilterAndSort';
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/Pagination_m';
 import ProductCard from '@/components/ProductCard';
 import TopSectionProductsPage from '@/components/TopSectionProductsPage';
 import { Box, Grid } from '@chakra-ui/react';
