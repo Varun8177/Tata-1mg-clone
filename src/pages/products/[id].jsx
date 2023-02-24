@@ -96,9 +96,9 @@ const SingleProductPage = ({ data }) => {
                             pb='15px' >
                             Product highlights <br />
                             • Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
-                            • Exercitationem at nam tempora voluptatem error hic vitae, <br />
+                            • Exercitationem at nam tempora voluptatem error hic vitae. <br />
                             • excepturi iure nulla ducimus in. <br />
-                            • Atque minima accusantium quibusdam
+                            • Atque minima accusantium quibusdam.
                         </Text>
                     </Box>
                 </Flex>
@@ -155,7 +155,7 @@ const SingleProductPage = ({ data }) => {
                         borderRadius="5px"
                         bg={"#ff6f61"}
                         _hover={{
-                            bg: "#ff4f61",
+                            bg: "#fd7c70",
                         }}
                         color="#fff"
                     >

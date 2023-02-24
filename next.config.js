@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["onemg.gumlet.io", "e7.pngegg.com", "res.cloudinary.com"],
+    // domains: ["onemg.gumlet.io"],
+    unoptimized: true,
   },
 };
 

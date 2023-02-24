@@ -2,8 +2,31 @@ import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
+import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js/auto";
 
 const Activity = () => {
+  const data = [
+    { id: 1, year: 2016, userGain: 98098, userLoast: 823 },
+    { id: 2, year: 2017, userGain: 72211, userLoast: 823 },
+    { id: 3, year: 2018, userGain: 8232, userLoast: 823 },
+    { id: 4, year: 2016, userGain: 21311, userLoast: 823 },
+    { id: 5, year: 2016, userGain: 12312, userLoast: 823 },
+    { id: 6, year: 2016, userGain: 72211, userLoast: 823 },
+    { id: 7, year: 2016, userGain: 72278, userLoast: 823 },
+    { id: 8, year: 2016, userGain: 88098, userLoast: 823 },
+  ];
+
+  const userData = {
+    labels: data.map((data) => data.year),
+    datasets: [
+      {
+        label: "Users Gained",
+        data: data.map((data) => data.userGain),
+        backgroundColor: ["red", "blue", "green"],
+      },
+    ],
+  };
   return (
     <Box bgColor={"#d8dff7"} h={"90vh"}>
       <Flex bgColor={"#d8dff7"} border={"1px solid black"} w={"99%"} m={"auto"}>
@@ -23,7 +46,7 @@ const Activity = () => {
           m={"auto"}
           mt="30px"
         >
-          <Heading>Activity</Heading>
+          <Bar data={userData} />
         </Box>
       </Flex>
     </Box>
