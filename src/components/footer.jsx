@@ -11,7 +11,14 @@ import {
   Center,
   Grid,
   GridItem,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
 } from "@chakra-ui/react";
+import { SocialIcon } from "react-social-icons";
+import Image from "next/image";
 const Footer = () => {
   return (
     <Stack bg="#fff" m="auto" w="95%">
@@ -143,7 +150,7 @@ const Footer = () => {
           </Button>
         </Center>
       </Box>
-      <Box bg="#fffcf8" h="100vh" w="100%">
+      <Box bg="#fffcf8" w="100%">
         <Grid templateColumns="repeat(5, 1fr)" gap={6}>
           <GridItem>
             <Text fontSize="lg" p="5px">
@@ -171,8 +178,6 @@ const Footer = () => {
             <Text fontSize="sm">Grievance Redressal Policy</Text>
             <Text fontSize="sm">Fake Jobs and Fraud</Text>
             <Text fontSize="sm">Disclaimer</Text>
-           
-          
           </GridItem>
           <GridItem>
             <Text fontSize="lg" p="5px">
@@ -186,19 +191,147 @@ const Footer = () => {
             <Text fontSize="sm">Articles</Text>
             <Text fontSize="sm">Hindi Articles</Text>
             <Text fontSize="sm">Care Plan</Text>
-          
           </GridItem>
           <GridItem>
             <Text fontSize="lg" p="5px">
               Connect
             </Text>
+            <Text>Social Links</Text>
+            <Flex w="250px" gap="5px">
+              <SocialIcon
+                url="https://www.facebook.com/1mgOfficial"
+                borderRedius="0"
+              />
+              <SocialIcon url="https://www.instagram.com/1mgofficialpage/" />
+              <SocialIcon url="https://twitter.com/1mgOfficial" />
+              <SocialIcon url="https://www.youtube.com/c/1mgofficial" />
+              <SocialIcon url="https://www.linkedin.com/company/1mg" />
+              <SocialIcon url="https://medium.com/1mgofficial" />
+            </Flex>
+            <Text>Want daily dose of health?</Text>
+            <Button color="white" bg="#ff6f61">
+              SING UP
+            </Button>
           </GridItem>
           <GridItem>
             <Text fontSize="lg" p="5px">
               Download App
             </Text>
+            {/* <Image
+              src="https://e7.pngegg.com/pngimages/598/19/png-clipart-google-play-and-app-store-logos-app-store-google-play-apple-apple-text-logo.png"
+              alt="google"
+              width="250"
+              height="250"
+            /> */}
+            {/* <Image src="" alt="apple" /> */}
           </GridItem>
         </Grid>
+        <Divider h="2px" />
+        <Box w="80%" m="auto">
+          <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+            <GridItem>
+              <Text as="b" fontSize="xl">
+                Reliable
+              </Text>
+              <Text color="grey">
+                All products displayed on Tata 1mg are procured from verified
+                and licensed pharmacies. All labs listed on the platform are
+                accredited
+              </Text>
+            </GridItem>
+            <GridItem>
+              <Text as="b" fontSize="xl">
+                Secure
+              </Text>
+              <Text color="grey">
+                Tata 1mg uses Secure Sockets Layer (SSL) 128-bit encryption and
+                is Payment Card Industry Data Security Standard (PCI DSS)
+                compliant
+              </Text>
+            </GridItem>
+            <GridItem>
+              <Text as="b" fontSize="xl">
+                Affordable
+              </Text>
+              <Text color="grey">
+                Find affordable medicine substitutes, save up to 50% on health
+                products, up to 80% off on lab tests and free doctor
+                consultations.
+              </Text>
+            </GridItem>
+          </Grid>
+        </Box>
+        <Divider h="2px" />
+        <Box align="center">
+          <Image
+            src="https://res.cloudinary.com/du8msdgbj/image/upload/v1580717209/URS_ebgmxc.png"
+            alt="logo1"
+            width="100"
+            height="100"
+          />
+          <Text as="b" fontSize="xl">
+            India's only LegitScript and ISO/ IEC 27001 certified online
+            healthcare platform
+          </Text>
+        </Box>
+        <Box>
+          <Accordion allowToggle>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box as="span" flex="1" textAlign="left">
+                    Know more about Tata 1mg
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                {/* 1 */}
+                <Text as="b">Access medical and health information</Text>
+                <Text>
+                  Tata 1mg provides you with medical information which is
+                  curated, written and verified by experts, accurate and
+                  trustworthy. Our experts create high-quality content about
+                  medicines, diseases, lab investigations, Over-The-Counter
+                  (OTC) health products, Ayurvedic herbs/ingredients, and
+                  alternative remedies.
+                </Text>
+                {/* 2 */}
+                <Text as="b">Order medicines online</Text>
+                <Text>
+                  Get free medicine home delivery in over 1800 cities across
+                  India. You can also order Ayurvedic, Homeopathic and other
+                  Over-The-Counter (OTC) health products. Your safety is our top
+                  priority. All products displayed on Tata 1mg are procured from
+                  verified and licensed pharmacies.
+                </Text>
+                {/* 3 */}
+                <Text as="b">Book lab tests</Text>
+                <Text>
+                  Book any lab tests and preventive health packages from
+                  certified labs and get tested from the comfort of your home.
+                  Enjoy free home sample collection, view reports online and
+                  consult a doctor online for free.
+                </Text>
+                {/* 4 */}
+                <Text as="b">Consult a doctor online</Text>
+                <Text>
+                  Got a health query? Consult doctors online from the comfort of
+                  your home for free. Chat privately with our registered medical
+                  specialists to connect directly with verified doctors. Your
+                  privacy is guaranteed.
+                </Text>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </Box>
+        <Box>
+          <Text color="grey" as="b" fontSize="sm">
+            © 2023 Tata 1mg. All rights reserved. In compliance with Drugs and
+            Cosmetics Act, 1940 and Drugs and Cosmetics Rules, 1945, we don't
+            process requests for Schedule X and other habit forming drugs.
+          </Text>
+        </Box>
       </Box>
     </Stack>
   );
