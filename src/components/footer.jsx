@@ -171,8 +171,6 @@ const Footer = () => {
             <Text fontSize="sm">Grievance Redressal Policy</Text>
             <Text fontSize="sm">Fake Jobs and Fraud</Text>
             <Text fontSize="sm">Disclaimer</Text>
-           
-          
           </GridItem>
           <GridItem>
             <Text fontSize="lg" p="5px">
@@ -186,7 +184,6 @@ const Footer = () => {
             <Text fontSize="sm">Articles</Text>
             <Text fontSize="sm">Hindi Articles</Text>
             <Text fontSize="sm">Care Plan</Text>
-          
           </GridItem>
           <GridItem>
             <Text fontSize="lg" p="5px">
