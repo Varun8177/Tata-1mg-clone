@@ -17,8 +17,8 @@ export default function Home() {
           src={
             "https://onemg.gumlet.io/marketing/29087450-0f25-4856-96fc-62f4ea81bbd3.png"
           }
-            height={600}
-          width={500}
+            height={1000}
+          width={2000}
           alt="caruausal"
         />
       </Center>
