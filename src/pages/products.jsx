@@ -46,6 +46,7 @@ const Products = ({ data }) => {
                 bg='#f6f6f6'
             >
                 <FilterAndSort handleFilter={handleFilter} />
+                
                 <Box className='allProductSection' p={{ "base": "20px" }}>
                     <TopSectionProductsPage />
                     <Grid
