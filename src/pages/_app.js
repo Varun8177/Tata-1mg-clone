@@ -6,6 +6,7 @@ import { store } from "@/redux/store";
 import { theme } from "@/utils/theme";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
+import '../styles/globals.css'
 
 export default function App({ Component, pageProps }) {
   return (
@@ -14,7 +15,7 @@ export default function App({ Component, pageProps }) {
         <MainNavbar />
 
         <Component {...pageProps} />
-        <Footer />
+        {/* <Footer /> */}
       </Provider>
     </ChakraProvider>)
 }
