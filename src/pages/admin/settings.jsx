@@ -1,5 +1,6 @@
 import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
+import useValueChange from "@/components/customHooks/useValueChange";
 import { EditIcon } from "@chakra-ui/icons";
 import {
   Avatar,
@@ -7,6 +8,7 @@ import {
   Button,
   Flex,
   Heading,
+  Image,
   Input,
   Stack,
   Text,
@@ -21,6 +23,18 @@ const AdminSettings = () => {
   const [editEmail, setEditEmail] = useState(false);
   const [editMobile, setEditMobile] = useState(false);
   const [editGender, setEditGender] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [name, setname] = useValueChange("");
+  const [email, setEmail] = useValueChange("");
+  const [mobile, setMobile] = useValueChange("");
+  const [gender, setGender] = useValueChange("");
+  const Remove = () => setSelectedImage(null);
+
+  const upload = (event) => {
+    console.log(event.target.files[0]);
+    setSelectedImage(event.target.files[0]);
+  };
+
   useEffect(() => {
     setDomLoaded(true);
   }, []);
@@ -54,6 +68,7 @@ const AdminSettings = () => {
                     >
                       <Text as={"b"}>Display Name</Text>
                       <EditIcon
+                        _hover={{ cursor: "pointer" }}
                         onClick={() => {
                           setEditName(true);
                         }}
@@ -61,7 +76,12 @@ const AdminSettings = () => {
                     </Flex>
                     {editName ? (
                       <Stack>
-                        <Input />
+                        <Input
+                          variant={"filled"}
+                          onChange={(e) => {
+                            setname(e.target.value);
+                          }}
+                        />
                         <Flex w={"100px"} justifyContent={"space-between"}>
                           <Button
                             onClick={() => {
@@ -70,14 +90,18 @@ const AdminSettings = () => {
                           >
                             <TiTick />
                           </Button>
-                          <Button>
+                          <Button
+                            onClick={() => {
+                              setEditName(false);
+                            }}
+                          >
                             <RxCross2 />
                           </Button>
                         </Flex>
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        Varun Ergurala
+                        {name}
                       </Text>
                     )}
                   </Box>
@@ -90,6 +114,7 @@ const AdminSettings = () => {
                     >
                       <Text as={"b"}>Email</Text>
                       <EditIcon
+                        _hover={{ cursor: "pointer" }}
                         onClick={() => {
                           setEditEmail(true);
                         }}
@@ -97,7 +122,12 @@ const AdminSettings = () => {
                     </Flex>
                     {editEmail ? (
                       <Stack>
-                        <Input />
+                        <Input
+                          variant={"filled"}
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
+                        />
                         <Flex w={"100px"} justifyContent={"space-between"}>
                           <Button
                             onClick={() => {
@@ -106,14 +136,18 @@ const AdminSettings = () => {
                           >
                             <TiTick />
                           </Button>
-                          <Button>
+                          <Button
+                            onClick={() => {
+                              setEditEmail(false);
+                            }}
+                          >
                             <RxCross2 />
                           </Button>
                         </Flex>
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        Varun@gmail.com
+                        {email}
                       </Text>
                     )}
                   </Box>
@@ -124,12 +158,44 @@ const AdminSettings = () => {
                       w={"150px"}
                       justifyContent={"space-between"}
                     >
-                      <Text as={"b"}>Mobile Number</Text>
-                      <EditIcon />
+                      <Text as={"b"}>Mobile</Text>
+                      <EditIcon
+                        _hover={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setEditMobile(true);
+                        }}
+                      />
                     </Flex>
-                    <Text fontSize={"12px"} color={"500"}>
-                      8177-8366-51
-                    </Text>
+                    {editMobile ? (
+                      <Stack>
+                        <Input
+                          variant={"filled"}
+                          onChange={(e) => {
+                            setMobile(e.target.value);
+                          }}
+                        />
+                        <Flex w={"100px"} justifyContent={"space-between"}>
+                          <Button
+                            onClick={() => {
+                              setEditMobile(false);
+                            }}
+                          >
+                            <TiTick />
+                          </Button>
+                          <Button
+                            onClick={() => {
+                              setEditMobile(false);
+                            }}
+                          >
+                            <RxCross2 />
+                          </Button>
+                        </Flex>
+                      </Stack>
+                    ) : (
+                      <Text fontSize={"12px"} color={"500"}>
+                        {mobile}
+                      </Text>
+                    )}
                   </Box>
                   <hr />
                   <Box mb={"20px"}>
@@ -139,11 +205,43 @@ const AdminSettings = () => {
                       justifyContent={"space-between"}
                     >
                       <Text as={"b"}>Gender</Text>
-                      <EditIcon />
+                      <EditIcon
+                        _hover={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setEditGender(true);
+                        }}
+                      />
                     </Flex>
-                    <Text fontSize={"12px"} color={"500"}>
-                      Male
-                    </Text>
+                    {editGender ? (
+                      <Stack>
+                        <Input
+                          variant={"filled"}
+                          onChange={(e) => {
+                            setGender(e.target.value);
+                          }}
+                        />
+                        <Flex w={"100px"} justifyContent={"space-between"}>
+                          <Button
+                            onClick={() => {
+                              setEditGender(false);
+                            }}
+                          >
+                            <TiTick />
+                          </Button>
+                          <Button
+                            onClick={() => {
+                              setEditGender(false);
+                            }}
+                          >
+                            <RxCross2 />
+                          </Button>
+                        </Flex>
+                      </Stack>
+                    ) : (
+                      <Text fontSize={"12px"} color={"500"}>
+                        {gender}
+                      </Text>
+                    )}
                   </Box>
                   <br />
                   <br />
@@ -155,8 +253,27 @@ const AdminSettings = () => {
                   </Button>
                 </Stack>
                 <Stack>
-                  <Avatar size={"2xl"} />
-                  <Button bgColor={"500"}>Upload Photo</Button>
+                  {selectedImage ? (
+                    <Box textAlign={"center"}>
+                      <Image
+                        objectFit={"cover"}
+                        borderRadius={"50%"}
+                        alt="not found"
+                        width={"250px"}
+                        h={"250px"}
+                        src={URL.createObjectURL(selectedImage)}
+                      />
+                      <br />
+                      <Button bgColor={"500"} onClick={Remove}>
+                        Remove
+                      </Button>
+                    </Box>
+                  ) : (
+                    <>
+                      <Avatar w={"250px"} h={"250px"} />
+                      <input type="file" name="myImage" onChange={upload} />
+                    </>
+                  )}
                 </Stack>
               </Flex>
             </Box>
