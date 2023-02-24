@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
         <MainNavbar />
 
         <Component {...pageProps} />
-        {/* <Footer /> */}
+        <Footer />
       </Provider>
     </ChakraProvider>)
 }

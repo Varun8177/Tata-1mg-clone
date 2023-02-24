@@ -41,7 +41,6 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { GetRequest } from "@/redux/admin/admin.action";
-import Pagination from "@/components/Pagination";
 import AdminProductsPagination from "@/components/adminPanel/AdminProductsPagination";
 
 const AdminProducts = () => {
