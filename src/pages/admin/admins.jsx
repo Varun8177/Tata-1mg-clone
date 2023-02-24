@@ -10,11 +10,17 @@ import {
   Button,
   useColorModeValue,
   Grid,
+  Input,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import React from "react";
 import { BsGithub } from "react-icons/bs";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 const AdminsSection = () => {
   return (
@@ -30,19 +36,70 @@ const AdminsSection = () => {
           <Sidebar />
         </Box>
         <Box
-          border={"1px solid red"}
           w={"100%"}
           h={"80vh"}
           m={"auto"}
           mt="30px"
           bgColor={"white"}
+          pt={"20px"}
         >
-          <Grid templateColumns={"repeat(5,1fr)"} gap={"10"}>
+          <Flex justifyContent={"space-around"} borderBottomWidth={1} pb={"5"}>
+            <Input placeholder="Search by name " variant={"filled"} w={"50%"} />
+            <Menu>
+              <MenuButton
+                _hover={{ bgColor: "500" }}
+                bgColor={"500"}
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+              >
+                Filter
+              </MenuButton>
+              <MenuList>
+                <MenuItem>Download</MenuItem>
+                <MenuItem>Create a Copy</MenuItem>
+                <MenuItem>Mark as Draft</MenuItem>
+                <MenuItem>Delete</MenuItem>
+                <MenuItem>Attend a Workshop</MenuItem>
+              </MenuList>
+            </Menu>
+            <Menu>
+              <MenuButton
+                _hover={{ bgColor: "500" }}
+                bgColor={"500"}
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+              >
+                Sort
+              </MenuButton>
+              <MenuList>
+                <MenuItem>Download</MenuItem>
+                <MenuItem>Create a Copy</MenuItem>
+                <MenuItem>Mark as Draft</MenuItem>
+                <MenuItem>Delete</MenuItem>
+                <MenuItem>Attend a Workshop</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+          <Grid
+            templateColumns={"repeat(5,1fr)"}
+            gap={"3"}
+            m={"auto"}
+            w={"fit-content"}
+            alignItems={"center"}
+            h={"400px"}
+          >
             {Array(5)
               .fill(0)
               .map((item, i) => {
                 return (
-                  <Box w={"200px"} h={"250px"} bgColor={"gray.200"} key={i}>
+                  <Box
+                    pt={"10"}
+                    borderRadius={"10px"}
+                    w={"200px"}
+                    h={"280px"}
+                    bgColor={"gray.200"}
+                    key={i}
+                  >
                     <Center>
                       <Avatar size={"xl"} />
                     </Center>
@@ -59,16 +116,14 @@ const AdminsSection = () => {
                         <Text>7984684894</Text>
                       </Grid>
                     </Center>
-                    {/* <Flex w={"80%"} m={"auto"} justifyContent={"space-evenly"}>
-                      <BsGithub />
-                      <BsGithub />
-                      <BsGithub />
-                      <BsGithub />
-                    </Flex> */}
                   </Box>
                 );
               })}
           </Grid>
+          <Flex w={"20%"} m={"auto"} justifyContent={"space-evenly"}>
+            <Button>Next</Button>
+            <Button>Previous</Button>
+          </Flex>
         </Box>
       </Flex>
     </Box>
