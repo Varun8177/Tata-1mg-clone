@@ -1,7 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 
+
+
+import { Profile } from "./profile";
+
 import { Box, Center, Heading, Text, Flex } from "@chakra-ui/react";
+
 
 
 import HomeSlider from "@/components/homeSlider";
