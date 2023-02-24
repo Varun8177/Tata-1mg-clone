@@ -19,7 +19,14 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 
-const FilterAndSort = () => {
+
+// /products 38x
+// /vitamins-suppliments 60x
+// /combo 6x
+// /medicine 60x
+// /disease 31x
+// /devices 60x
+const FilterAndSort = ({ handleFilter }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
@@ -38,16 +45,19 @@ const FilterAndSort = () => {
                 >
                     <Box m='20px 0'>
                         <Heading fontSize={'14px'}>FILTER</Heading>
-                        <CheckboxGroup colorScheme='green' >
+                        <CheckboxGroup colorScheme='green'
+                            onChange={(e) => handleFilter(e)} >
                             <Stack
                                 color={'grey'}
                                 fontSize={'12px'}
                                 spacing={[1, 1]}
                                 direction={['column']}
                             >
-                                <Checkbox value='a'>category</Checkbox>
-                                <Checkbox value='b'>category</Checkbox>
-                                <Checkbox value='c'>category</Checkbox>
+                                <Checkbox value='products'>Products</Checkbox>
+                                <Checkbox value='vitamins-suppliments'>Vitamins-Suppliments</Checkbox>
+                                <Checkbox value='combo'>Combos</Checkbox>
+                                <Checkbox value='medicine'>Medicines</Checkbox>
+                                <Checkbox value='devices'>Devices</Checkbox>
                             </Stack>
                         </CheckboxGroup>
                     </Box>
@@ -66,14 +76,14 @@ const FilterAndSort = () => {
                     <Divider />
                     <Box m='20px 0'>
                         <Heading fontSize={'14px'}>SORT BY PRICE</Heading>
-                        <RadioGroup colorScheme='green'>
+                        <RadioGroup colorScheme='green' onChange={''}>
                             <Stack
                                 color={'grey'}
                                 direction='column'
                                 fontSize={'12px'}
                             >
-                                <Radio value='a'>Low to high</Radio>
-                                <Radio value='b'>High to low</Radio>
+                                <Radio value='asc'>Low to high</Radio>
+                                <Radio value='desc'>High to low</Radio>
                             </Stack>
                         </RadioGroup>
                     </Box>
@@ -82,8 +92,8 @@ const FilterAndSort = () => {
                         <Heading fontSize={'14px'}>SORT BY RATING</Heading>
                         <RadioGroup colorScheme='green'>
                             <Stack color={'grey'} direction='column' fontSize={'12px'}>
-                                <Radio value='a'>Low to high</Radio>
-                                <Radio value='b'>High to low</Radio>
+                                <Radio value='asc'>Low to high</Radio>
+                                <Radio value='desc'>High to low</Radio>
                             </Stack>
                         </RadioGroup>
                     </Box>
@@ -135,8 +145,8 @@ const FilterAndSort = () => {
                                         <Heading fontSize={'14px'}>SORT BY PRICE</Heading>
                                         <RadioGroup colorScheme='green'>
                                             <Stack color={'grey'} direction='column' fontSize={'12px'}>
-                                                <Radio value='a'>Low to high</Radio>
-                                                <Radio value='b'>High to low</Radio>
+                                                <Radio value='asc'>Low to high</Radio>
+                                                <Radio value='desc'>High to low</Radio>
                                             </Stack>
                                         </RadioGroup>
                                     </Box>
@@ -145,8 +155,8 @@ const FilterAndSort = () => {
                                         <Heading fontSize={'14px'}>SORT BY RATING</Heading>
                                         <RadioGroup colorScheme='green'>
                                             <Stack color={'grey'} direction='column' fontSize={'12px'}>
-                                                <Radio value='a'>Low to high</Radio>
-                                                <Radio value='b'>High to low</Radio>
+                                                <Radio value='asc'>Low to high</Radio>
+                                                <Radio value='desc'>High to low</Radio>
                                             </Stack>
                                         </RadioGroup>
                                     </Box>
