@@ -3,7 +3,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Box, Center, Heading } from "@chakra-ui/react";
-import { Profile } from "./profileteja";
+import { Profile } from "./profile";
 
 
 export default function Home() {
