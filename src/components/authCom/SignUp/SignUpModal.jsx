@@ -9,13 +9,16 @@ import {
     Button,
     useDisclosure,
   } from '@chakra-ui/react'
-import AuthCard from './authCard'
 
-  export default function AuthModal() {
+import SignUpCard from './SignUpCard'
+
+  export default function SignUpModal() {
+   
     const { isOpen, onOpen, onClose } = useDisclosure()
+    
     return (
       <>
-        <Button onClick={onOpen} >Open Modal</Button>
+        <Button  onClick={onOpen}>Sign-Up</Button>
   
         <Modal isOpen={isOpen} onClose={onClose} size="4xl" >
           <ModalOverlay />
@@ -23,7 +26,7 @@ import AuthCard from './authCard'
            
             <ModalCloseButton />
             <ModalBody>
-              <AuthCard />
+              <SignUpCard />
             </ModalBody>
   
            

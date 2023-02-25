@@ -1,18 +1,30 @@
-import { Box, Button, Divider, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import React from 'react'
+import { Box, Button, Center, Divider, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import React, { useEffect } from 'react'
 import { DeleteIcon } from "@chakra-ui/icons";
+import { auth } from 'config/firebase';
+import { userStatusUpdate } from '@/redux/auth/action';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Cart = () => {
+  const {isAuth, userName} = useSelector(state => state.authReducer)
+  const dispatch = useDispatch();
+  console.log(isAuth, userName)
+   useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+     if(user){
+      dispatch(userStatusUpdate(user.displayName))
+     }
+    })
+  },[])
   return (
-    <Box
-      bg='#f6f6f6'
-      p='60px 50px'>
-      <Text
-        pt='10px'
-        pl={{ "lg": '110px', "md": '110px', "base": '10px' }}
-      >
-        Items in your cart
-      </Text>
+    <>
+    {!isAuth ? 
+    <Center>
+    <Text as="b" fontSize={25} color="red">You are not Logged In</Text>
+    </Center>
+    :
+    <Box bg='#f6f6f6' p='60px 50px'>
+      <Text pt='10px' pl={{ "lg": '110px', "md": '110px', "base": '10px' }}>Items in your cart</Text>
       <Flex
         w='90%'
         m='auto'
@@ -143,6 +155,8 @@ const Cart = () => {
         </Box>
       </Flex>
     </Box >
+    }
+    </>
   )
 }
 
