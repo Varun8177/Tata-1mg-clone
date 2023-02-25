@@ -4,6 +4,7 @@ import ProductCard from '@/components/ProductCard';
 import TopSectionProductsPage from '@/components/TopSectionProductsPage';
 import { Box, Grid } from '@chakra-ui/react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 const Products = ({ data }) => {
@@ -11,7 +12,7 @@ const Products = ({ data }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sort, setSort] = useState("")
     const [order, setOrder] = useState("")
-    const [filterValue, setFilterValue] = useState("products")
+    const [filterValue, setFilterValue] = useState("")
     let pageSize = 8;
     let items = data.length;
     const onPageChange = (page) => {
@@ -27,16 +28,16 @@ const Products = ({ data }) => {
         setFilterValue(value)
         console.log(filterValue)
     }
-
+const router = useRouter();
     // const filterData = async () => {
     //     const response = await axios
     //         .get(`https://dead-earrings-tick.cyclic.app/${filterValue}`)
     //         .then((res) => { console.log(res.data) })
     // }
-    // useEffect(() => {
-    //     filterData();
-    //     // console.log(response);
-    // }, [])
+    useEffect(() => {
+        console.log(router.query);
+        // filterData();
+    }, [router])
 
     return (
         <>
