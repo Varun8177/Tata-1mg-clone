@@ -1,3 +1,4 @@
+import { userLogout } from "@/redux/auth/action";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Badge,
@@ -12,6 +13,8 @@ import {
   Show,
   Text,
 } from "@chakra-ui/react";
+import { auth } from "config/firebase";
+import { signOut } from "firebase/auth";
 import Image from "next/image";
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -21,8 +24,14 @@ import { FcConferenceCall } from "react-icons/fc";
 import { GiMeditation } from "react-icons/gi";
 import { ImLab } from "react-icons/im";
 import { TbDiscount2, TbHelp } from "react-icons/tb";
+import { useDispatch } from "react-redux";
 
 const NavTopSection = () => {
+const dispatch = useDispatch();
+  const handleLogout = async() => {
+    dispatch(userLogout());
+    await signOut(auth)
+}
   return (
     <Flex
       ml={{
@@ -223,7 +232,7 @@ const NavTopSection = () => {
             <MenuItem>My Consultations</MenuItem>
             <MenuItem>My Health records</MenuItem>
             <MenuItem>Manage Payments </MenuItem>
-            <MenuItem>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </MenuList>
         </Menu>
         <Text>Offers</Text>
