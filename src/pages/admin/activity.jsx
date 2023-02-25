@@ -2,7 +2,7 @@ import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 const Activity = () => {
@@ -23,7 +23,7 @@ const Activity = () => {
       {
         label: "Users Gained",
         data: data.map((data) => data.userGain),
-        backgroundColor: ["red", "blue", "green"],
+        backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
       },
     ],
   };
@@ -40,13 +40,14 @@ const Activity = () => {
           <Sidebar />
         </Box>
         <Box
-          border={"1px solid red"}
+          // border={"1px solid red"}
           w={"100%"}
           h={"80vh"}
           m={"auto"}
           mt="30px"
+          bgColor={"white"}
         >
-          <Bar data={userData} />
+          <Line data={userData} />
         </Box>
       </Flex>
     </Box>
