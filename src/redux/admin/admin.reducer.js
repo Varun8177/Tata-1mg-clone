@@ -3,7 +3,8 @@ import *as types from './admin.types'
 const initialState = {
     loading: false,
     error: false,
-    products: []
+    products: [],
+    Allproducts: []
 }
 
 const AdminReducer = (state = initialState, { type, payload }) => {
@@ -14,6 +15,10 @@ const AdminReducer = (state = initialState, { type, payload }) => {
             return { ...state, error: true, loading: false }
         case types.GETPRODUCTS:
             return { ...state, products: payload, loading: false }
+        case types.FILTERPRODUCTS: {
+            return { ...state, products: payload, loading: false }
+
+        }
         default:
             return state
     }

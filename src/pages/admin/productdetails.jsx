@@ -40,12 +40,11 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { GetRequest } from "@/redux/admin/admin.action";
+import { FilterProd, GetRequest } from "@/redux/admin/admin.action";
 import AdminProductsPagination from "@/components/adminPanel/AdminProductsPagination";
 
 const AdminProducts = () => {
-  const prod = useSelector((store) => store.AdminReducer.products);
-  const [data, setdata] = useState(prod);
+  const data = useSelector((store) => store.AdminReducer.products);
 
   const dispatch = useDispatch();
   const [activePage, setActivePage] = useState(1);
@@ -53,13 +52,8 @@ const AdminProducts = () => {
   const HandleActivePage = (val) => {
     setActivePage(val);
   };
-  const InitialData = () => {
-    dispatch(GetRequest());
-    setdata(prod);
-  };
   useEffect(() => {
-    InitialData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(GetRequest());
   }, []);
 
   return (
@@ -94,58 +88,31 @@ const AdminProducts = () => {
               >
                 Filter
               </MenuButton>
-              <MenuList
-                onChange={(e) => {
-                  console.log(e.target.value);
-                }}
-              >
+              <MenuList>
                 <MenuItem
                   onClick={() => {
-                    setdata(prod);
-                    let x = data.filter((item) => {
-                      return item.use.includes("Skin Care");
-                    });
-                    console.log(x);
-                    setdata(x);
+                    dispatch(FilterProd("Skin Care"));
                   }}
                 >
                   Skin Care
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
-                    setdata(prod);
-                    console.log(data);
-                    let x = data.filter((item) => {
-                      return item.use.includes("Nutritional Deficiencies");
-                    });
-                    console.log(x);
-                    setdata(x);
+                    dispatch(FilterProd("Nutritional Deficiencies"));
                   }}
                 >
                   Nutritional Deficiencies
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
-                    setdata(prod);
-                    console.log(data);
-                    let x = data.filter((item) => {
-                      return item.use.includes("Mind Care");
-                    });
-                    console.log(x);
-                    setdata(x);
+                    dispatch(FilterProd("Mind Care"));
                   }}
                 >
                   Mind Care
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
-                    setdata(prod);
-                    console.log(data);
-                    let x = data.filter((item) => {
-                      return item.use.includes("Joint & Muscle Care");
-                    });
-                    console.log(x);
-                    setdata(x);
+                    dispatch(FilterProd("Joint & Muscle Care"));
                   }}
                 >
                   Joint & Muscle Care
@@ -169,7 +136,7 @@ const AdminProducts = () => {
               </MenuList>
             </Menu>
             <Button bgColor={"500"}>Add Product</Button>
-            <Button bgColor={"500"} onClick={() => InitialData()}>
+            <Button bgColor={"500"} onClick={() => dispatch(GetRequest())}>
               Reset
             </Button>
           </Flex>
