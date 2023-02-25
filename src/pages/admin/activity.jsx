@@ -23,7 +23,7 @@ const Activity = () => {
       {
         label: "Users Gained",
         data: data.map((data) => data.userGain),
-        backgroundColor: ["red", "blue", "green"],
+        backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
       },
     ],
   };
@@ -40,11 +40,12 @@ const Activity = () => {
           <Sidebar />
         </Box>
         <Box
-          border={"1px solid red"}
+          // border={"1px solid red"}
           w={"100%"}
           h={"80vh"}
           m={"auto"}
           mt="30px"
+          bgColor={"white"}
         >
           <Bar data={userData} />
         </Box>

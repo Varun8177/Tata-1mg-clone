@@ -71,6 +71,7 @@ const NavBottomSection = () => {
               Health resource center
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setHealthResource(false);
               }}
@@ -117,6 +118,7 @@ const NavBottomSection = () => {
               Vitamins and nutrition
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setVitamins(false);
               }}
@@ -202,6 +204,7 @@ const NavBottomSection = () => {
               Diabetes
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setDiabetes(false);
               }}
@@ -268,6 +271,7 @@ const NavBottomSection = () => {
               Healthcare devices
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setHealthCare(false);
               }}
@@ -333,6 +337,7 @@ const NavBottomSection = () => {
               personal care
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setPersonalCare(false);
               }}
@@ -432,6 +437,7 @@ const NavBottomSection = () => {
               Health conditions
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setHealthConditions(false);
               }}
@@ -507,6 +513,7 @@ const NavBottomSection = () => {
               Ayurveda products
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setAyurveda(false);
               }}
@@ -592,6 +599,7 @@ const NavBottomSection = () => {
               Homeopathy
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setHomeopathy(false);
               }}
@@ -679,6 +687,7 @@ const NavBottomSection = () => {
               Featured
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setFeatured(false);
               }}
@@ -759,6 +768,7 @@ const NavBottomSection = () => {
               Covid Essentials
             </MenuButton>
             <MenuList
+              zIndex={10}
               onMouseLeave={() => {
                 setCovid(false);
               }}

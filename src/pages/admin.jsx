@@ -33,7 +33,7 @@ const Admin = () => {
       {
         label: "Users Gained",
         data: data.map((data) => data.userGain),
-        backgroundColor: ["red", "blue", "green"],
+        backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
       },
     ],
   };

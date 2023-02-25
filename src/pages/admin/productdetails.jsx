@@ -25,7 +25,9 @@ import {
   PopoverTrigger,
   Stack,
   Text,
+  Textarea,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -40,7 +42,13 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { FilterProd, GetRequest } from "@/redux/admin/admin.action";
+import {
+  AddProd,
+  DeleteProd,
+  FilterProd,
+  GetRequest,
+  UpdateProd,
+} from "@/redux/admin/admin.action";
 import AdminProductsPagination from "@/components/adminPanel/AdminProductsPagination";
 
 const AdminProducts = () => {
@@ -135,7 +143,8 @@ const AdminProducts = () => {
                 <MenuItem>Stocks {">"} 3</MenuItem>
               </MenuList>
             </Menu>
-            <Button bgColor={"500"}>Add Product</Button>
+            {/* <Button bgColor={"500"}>Add Product</Button> */}
+            <AddProduct />
             <Button bgColor={"500"} onClick={() => dispatch(GetRequest())}>
               Reset
             </Button>
@@ -161,7 +170,7 @@ const AdminProducts = () => {
                         <Text>Price: {item.price}</Text>
                         {/* <Text>{item.title.substr(0, 29)}...</Text> */}
                         <Flex>
-                          <BasicUsage item={item} />
+                          <EditButton item={item} />
                         </Flex>
                       </Stack>
                     </Flex>
@@ -182,7 +191,18 @@ const AdminProducts = () => {
 
 export default AdminProducts;
 
-function BasicUsage({ item }) {
+function EditButton({ item }) {
+  const dispatch = useDispatch();
+  const [selectedImage, setSelectedImage] = useState(item.url);
+  const Remove = () => setSelectedImage(item.url);
+  const [title, setTitle] = useState(item.name);
+  const [price, setPrice] = useState(item.price);
+
+  const upload = (event) => {
+    console.log(event.target.files[0]);
+    setSelectedImage(URL.createObjectURL(event.target.files[0]));
+  };
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -217,7 +237,13 @@ function BasicUsage({ item }) {
             <PopoverFooter>
               <Flex w={"100%"} justifyContent={"space-evenly"}>
                 <Button>No</Button>
-                <Button>Yes</Button>
+                <Button
+                  onClick={() => {
+                    dispatch(DeleteProd(item.id));
+                  }}
+                >
+                  Yes
+                </Button>
               </Flex>
             </PopoverFooter>
           </PopoverContent>
@@ -236,16 +262,43 @@ function BasicUsage({ item }) {
                 <FormLabel>Title</FormLabel>
                 <Input
                   type={item.name}
-                  value={item.name}
-                  // onChange={(e) => {
-                  //   setTitle(e.target.value);
-                  // }}
+                  value={title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
                 />
               </FormControl>
               <FormControl>
                 <FormLabel>Price</FormLabel>
-                <Input type="number" value={item.price} />
+                <Input
+                  type="number"
+                  value={price}
+                  onChange={(e) => {
+                    setPrice(e.target.value);
+                  }}
+                />
               </FormControl>
+              <Flex
+                textAlign={"center"}
+                alignItems={"center"}
+                w={"100%"}
+                justifyContent={"space-around"}
+              >
+                <Image
+                  objectFit={"contain"}
+                  borderRadius={"10px"}
+                  alt="not found"
+                  width={"100px"}
+                  h={"100px"}
+                  src={selectedImage}
+                />
+                <Stack>
+                  <input type="file" name="myImage" onChange={upload} />
+                  {selectedImage ? (
+                    <Button onClick={Remove}>Remove</Button>
+                  ) : null}
+                </Stack>
+              </Flex>
             </Stack>
           </ModalBody>
 
@@ -253,7 +306,152 @@ function BasicUsage({ item }) {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Update Product</Button>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                const changes = { name: title, price, url: selectedImage };
+                dispatch(UpdateProd(item.id, changes));
+              }}
+            >
+              Update Product
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+}
+
+function AddProduct() {
+  const [close, setclose] = useState(false);
+  const Remove = () => setSelectedImage(null);
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const toast = useToast();
+  const [toastDelay, setToastDelay] = useState(false);
+  const dispatch = useDispatch();
+  const OverlayOne = () => (
+    <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) " />
+  );
+
+  const upload = (event) => {
+    console.log(event.target.files[0]);
+    setSelectedImage(URL.createObjectURL(event.target.files[0]));
+  };
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [overlay, setOverlay] = React.useState(<OverlayOne />);
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setOverlay(<OverlayOne />);
+          onOpen();
+        }}
+        bgColor={"500"}
+      >
+        Add Product
+      </Button>
+      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        {overlay}
+        <ModalContent>
+          <ModalHeader>Add New Product</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <FormControl isRequired>
+              <FormLabel>Title</FormLabel>
+              <Input
+                placeholder="enter title here"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Price</FormLabel>
+              <Input
+                placeholder="enter price here"
+                type={"number"}
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Description</FormLabel>
+              <Textarea
+                placeholder="enter title here"
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Select Product Image</FormLabel>
+              <Flex
+                textAlign={"center"}
+                alignItems={"center"}
+                w={"100%"}
+                justifyContent={"space-around"}
+              >
+                {selectedImage ? (
+                  <Image
+                    objectFit={"contain"}
+                    borderRadius={"10px"}
+                    alt="not found"
+                    width={"100px"}
+                    h={"100px"}
+                    src={selectedImage}
+                  />
+                ) : null}
+                <Stack>
+                  <input type="file" name="myImage" onChange={upload} />
+                  {selectedImage ? (
+                    <Button onClick={Remove}>Remove</Button>
+                  ) : null}
+                </Stack>
+              </Flex>
+            </FormControl>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose} mr={"10"}>
+              Close
+            </Button>
+            <Button
+              isDisabled={toastDelay}
+              onClick={() => {
+                if (
+                  title.length &&
+                  description.length &&
+                  price &&
+                  selectedImage !== null
+                ) {
+                  dispatch(
+                    AddProd({
+                      name: title,
+                      url: selectedImage,
+                      price,
+                      detail: description,
+                    })
+                  );
+                  toast({
+                    title: `Successfully created product`,
+                    status: "success",
+                    isClosable: true,
+                  });
+                } else {
+                  toast({
+                    title: `please fill details`,
+                    status: "error",
+                    isClosable: true,
+                    duration: 3000,
+                  });
+                  setToastDelay(true);
+                  setTimeout(() => {
+                    setToastDelay(false);
+                  }, 4000);
+                }
+              }}
+            >
+              Add Product
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
