@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Flex, Text, Image } from "@chakra-ui/react";
-//import Image from "next/image";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import Image from "next/image";
 const FeatureBrands = () => {
   const fb = [
     {
@@ -39,6 +39,9 @@ const FeatureBrands = () => {
       id: 7,
     },
   ];
+
+  //ShopByHealthConcerns.jsx
+  
   return (
     <div>
       <Box
@@ -50,12 +53,27 @@ const FeatureBrands = () => {
         mt="10"
         mb="10"
       >
+      
         <Flex w="80%" m="auto" gap="5">
-          {fb.map((el) => {
-            <Box p="5" align="center">
-              <Image src={el.img} alt="Feature Products" />
-              <Text>{el.name}</Text>
-            </Box>;
+          {fb.map((item) => {
+            return (
+              <>
+                <Box
+                  _hover={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
+                  p="5"
+                  align="center"
+                  key={item.id}
+                >
+                  <Image
+                    src={item.img}
+                    alt={item.name}
+                    height={200}
+                    width={200}
+                  />
+                  <Text>{item.name}</Text>
+                </Box>
+              </>
+            );
           })}
         </Flex>
       </Box>
@@ -64,3 +82,4 @@ const FeatureBrands = () => {
 };
 
 export default FeatureBrands;
+//FullBodyHealthCheckups.jsx
