@@ -2,7 +2,7 @@ import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { useDispatch, useSelector } from "react-redux";
 import { GetRequest } from "@/redux/admin/admin.action";
@@ -85,12 +85,12 @@ const Admin = () => {
             gap={"6"}
           >
             <Boxes
-              color={"blue"}
+              color={"#577590"}
               value={String(prod.length).split("").join(" ")}
               text={"Total Products"}
             />
-            <Boxes color={"teal"} value={"1 0"} text={"Users online"} />
-            <Boxes color={"500"} value={"5"} text={"orders"} />
+            <Boxes color={"#43aa8b"} value={"1 0"} text={"Users online"} />
+            <Boxes color={"#90be6d"} value={"5"} text={"orders"} />
           </Grid>
           <Grid
             w={"90%"}
@@ -142,7 +142,7 @@ const Admin = () => {
               borderRadius={"10px"}
             >
               {" "}
-              <Bar data={userData} />
+              <Pie data={userData} />
             </Box>
           </Grid>
         </Box>

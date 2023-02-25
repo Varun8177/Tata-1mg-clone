@@ -1,3 +1,4 @@
+import AuthModal from "@/components/authModal";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Badge,
@@ -21,8 +22,11 @@ import { FcConferenceCall } from "react-icons/fc";
 import { GiMeditation } from "react-icons/gi";
 import { ImLab } from "react-icons/im";
 import { TbDiscount2, TbHelp } from "react-icons/tb";
+import { useSelector } from "react-redux";
 
 const NavTopSection = () => {
+  const { isAuth } = useSelector((state) => state.AuthReducer);
+  console.log(isAuth);
   return (
     <Flex
       ml={{
@@ -190,86 +194,97 @@ const NavTopSection = () => {
         }}
       >
         {/* <IoPersonOutline size={"30"} /> */}
+        {isAuth ? (
+          <>
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Options"
+                icon={<FaUser size={"30"} />}
+                variant={"unstyled"}
+              />
+              <MenuList>
+                <MenuItem>View Profile</MenuItem>
+                <MenuItem>My orders</MenuItem>
+                <MenuItem>
+                  Previously Ordered Items{" "}
+                  <Badge ml={"5"} colorScheme="green">
+                    New
+                  </Badge>
+                </MenuItem>
+                <MenuItem>
+                  Rate Your recent Purchases{" "}
+                  <Badge ml={"5"} colorScheme="green">
+                    New
+                  </Badge>
+                </MenuItem>
+                <MenuItem>
+                  Previously Ordered Items{" "}
+                  <Badge ml={"5"} colorScheme="green">
+                    New
+                  </Badge>
+                </MenuItem>
+                <MenuItem>My Lab tests</MenuItem>
+                <MenuItem>My Consultations</MenuItem>
+                <MenuItem>My Health records</MenuItem>
+                <MenuItem>Manage Payments </MenuItem>
+                <MenuItem>Logout</MenuItem>
+              </MenuList>
+            </Menu>
+            <Text>Offers</Text>
+            <Flex>
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  aria-label="Options"
+                  icon={<AiOutlineShoppingCart size={"30"} />}
+                  variant={"unstyled"}
+                />
+                <MenuList>
+                  <Flex justifyContent={"space-around"} w={"100%"}>
+                    <Text as={"b"}>Order Summary</Text>
+                    <Text>2 Items</Text>
+                  </Flex>
+                  <MenuDivider />
+                  <Flex justifyContent={"space-around"} w={"100%"}>
+                    <Text fontSize={13}>xyz prod...</Text>
+                    <Text fontSize={13}>Qty:1</Text>
+                  </Flex>
+                  <Flex justifyContent={"space-around"} w={"100%"}>
+                    <Text fontSize={13}>xyz prod...</Text>
+                    <Text fontSize={13}>Qty:1</Text>
+                  </Flex>
+                  <MenuItem>
+                    <Text
+                      m={"auto"}
+                      border={"1p solid red"}
+                      color={"500"}
+                      as={"b"}
+                    >
+                      Proceed to cart
+                    </Text>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+              <Text
+                color={"white"}
+                bgColor={"500"}
+                borderRadius={"3px"}
+                ml={"-15px"}
+                mt={"-5px"}
+                h={"20px"}
+                w={"20px"}
+                textAlign={"center"}
+                zIndex={2}
+              >
+                1
+              </Text>
+            </Flex>
+          </>
+        ) : (
+          <AuthModal />
+        )}
 
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<FaUser size={"30"} />}
-            variant={"unstyled"}
-          />
-          <MenuList>
-            <MenuItem>View Profile</MenuItem>
-            <MenuItem>My orders</MenuItem>
-            <MenuItem>
-              Previously Ordered Items{" "}
-              <Badge ml={"5"} colorScheme="green">
-                New
-              </Badge>
-            </MenuItem>
-            <MenuItem>
-              Rate Your recent Purchases{" "}
-              <Badge ml={"5"} colorScheme="green">
-                New
-              </Badge>
-            </MenuItem>
-            <MenuItem>
-              Previously Ordered Items{" "}
-              <Badge ml={"5"} colorScheme="green">
-                New
-              </Badge>
-            </MenuItem>
-            <MenuItem>My Lab tests</MenuItem>
-            <MenuItem>My Consultations</MenuItem>
-            <MenuItem>My Health records</MenuItem>
-            <MenuItem>Manage Payments </MenuItem>
-            <MenuItem>Logout</MenuItem>
-          </MenuList>
-        </Menu>
-        <Text>Offers</Text>
-        <Flex>
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<AiOutlineShoppingCart size={"30"} />}
-              variant={"unstyled"}
-            />
-            <MenuList>
-              <Flex justifyContent={"space-around"} w={"100%"}>
-                <Text as={"b"}>Order Summary</Text>
-                <Text>2 Items</Text>
-              </Flex>
-              <MenuDivider />
-              <Flex justifyContent={"space-around"} w={"100%"}>
-                <Text fontSize={13}>xyz prod...</Text>
-                <Text fontSize={13}>Qty:1</Text>
-              </Flex>
-              <Flex justifyContent={"space-around"} w={"100%"}>
-                <Text fontSize={13}>xyz prod...</Text>
-                <Text fontSize={13}>Qty:1</Text>
-              </Flex>
-              <MenuItem>
-                <Text m={"auto"} border={"1p solid red"} color={"500"} as={"b"}>
-                  Proceed to cart
-                </Text>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-          <Text
-            color={"white"}
-            bgColor={"500"}
-            borderRadius={"3px"}
-            ml={"-15px"}
-            mt={"-5px"}
-            h={"20px"}
-            w={"20px"}
-            textAlign={"center"}
-            zIndex={2}
-          >
-            1
-          </Text>
-        </Flex>
         <Text>Need help?</Text>
       </Flex>
     </Flex>

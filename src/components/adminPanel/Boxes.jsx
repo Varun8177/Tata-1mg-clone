@@ -25,8 +25,8 @@ function Boxes({ color, value, text }) {
       pt={"15px"}
     >
       <Flex alignItems={"center"} w={"100%"} justifyContent={"space-around"}>
-        <Avatar name={String(value)} />
-        <Text>{text}</Text>
+        <Avatar bgColor={"white"} name={String(value)} />
+        <Text color={"black"}>{text}</Text>
       </Flex>
       <Flex
         alignItems={"center"}

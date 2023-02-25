@@ -323,7 +323,6 @@ function EditButton({ item }) {
 }
 
 function AddProduct() {
-  const [close, setclose] = useState(false);
   const Remove = () => setSelectedImage(null);
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");

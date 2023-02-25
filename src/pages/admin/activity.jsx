@@ -2,7 +2,7 @@ import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 const Activity = () => {
@@ -47,7 +47,7 @@ const Activity = () => {
           mt="30px"
           bgColor={"white"}
         >
-          <Bar data={userData} />
+          <Line data={userData} />
         </Box>
       </Flex>
     </Box>

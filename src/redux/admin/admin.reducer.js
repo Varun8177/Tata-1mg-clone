@@ -4,7 +4,7 @@ const initialState = {
     loading: false,
     error: false,
     products: [],
-    Allproducts: []
+    cart: []
 }
 
 const AdminReducer = (state = initialState, { type, payload }) => {
@@ -31,7 +31,8 @@ const AdminReducer = (state = initialState, { type, payload }) => {
             }
         }
         case types.ADDPRODUCT:
-            return { ...state, products: [...payload, ...state.products] }
+            console.log(payload)
+            return { ...state, products: [payload, ...state.products] }
         default:
             return state
     }
