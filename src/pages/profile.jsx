@@ -12,7 +12,7 @@ import {
   Switch,
 } from "@chakra-ui/react";
 
-export const Profile = () => {
+export default function Profile() {
   const [email, setEmail] = useState("reddyvaritejeshkumarreddy@gmail.com");
   const [mobile, setMobile] = useState("9133826592");
   const [workemail, setworkEmail] = useState(
