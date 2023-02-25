@@ -5,7 +5,7 @@ const initialState = {
     userName: null
 }
 
-const Authreducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case types.USER_LOGIN: {
@@ -29,10 +29,6 @@ const Authreducer = (state = initialState, action) => {
 
 }
 
-<<<<<<< HEAD
-export default Authreducer;
-=======
 export {
     reducer
-} ;
->>>>>>> 08ec100b9875bb80ab787aa0025c1629fb92f575
+};

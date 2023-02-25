@@ -200,7 +200,7 @@ const NavTopSection = () => {
         }}
       >
         {/* <IoPersonOutline size={"30"} /> */}
-        {isAuth ? (
+        {auth ? (
           <>
             <Menu>
               <MenuButton
