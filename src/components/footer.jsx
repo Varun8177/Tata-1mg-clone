@@ -31,10 +31,11 @@ const Footer = () => {
           We Bring Care to Health.
         </Heading>
         <Text>
-          Tata 1mg is {"India's"} leading digital healthcare platform. From doctor
-          consultations on chat to online pharmacy and lab tests at home: we
-          have it all covered for you. Having delivered over 25 million orders
-          in 1000+ cities till date, we are on a mission to bring {"care"} to
+          Tata 1mg is {"India's"} leading digital healthcare platform. From
+          doctor consultations on chat to online pharmacy and lab tests at home:
+          we have it all covered for you. Having delivered over 25 million
+          orders in 1000+ cities till date, we are on a mission to bring{" "}
+          {"care"} to
           {"health"} to give you a flawless healthcare experience.
         </Text>
 
@@ -42,11 +43,11 @@ const Footer = () => {
           Tata 1mg: Your Favourite Online Pharmacy!
         </Heading>
         <Text>
-          Tata 1mg is {"India's "}leading online chemist with over 2 lakh medicines
-          available at the best prices. We are your one-stop destination for
-          other healthcare products as well, such as over the counter
-          pharmaceuticals, healthcare devices and homeopathy and ayurveda
-          medicines.
+          Tata 1mg is {"India's "}leading online chemist with over 2 lakh
+          medicines available at the best prices. We are your one-stop
+          destination for other healthcare products as well, such as over the
+          counter pharmaceuticals, healthcare devices and homeopathy and
+          ayurveda medicines.
         </Text>
         <Text>
           With Tata 1mg, you can buy medicines online and get them delivered at
@@ -75,19 +76,19 @@ const Footer = () => {
           and affordable in India. We set out on our journey in 2015, and have
           come a long way since then. Along the way, we have been conferred with
           prestigious titles like BML Munjal Award {"for 'Business"} Excellence
-          through Learning and {"Development',"} Best Online Pharmacy in India Award
-          and Top 50 venture in The Smart CEO-Startup50 India. We have been
-          selected as the only company from across the globe for SD#3 {"Health"} &
-          Well Being for {"all"} by Unreasonable group, US State Department. In
-          2019 alone we received three awards including the BMW Simply
-          Unstoppable Award.
+          through Learning and {"Development',"} Best Online Pharmacy in India
+          Award and Top 50 venture in The Smart CEO-Startup50 India. We have
+          been selected as the only company from across the globe for SD#3{" "}
+          {"Health"} & Well Being for {"all"} by Unreasonable group, US State
+          Department. In 2019 alone we received three awards including the BMW
+          Simply Unstoppable Award.
         </Text>
         <Heading as="h3" size="md">
           The Services We Offer
         </Heading>
         <Text>
-          Tata 1mg is {"India's"} leading digital healthcare platform, where you can
-          buy medicines online with discount. Buy medicine online in Delhi,
+          Tata 1mg is {"India's"} leading digital healthcare platform, where you
+          can buy medicines online with discount. Buy medicine online in Delhi,
           Mumbai, Bangalore, Hyderabad, Pune, Gurgaon, Noida, Kolkata, Chennai,
           Ahmedabad, Lucknow and around a 1000 more cities. Besides delivering
           your online medicine order at your doorstep, we provide accurate,
@@ -198,10 +199,7 @@ const Footer = () => {
             </Text>
             <Text>Social Links</Text>
             <Flex w="250px" gap="5px">
-              {/* <SocialIcon
-                url="https://www.facebook.com/1mgOfficial"
-                borderRedius="0"
-              />
+              {/* <SocialIcon url="https://www.facebook.com/1mgOfficial" />
               <SocialIcon url="https://www.instagram.com/1mgofficialpage/" />
               <SocialIcon url="https://twitter.com/1mgOfficial" />
               <SocialIcon url="https://www.youtube.com/c/1mgofficial" />
@@ -328,7 +326,8 @@ const Footer = () => {
         <Box>
           <Text color="grey" as="b" fontSize="sm">
             © 2023 Tata 1mg. All rights reserved. In compliance with Drugs and
-            Cosmetics Act, 1940 and Drugs and Cosmetics Rules, 1945, we {"don't"}
+            Cosmetics Act, 1940 and Drugs and Cosmetics Rules, 1945, we{" "}
+            {"don't"}
             process requests for Schedule X and other habit forming drugs.
           </Text>
         </Box>

@@ -44,8 +44,9 @@ import { GetRequest } from "@/redux/admin/admin.action";
 import AdminProductsPagination from "@/components/adminPanel/AdminProductsPagination";
 
 const AdminProducts = () => {
-  // const [data, setdata] = useState([]);
-  const data = useSelector((store) => store.AdminReducer.products);
+  const prod = useSelector((store) => store.AdminReducer.products);
+  const [data, setdata] = useState(prod);
+
   const dispatch = useDispatch();
   const [activePage, setActivePage] = useState(1);
 
@@ -54,11 +55,12 @@ const AdminProducts = () => {
   };
   const InitialData = () => {
     dispatch(GetRequest());
+    setdata(prod);
   };
   useEffect(() => {
     InitialData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, []);
 
   return (
     <Box bgColor={"#d8dff7"} h={"90vh"}>
@@ -92,40 +94,61 @@ const AdminProducts = () => {
               >
                 Filter
               </MenuButton>
-              <MenuList>
-                <MenuItem onClick={() => {}}>Capsule</MenuItem>
+              <MenuList
+                onChange={(e) => {
+                  console.log(e.target.value);
+                }}
+              >
                 <MenuItem
                   onClick={() => {
-                    setdata(
-                      prod.filter((item) =>
-                        item.name.toLowerCase().includes("support")
-                      )
-                    );
+                    setdata(prod);
+                    let x = data.filter((item) => {
+                      return item.use.includes("Skin Care");
+                    });
+                    console.log(x);
+                    setdata(x);
                   }}
                 >
-                  Supports
+                  Skin Care
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
-                    setdata(
-                      prod.filter((item) =>
-                        item.name.toLowerCase().includes("protein")
-                      )
-                    );
+                    setdata(prod);
+                    console.log(data);
+                    let x = data.filter((item) => {
+                      return item.use.includes("Nutritional Deficiencies");
+                    });
+                    console.log(x);
+                    setdata(x);
                   }}
                 >
-                  Proteins
+                  Nutritional Deficiencies
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
-                    setdata(
-                      prod.filter((item) =>
-                        item.name.toLowerCase().includes("immun")
-                      )
-                    );
+                    setdata(prod);
+                    console.log(data);
+                    let x = data.filter((item) => {
+                      return item.use.includes("Mind Care");
+                    });
+                    console.log(x);
+                    setdata(x);
                   }}
                 >
-                  Immunity Products
+                  Mind Care
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    setdata(prod);
+                    console.log(data);
+                    let x = data.filter((item) => {
+                      return item.use.includes("Joint & Muscle Care");
+                    });
+                    console.log(x);
+                    setdata(x);
+                  }}
+                >
+                  Joint & Muscle Care
                 </MenuItem>
               </MenuList>
             </Menu>
@@ -237,7 +260,7 @@ function BasicUsage({ item }) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{item.title}</ModalHeader>
+          <ModalHeader>{item.name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             {" "}
@@ -245,8 +268,8 @@ function BasicUsage({ item }) {
               <FormControl>
                 <FormLabel>Title</FormLabel>
                 <Input
-                  type={item.title}
-                  value={item.title}
+                  type={item.name}
+                  value={item.name}
                   // onChange={(e) => {
                   //   setTitle(e.target.value);
                   // }}

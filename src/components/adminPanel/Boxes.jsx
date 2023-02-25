@@ -1,7 +1,7 @@
 import { Avatar, Box, Flex, Hide, Text } from "@chakra-ui/react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-function Boxes({ color }) {
+function Boxes({ color, value, text }) {
   return (
     <Box
       h={{
@@ -25,8 +25,8 @@ function Boxes({ color }) {
       pt={"15px"}
     >
       <Flex alignItems={"center"} w={"100%"} justifyContent={"space-around"}>
-        <Avatar />
-        <Text>Total Products</Text>
+        <Avatar name={String(value)} />
+        <Text>{text}</Text>
       </Flex>
       <Flex
         alignItems={"center"}
