@@ -17,7 +17,8 @@ import {
     DrawerContent,
     DrawerCloseButton
 } from '@chakra-ui/react'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
 
 
 // /products 38x
@@ -27,9 +28,18 @@ import React from 'react'
 // /disease 31x
 // /devices 60x
 const FilterAndSort = ({ handleFilter }) => {
-
+    const router = useRouter();
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleQueryChange = (e) => {
+        setIsChecked(e.target.checked);
+        router.push({
+            pathname: router.pathname,
+            query: { ...router.query, q: e.target.value }
+        })
+    }
 
     return (
         <>
@@ -53,11 +63,11 @@ const FilterAndSort = ({ handleFilter }) => {
                                 spacing={[1, 1]}
                                 direction={['column']}
                             >
-                                <Checkbox value='products'>Products</Checkbox>
-                                <Checkbox value='vitamins-suppliments'>Vitamins-Suppliments</Checkbox>
-                                <Checkbox value='combo'>Combos</Checkbox>
-                                <Checkbox value='medicine'>Medicines</Checkbox>
-                                <Checkbox value='devices'>Devices</Checkbox>
+                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='products'>Products</Checkbox>
+                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='vitamins-suppliments'>Vitamins-Suppliments</Checkbox>
+                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='combo'>Combos</Checkbox>
+                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='medicine'>Medicines</Checkbox>
+                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='devices'>Devices</Checkbox>
                             </Stack>
                         </CheckboxGroup>
                     </Box>
