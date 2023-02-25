@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Divider, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import React from 'react'
 import { DeleteIcon } from "@chakra-ui/icons";
 
@@ -10,7 +10,7 @@ const Cart = () => {
         w='90%'
         m='auto'
         gap={{ "base": '50px' }}
-        direction={{ "lg": 'row', "md": 'row', "base": 'column' }}
+        direction={{ "lg": 'row', "md": 'column ', "base": 'column' }}
       >
         <Box
           w={{ "lg": '600px', "md": '400px', "base": '200px' }}
@@ -100,25 +100,36 @@ const Cart = () => {
         </Box>
 
         <Box
-          w='38%'
-          h='150px'
+          // w='38%'
+          // h='150px'
           m='auto'
           bg='white'
           p='20px 40px'
           display={'grid'}
           justifyContent='space-between'
           boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
+          color='#757575'
+          fontSize='12px'
+          fontWeight='500'
+          gap='5px'
         >
-          <Box gap='100px' display='flex'>
+          <Box display='flex' justifyContent='space-between' lineHeight='30px' gap={{ "lg": '220px', "md": '200px', "base": '60px' }}>
             <Text textAlign='left'>Item Total(MRP)</Text> <Text textAlign='right'>₹6880</Text>
           </Box>
-          <Box gap='100px' display='flex'>
+          {/* <Divider /> */}
+          <Box display='flex' justifyContent='space-between' lineHeight='30px'>
             <Text> Price Discount</Text>  <Text textAlign='right'>-₹3291.5</Text>
           </Box>
-          <Box gap='100px' display='flex'>
-            <Text>Shipping Fee</Text> <Text textAlign='right'>Free</Text></Box>
-          <Box gap='100px' display='flex'>
-            <Text>To be paid</Text>  <Text>₹568</Text>
+          <Divider />
+          <Box display='flex' justifyContent='space-between' lineHeight='30px'>
+            <Text>Shipping Fee</Text> <Text>Free</Text>
+          </Box>
+          <Divider />
+          <Box display='flex' justifyContent='space-between' color='#767676' fontSize='13px' fontWeight='700' lineHeight='30px'>
+            <Text >To be paid</Text>  <Text>₹568</Text>
+          </Box>
+          <Box display='flex' justifyContent='space-between' lineHeight='30px' bg='#e4f6e7'>
+            <Text>Total Savings</Text>  <Text textAlign='right' color={'#1aab2a'} fontWeight='700' fontSize={'13px'} >₹517</Text>
           </Box>
         </Box>
       </Flex>
