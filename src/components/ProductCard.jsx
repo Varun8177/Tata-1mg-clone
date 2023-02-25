@@ -81,7 +81,7 @@ const ProductCard = (props) => {
                     textDecor="line-through"
                     fontWeight={600}
                 >
-                    ₹{props["strike-price"]}
+                    {props["strike-price"] ? props["strike-price"] : null}₹
                 </Text>
                 <Text
                     fontSize={"13px"}
@@ -89,7 +89,7 @@ const ProductCard = (props) => {
                     color="#1aab2a"
                     fontWeight={600}
                 >
-                    {props["discount-percent"]}
+                    {props["discount-percent"] ? props["discount-percent"] : "0%"}
                 </Text>
             </Flex>
             <Flex
@@ -108,9 +108,9 @@ const ProductCard = (props) => {
                     bg="white"
                     size={"sm"}
                     color="#ff6f61"
-                    _hover={{ 
-                        bg: "#ff6f61", 
-                        color: "white" 
+                    _hover={{
+                        bg: "#ff6f61",
+                        color: "white"
                     }}
                 >
                     ADD
