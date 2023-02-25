@@ -198,10 +198,7 @@ const Footer = () => {
             </Text>
             <Text>Social Links</Text>
             <Flex w="250px" gap="5px">
-              <SocialIcon
-                url="https://www.facebook.com/1mgOfficial"
-                borderRedius="0"
-              />
+              <SocialIcon url="https://www.facebook.com/1mgOfficial" />
               <SocialIcon url="https://www.instagram.com/1mgofficialpage/" />
               <SocialIcon url="https://twitter.com/1mgOfficial" />
               <SocialIcon url="https://www.youtube.com/c/1mgofficial" />
