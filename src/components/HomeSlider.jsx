@@ -1,6 +1,8 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
 import "swiper/css";
 const HomeSlider = () => {
   return (
@@ -9,8 +11,19 @@ const HomeSlider = () => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log()}
+        onSwiper={(swiper) => console.log()}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
       >
         <SwiperSlide>
           <Image

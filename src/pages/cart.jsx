@@ -1,9 +1,28 @@
-import { Box, Button, Divider, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import React from 'react'
+import { Box, Button, Center, Divider, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import React, { useEffect } from 'react'
 import { DeleteIcon } from "@chakra-ui/icons";
+import { auth } from 'config/firebase';
+import { userStatusUpdate } from '@/redux/auth/action';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Cart = () => {
+  const {isAuth, userName} = useSelector(state => state.authReducer)
+  const dispatch = useDispatch();
+  console.log(isAuth, userName)
+   useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+     if(user){
+      dispatch(userStatusUpdate(user.displayName))
+     }
+    })
+  },[])
   return (
+    <>
+    {!isAuth ? 
+    <Center>
+    <Text as="b" fontSize={25} color="red">You are not Logged In</Text>
+    </Center>
+    :
     <Box bg='#f6f6f6' p='60px 50px'>
       <Text pt='10px' pl={{ "lg": '110px', "md": '110px', "base": '10px' }}>Items in your cart</Text>
       <Flex
@@ -55,7 +74,8 @@ const Cart = () => {
               fontWeight='700'
               color={'#212121'}
               lineHeight={'25px'}
-            >
+              textAlign='right'
+              >
               ₹1084
             </Text>
             <Text
@@ -64,6 +84,7 @@ const Cart = () => {
               color={'#9e9e9e'}
               lineHeight={'30px'}
               textDecor={'line-through'}
+              textAlign='right'
             >
               MRP₹1455
             </Text>
@@ -114,11 +135,11 @@ const Cart = () => {
           gap='5px'
         >
           <Box display='flex' justifyContent='space-between' lineHeight='30px' gap={{ "lg": '220px', "md": '200px', "base": '60px' }}>
-            <Text textAlign='left'>Item Total(MRP)</Text> <Text textAlign='right'>₹6880</Text>
+            <Text textAlign='left'>Item Total(MRP)</Text> <Text textAlign='right'>₹1455</Text>
           </Box>
           {/* <Divider /> */}
           <Box display='flex' justifyContent='space-between' lineHeight='30px'>
-            <Text> Price Discount</Text>  <Text textAlign='right'>-₹3291.5</Text>
+            <Text> Price Discount</Text>  <Text textAlign='right'>-₹371</Text>
           </Box>
           <Divider />
           <Box display='flex' justifyContent='space-between' lineHeight='30px'>
@@ -126,14 +147,16 @@ const Cart = () => {
           </Box>
           <Divider />
           <Box display='flex' justifyContent='space-between' color='#767676' fontSize='13px' fontWeight='700' lineHeight='30px'>
-            <Text >To be paid</Text>  <Text>₹568</Text>
+            <Text >To be paid</Text>  <Text>₹1084</Text>
           </Box>
           <Box display='flex' justifyContent='space-between' lineHeight='30px' bg='#e4f6e7'>
-            <Text>Total Savings</Text>  <Text textAlign='right' color={'#1aab2a'} fontWeight='700' fontSize={'13px'} >₹517</Text>
+            <Text>Total Savings</Text>  <Text textAlign='right' color={'#1aab2a'} fontWeight='700' fontSize={'13px'} >₹371</Text>
           </Box>
         </Box>
       </Flex>
     </Box >
+    }
+    </>
   )
 }
 

@@ -17,11 +17,33 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import Carousel from './authcrousel';
+import SignInCarousel from './SignInCarousel';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth } from 'config/firebase';
+import {  signInWithEmailAndPassword } from 'firebase/auth';
+import { userLogin } from '@/redux/auth/action';
 
-export default function AuthCard() {
-  const [showPassword, setShowPassword] = useState(false);
 
+
+export default function SignInCard() {
+  const {isAuth, userName} = useSelector(state => state.authReducer)
+  const dispatch = useDispatch();
+console.log(isAuth,userName)
+  
+  const[loginEmail,setLoginEmail] = useState("");
+  const[loginPass, setLoginPass] = useState("");
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleLogin = async() =>{
+      try{
+          const res = await signInWithEmailAndPassword(auth,loginEmail,loginPass)
+          dispatch(userLogin(res.user.displayName))
+      }
+      catch(e){
+          console.log(e)
+      }
+  }
   return (
     <Flex
       minH={'60vh'}
@@ -29,12 +51,12 @@ export default function AuthCard() {
       align={'center'}
       justify={'center'}
       flexDirection={{base:"column", md:"row", lg:"row"}}
-      // border="2px solid tomato"
+      
       margin="auto"
       mt="10vh"
       borderRadius="15px"
       >
-        <Carousel />
+        <SignInCarousel />
       <Stack spacing={8} mx={'auto'} w={{base:"100%", md:"50%", lg:"50%"}} py={12} px={6}>
        
         <Box
@@ -46,26 +68,20 @@ export default function AuthCard() {
               <Box>
                 <Center>
 
-                <Heading>Sign up</Heading>
+                <Heading>Sign In</Heading>
                 </Center>
               </Box>
             <HStack>
-              <Box>
-                <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              </Box>
               
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" onChange={(e) => setLoginEmail(e.target.value)}/>
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? 'text' : 'password'} />
+                <Input type={showPassword ? 'text' : 'password'} onChange={(e) => setLoginPass(e.target.value)}/>
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -85,13 +101,15 @@ export default function AuthCard() {
                 color={'white'}
                 _hover={{
                   bg: 'red',
-                }}>
-                Sign up
+                }}
+                onClick={handleLogin}
+                >
+               Login
               </Button>
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                Already a user? <Link color={'blue.400'}>Login</Link>
+                 New user? <Link color={'blue.400'}>Signup</Link>
               </Text>
             </Stack>
           </Stack>
