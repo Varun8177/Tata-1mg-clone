@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 
 
 
@@ -24,3 +26,4 @@ const signIn = () => {
 }
 
 export default signIn
+>>>>>>> 08ec100b9875bb80ab787aa0025c1629fb92f575
