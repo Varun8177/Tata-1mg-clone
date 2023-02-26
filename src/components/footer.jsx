@@ -17,12 +17,12 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
-// import { SocialIcon } from "react-social-icons";
+
 import Image from "next/image";
 const Footer = () => {
   return (
-    <Stack bg="#fff" m="auto" w="95%">
-      <Box>
+    <Stack bg="#fff" m="auto" w="100%" mt="10">
+      <Box m="auto" w="95%">
         <Heading as="h2" size="lg">
           Stay Healthy with Tata 1mg: Your Favourite Online Pharmacy and
           Healthcare Platform
@@ -151,8 +151,8 @@ const Footer = () => {
           </Button>
         </Center>
       </Box>
-      <Box bg="#fffcf8" w="100%">
-        <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+      <Box bg="#fffcf8" w="100%" m="auto" mt="10">
+        <Grid templateColumns="repeat(5, 1fr)" gap={6} ml="10">
           <GridItem>
             <Text fontSize="lg" p="5px">
               Know Us
@@ -199,12 +199,36 @@ const Footer = () => {
             </Text>
             <Text>Social Links</Text>
             <Flex w="250px" gap="5px">
-              {/* <SocialIcon url="https://www.facebook.com/1mgOfficial" />
-              <SocialIcon url="https://www.instagram.com/1mgofficialpage/" />
-              <SocialIcon url="https://twitter.com/1mgOfficial" />
-              <SocialIcon url="https://www.youtube.com/c/1mgofficial" />
-              <SocialIcon url="https://www.linkedin.com/company/1mg" />
-              <SocialIcon url="https://medium.com/1mgofficial" /> */}
+              <Image
+                src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
+                alt="fb"
+                width="30"
+                height="30"
+              />
+              <Image
+                src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
+                alt="fb"
+                width="30"
+                height="30"
+              />
+              <Image
+                src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
+                alt="fb"
+                width="30"
+                height="30"
+              />
+              <Image
+                src="https://onemg.gumlet.io/tywtfwyzxb8ujnqmbuau.svg"
+                alt="fb"
+                width="30"
+                height="30"
+              />
+              <Image
+                src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
+                alt="fb"
+                width="30"
+                height="30"
+              />
             </Flex>
             <Text>Want daily dose of health?</Text>
             <Button color="white" bg="#ff6f61">
@@ -225,37 +249,67 @@ const Footer = () => {
           </GridItem>
         </Grid>
         <Divider h="2px" />
-        <Box w="80%" m="auto">
+        <Box w="90%" m="auto" mt="10" mb="10">
           <Grid templateColumns="repeat(3, 1fr)" gap={6}>
             <GridItem>
-              <Text as="b" fontSize="xl">
-                Reliable
-              </Text>
-              <Text color="grey">
-                All products displayed on Tata 1mg are procured from verified
-                and licensed pharmacies. All labs listed on the platform are
-                accredited
-              </Text>
+              <Flex>
+                <Image
+                  src="https://onemg.gumlet.io/secure-rebrand_x6f8yq.svg"
+                  alt="fb"
+                  width="100"
+                  height="100"
+                />
+                <Box>
+                  <Text as="b" fontSize="xl">
+                    Reliable
+                  </Text>
+                  <Text color="grey" fontSize="sm">
+                    All products displayed on Tata 1mg are procured from
+                    verified and licensed pharmacies. All labs listed on the
+                    platform are accredited
+                  </Text>
+                </Box>
+              </Flex>
             </GridItem>
             <GridItem>
-              <Text as="b" fontSize="xl">
-                Secure
-              </Text>
-              <Text color="grey">
-                Tata 1mg uses Secure Sockets Layer (SSL) 128-bit encryption and
-                is Payment Card Industry Data Security Standard (PCI DSS)
-                compliant
-              </Text>
+              <Flex>
+                <Image
+                  src="https://onemg.gumlet.io/reliable-rebrand_rcpof3.svg"
+                  alt="fb"
+                  width="100"
+                  height="100"
+                />
+                <Box>
+                  <Text as="b" fontSize="xl">
+                    Secure
+                  </Text>
+                  <Text color="grey" fontSize="sm">
+                    Tata 1mg uses Secure Sockets Layer (SSL) 128-bit encryption
+                    and is Payment Card Industry Data Security Standard (PCI
+                    DSS) compliant
+                  </Text>
+                </Box>
+              </Flex>
             </GridItem>
             <GridItem>
-              <Text as="b" fontSize="xl">
-                Affordable
-              </Text>
-              <Text color="grey">
-                Find affordable medicine substitutes, save up to 50% on health
-                products, up to 80% off on lab tests and free doctor
-                consultations.
-              </Text>
+              <Flex>
+                <Image
+                  src="https://onemg.gumlet.io/affordable-rebrand_ivgidq.svg"
+                  alt="fb"
+                  width="100"
+                  height="100"
+                />
+                <Box>
+                  <Text as="b" fontSize="xl">
+                    Affordable
+                  </Text>
+                  <Text color="grey" fontSize="sm">
+                    Find affordable medicine substitutes, save up to 50% on
+                    health products, up to 80% off on lab tests and free doctor
+                    consultations.
+                  </Text>
+                </Box>
+              </Flex>
             </GridItem>
           </Grid>
         </Box>
