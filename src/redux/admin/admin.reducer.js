@@ -31,8 +31,9 @@ const AdminReducer = (state = initialState, { type, payload }) => {
             }
         }
         case types.ADDPRODUCT:
-            console.log(payload)
             return { ...state, products: [payload, ...state.products] }
+        case types.AddCartItem:
+            return { ...state, cart: [payload, ...state.cart] }
         default:
             return state
     }
