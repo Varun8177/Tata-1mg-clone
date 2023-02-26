@@ -18,7 +18,12 @@ const AdminProductsPagination = ({
       p="3"
       m="auto"
     >
-      <Button>Previous</Button>
+      <Button
+        isDisabled={activePage == 1}
+        onClick={() => onPageChange(activePage - 1)}
+      >
+        Previous
+      </Button>
       {pages.map((page, i) => {
         return (
           <Button
@@ -31,7 +36,12 @@ const AdminProductsPagination = ({
           </Button>
         );
       })}
-      <Button>Next</Button>
+      <Button
+        isDisabled={activePage == countPages}
+        onClick={() => onPageChange(activePage + 1)}
+      >
+        Next
+      </Button>
     </Flex>
   );
 };

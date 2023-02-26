@@ -37,6 +37,7 @@ const ProductCard = (props) => {
     >
       <Box maxW={"100%"} h={"150px"} mb={"10px"} align={"center"}>
         <Image
+          objectFit={"contain"}
           h="100%"
           src={props.src}
           alt={props.id}
@@ -119,6 +120,7 @@ const ProductCard = (props) => {
             }
             isAuth && setAddText("ADDED ✓");
           }}
+          display={isAuth ? "block" : "none"}
         >
           {addText}
         </Button>

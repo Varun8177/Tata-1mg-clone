@@ -97,6 +97,7 @@ const NavTopSection = () => {
           height={"50"}
           alt={"logo"}
           width={"120"}
+          onClick={() => router.push("/")}
         />
         <Hide breakpoint="(max-width: 397px)">
           <Text
@@ -238,7 +239,9 @@ const NavTopSection = () => {
               />
               <MenuList>
                 <MenuItem>welcome {userName}</MenuItem>
-                <MenuItem>View Profile</MenuItem>
+                <MenuItem onClick={() => router.push("/profile")}>
+                  View Profile
+                </MenuItem>
                 <MenuItem>My orders</MenuItem>
                 <MenuItem>
                   Previously Ordered Items{" "}
@@ -328,7 +331,7 @@ const NavTopSection = () => {
           </>
         ) : (
           <>
-            <SignUpModal />
+            <SignUpModal text={"Sign-Up"} />
             <SignInModal />
           </>
         )}

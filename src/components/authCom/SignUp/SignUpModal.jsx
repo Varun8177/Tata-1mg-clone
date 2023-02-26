@@ -13,7 +13,7 @@ import {
 
 import SignUpCard from "./SignUpCard";
 
-export default function SignUpModal() {
+export default function SignUpModal({ text }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -31,7 +31,7 @@ export default function SignUpModal() {
         as={"b"}
         onClick={onOpen}
       >
-        Sign-Up
+        {text}
       </Text>
 
       <Modal isOpen={isOpen} onClose={onClose} size="4xl">
