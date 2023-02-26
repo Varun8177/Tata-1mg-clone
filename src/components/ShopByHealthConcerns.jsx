@@ -4,7 +4,7 @@ import { Box, Center, Heading, Text, Flex } from "@chakra-ui/react";
 const ShopByHealthConcerns = () => {
   return (
     <div>
-      <Box
+      <Center
         bg="grey.100"
         w="100%"
         h="200px"
@@ -12,6 +12,7 @@ const ShopByHealthConcerns = () => {
         boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         mt="10"
         mb="10"
+        bgColor={"white"}
       >
         <Flex w="80%" m="auto" gap="5">
           {/* 1 */}
@@ -113,7 +114,7 @@ const ShopByHealthConcerns = () => {
             <Text>Drema care</Text>
           </Box>
         </Flex>
-      </Box>
+      </Center>
     </div>
   );
 };

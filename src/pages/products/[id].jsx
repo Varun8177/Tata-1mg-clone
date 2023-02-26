@@ -8,15 +8,21 @@ import {
   Button,
   Heading,
   Badge,
+  useToast,
 } from "@chakra-ui/react";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import Head from "next/head";
 import ProductCard from "@/components/ProductCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
+import MainNavbar from "@/components/navbar/MainNavbar/MainNavbar";
+import Footer from "@/components/footer";
+import { AddCartItem } from "@/redux/admin/admin.types";
 
 const SingleProductPage = ({ data }) => {
+  const toast = useToast();
+  const dispatch = useDispatch();
   const Dummydata = [
     {
       maxQty: 7,
@@ -91,6 +97,7 @@ const SingleProductPage = ({ data }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
+        <MainNavbar />
         <Stack
           maxW="90%"
           direction={{ lg: "row", md: "column", base: "column" }}
@@ -218,6 +225,30 @@ const SingleProductPage = ({ data }) => {
                   }}
                   color="#fff"
                   display={isAuth ? "block" : "none"}
+                  onClick={() => {
+                    isAuth && dispatch({ type: AddCartItem, payload: data });
+                    // console.log(cartData);
+                    if (!isAuth) {
+                      toast({
+                        title: "Product cannot be added.",
+                        description: "Please login first.",
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true,
+                        position: "top",
+                        bg: "#ff6f61",
+                      });
+                    } else {
+                      toast({
+                        title: "Product added to cart.",
+                        status: "success",
+                        duration: 3000,
+                        isClosable: true,
+                        position: "top",
+                        bg: "#ff6f61",
+                      });
+                    }
+                  }}
                 >
                   Add To Cart
                 </Button>
@@ -261,6 +292,7 @@ const SingleProductPage = ({ data }) => {
             })}
           </Flex>
         </Stack>
+        <Footer />
       </>
     </>
   );

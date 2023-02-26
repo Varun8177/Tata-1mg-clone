@@ -1,9 +1,7 @@
-
 import { userLogout, userStatusUpdate } from "@/redux/auth/action";
 
 import SignInModal from "@/components/authCom/SignIn/SignInModal";
 import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
-
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
@@ -27,38 +25,28 @@ import React, { useEffect } from "react";
 
 import { useRouter } from "next/router";
 
-
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CiMedicalCase, CiMedicalCross, CiMedicalMask } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 import { FcConferenceCall } from "react-icons/fc";
-import { GiConsoleController, GiMeditation } from "react-icons/gi";
+import { GiMeditation } from "react-icons/gi";
 import { ImLab } from "react-icons/im";
 import { TbDiscount2, TbHelp } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 
 const NavTopSection = () => {
-
-
-
-
   const { isAuth, userName } = useSelector((state) => state.authReducer);
   const cartData = useSelector((state) => state.AdminReducer.cart);
   const dispatch = useDispatch();
   const router = useRouter();
- 
-  const dispatch = useDispatch();
-  const handleLogout = async() => {
-    dispatch(userLogout());
-    await signOut(auth)
-}
- useEffect(() => {
+
+  useEffect(() => {
     auth.onAuthStateChanged((user) => {
-     if(user){
-      dispatch(userStatusUpdate(user.displayName))
-     }
-    })
-  },[])
+      if (user) {
+        dispatch(userStatusUpdate(user.displayName));
+      }
+    });
+  }, []);
 
   return (
     <Flex
@@ -237,8 +225,10 @@ const NavTopSection = () => {
                 icon={<FaUser size={"30"} />}
                 variant={"unstyled"}
               />
-              <MenuList>
-                <MenuItem>welcome {userName}</MenuItem>
+              <MenuList zIndex={3}>
+                <MenuItem as={"b"} color={"500"}>
+                  Welcome {userName}
+                </MenuItem>
                 <MenuItem onClick={() => router.push("/profile")}>
                   View Profile
                 </MenuItem>
@@ -265,6 +255,9 @@ const NavTopSection = () => {
                 <MenuItem>My Consultations</MenuItem>
                 <MenuItem>My Health records</MenuItem>
                 <MenuItem>Manage Payments </MenuItem>
+                <MenuItem onClick={() => router.push("/admin")}>
+                  admins here{" "}
+                </MenuItem>
                 <MenuItem>Logout</MenuItem>
               </MenuList>
             </Menu>

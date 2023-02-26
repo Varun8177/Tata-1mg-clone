@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Grid, Spacer, Image } from "@chakra-ui/react";
+import { Box, Flex, Text, Grid, Spacer, Image, Center } from "@chakra-ui/react";
 const SugarSubtitutes = () => {
   const arr = [
     {
@@ -68,8 +68,8 @@ const SugarSubtitutes = () => {
   ];
   return (
     <div>
-      <Box
-        bg="grey.100"
+      <Center
+        bgColor={"white"}
         w="100%"
         // border="1px solid black"
         boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
@@ -80,48 +80,46 @@ const SugarSubtitutes = () => {
         <Grid templateColumns="repeat(7, 1fr)" gap={6} w="80%" m="auto">
           {arr.map((item) => {
             return (
-              
-                <Box
-                  _hover={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-                  p="5"
-                  key={item.id}
-                  borderRadius="15px"
-                  justifyContent="center"
-                >
-                  <Box>
-                    <Image
-                      src={item.img}
-                      alt={item.name}
-                      height={180}
-                      width={200}
-                      objectFit="contain"
-                    />
-                    <Text fontSize="14px" noOfLines={2}>
-                      {item.name}
-                    </Text>
-                    <Text color="grey" fontSize="15px">
-                      {item.details}
-                    </Text>
-                  </Box>
-                  <Box w="auto" h="10px"></Box>
-                  <Box w="100%">
-                    <Flex gap="4px" bottom="0px">
-                      <Text color="grey" fontSize="10px" as="del">
-                        MRP{item.offered}
-                      </Text>
-                      <Text color="green" fontSize="14px">
-                        {item.discount}
-                      </Text>
-                    </Flex>
-                    <Text>₹{item.price}</Text>
-                  </Box>
+              <Box
+                _hover={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
+                p="5"
+                key={item.id}
+                borderRadius="15px"
+                justifyContent="center"
+              >
+                <Box>
+                  <Image
+                    src={item.img}
+                    alt={item.name}
+                    height={180}
+                    width={200}
+                    objectFit="contain"
+                  />
+                  <Text fontSize="14px" noOfLines={2}>
+                    {item.name}
+                  </Text>
+                  <Text color="grey" fontSize="15px">
+                    {item.details}
+                  </Text>
                 </Box>
-              
+                <Box w="auto" h="10px"></Box>
+                <Box w="100%">
+                  <Flex gap="4px" bottom="0px">
+                    <Text color="grey" fontSize="10px" as="del">
+                      MRP{item.offered}
+                    </Text>
+                    <Text color="green" fontSize="14px">
+                      {item.discount}
+                    </Text>
+                  </Flex>
+                  <Text>₹{item.price}</Text>
+                </Box>
+              </Box>
             );
           })}
         </Grid>
         {/* </Flex> */}
-      </Box>
+      </Center>
     </div>
   );
 };

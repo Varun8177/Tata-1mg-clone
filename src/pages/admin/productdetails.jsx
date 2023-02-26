@@ -77,7 +77,6 @@ const AdminProducts = () => {
           <Sidebar />
         </Box>
         <Box
-          border={"1px solid red"}
           bgColor={"white"}
           pt={"20px"}
           w={"100%"}

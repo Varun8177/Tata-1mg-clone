@@ -22,15 +22,15 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <Stack bg="#fff" m="auto" w="100%" mt="10">
-      <Box m="auto" w="95%">
-        <Heading as="h2" size="lg">
+      <Box m="auto" w="95%" p={10}>
+        <Heading as="h2" size="lg" mb={"30px"}>
           Stay Healthy with Tata 1mg: Your Favourite Online Pharmacy and
           Healthcare Platform
         </Heading>
-        <Heading as="h3" size="md">
+        <Text as="b" size="md" mb={"20px"}>
           We Bring Care to Health.
-        </Heading>
-        <Text>
+        </Text>
+        <Text mb={"10px"} color={"gray"}>
           Tata 1mg is {"India's"} leading digital healthcare platform. From
           doctor consultations on chat to online pharmacy and lab tests at home:
           we have it all covered for you. Having delivered over 25 million
@@ -39,39 +39,39 @@ const Footer = () => {
           {"health"} to give you a flawless healthcare experience.
         </Text>
 
-        <Heading as="h3" size="md">
+        <Text as="b" size="md" mt={"20px"}>
           Tata 1mg: Your Favourite Online Pharmacy!
-        </Heading>
-        <Text>
+        </Text>
+        <Text mb={"10px"} color={"gray"}>
           Tata 1mg is {"India's "}leading online chemist with over 2 lakh
           medicines available at the best prices. We are your one-stop
           destination for other healthcare products as well, such as over the
           counter pharmaceuticals, healthcare devices and homeopathy and
           ayurveda medicines.
         </Text>
-        <Text>
+        <Text mb={"10px"} color={"gray"}>
           With Tata 1mg, you can buy medicines online and get them delivered at
           your doorstep anywhere in India! But, is ordering medicines online a
           difficult process? Not at all! Simply search for the products you want
           to buy, add to cart and checkout. Now all you need to do is sit back
           as we get your order delivered to you.
         </Text>
-        <Text>
+        <Text mb={"10px"} color={"gray"}>
           In case you need assistance, just give us a call and we will help you
           complete your order.
         </Text>
-        <Text>
+        <Text mb={"10px"} color={"gray"}>
           And there is more! At Tata 1mg, you can buy health products and
           medicines online at best discounts.
         </Text>
-        <Text>
+        <Text mb={"10px"} color={"gray"}>
           Now, {"isn't"} that easy? Why go all the way to the medicine store and
           wait in line, when you have Tata 1mg Pharmacy at your service.
         </Text>
-        <Heading as="h3" size="md">
+        <Text as="b" size="md" mb={"30px"}>
           The Feathers in Our Cap
-        </Heading>
-        <Text>
+        </Text>
+        <Text mb={"10px"} color={"gray"}>
           At Tata 1mg, our goal is to make healthcare understandable, accessible
           and affordable in India. We set out on our journey in 2015, and have
           come a long way since then. Along the way, we have been conferred with
@@ -83,10 +83,10 @@ const Footer = () => {
           Department. In 2019 alone we received three awards including the BMW
           Simply Unstoppable Award.
         </Text>
-        <Heading as="h3" size="md">
+        <Text as="b" size="md" mb={"30px"}>
           The Services We Offer
-        </Heading>
-        <Text>
+        </Text>
+        <Text mb={"10px"} color={"gray"}>
           Tata 1mg is {"India's"} leading digital healthcare platform, where you
           can buy medicines online with discount. Buy medicine online in Delhi,
           Mumbai, Bangalore, Hyderabad, Pune, Gurgaon, Noida, Kolkata, Chennai,
@@ -95,30 +95,30 @@ const Footer = () => {
           authoritative & trustworthy information on medicines and help people
           use their medicines effectively and safely.
         </Text>
-        <Text>
+        <Text mb={"10px"} color={"gray"}>
           We also facilitate lab tests at home. You can avail over 2,000 tests
           and get tested by 120+ top and verified labs at the best prices. Need
           to consult a doctor? On our platform, you can talk to over 20 kinds of
           specialists in just a few clicks.
         </Text>
-        <Text>
+        <Text mb={"10px"} color={"gray"}>
           Customer centricity is the core of our values. Our team of highly
           trained and experienced doctors, phlebotomists and pharmacists looks
           into each order to give you a fulfilling experience.
         </Text>
-        <Text>
+        <Text mb={"10px"} color={"gray"}>
           We’ve made healthcare accessible to millions by giving them quality
           care at affordable prices. Customer centricity is the core of our
           values. Our team of highly trained and experienced doctors,
           phlebotomists and pharmacists looks into each order to give you a
           fulfilling experience.
         </Text>
-        <Text>
+        <Text mb={"10px"} color={"gray"}>
           Visit our online medical store now, and avail online medicine purchase
           at a discount. Stay Healthy!
         </Text>
       </Box>
-      <Box>
+      <Box p={10}>
         <Text align="center">INDIA’S LARGEST HEALTHCARE PLATFORM</Text>
         <Flex justifyContent="space-evenly">
           <Box align="center">
@@ -142,7 +142,7 @@ const Footer = () => {
         </Flex>
         <Divider h="2px" />
       </Box>
-      <Box>
+      <Box p={5}>
         <Center gap="10px">
           <Text>Get the link to download App</Text>
           <Input placeholder="Enter Phone Number" variant="filled" w="400px" />
@@ -151,10 +151,10 @@ const Footer = () => {
           </Button>
         </Center>
       </Box>
-      <Box bg="#fffcf8" w="100%" m="auto" mt="10">
-        <Grid templateColumns="repeat(5, 1fr)" gap={6} ml="10">
-          <GridItem>
-            <Text fontSize="lg" p="5px">
+      <Box p={10} bg="#fffcf8" w="100%" m="auto" mt="10">
+        <Grid templateColumns="repeat(5, 1fr)" gap={6} ml="10" color={"gray"}>
+          <GridItem p="5px" color={"gray"}>
+            <Text fontSize="lg" as={"b"} color={"black"}>
               Know Us
             </Text>
             <Text fontSize="sm">About Us</Text>
@@ -168,7 +168,7 @@ const Footer = () => {
             <Text fontSize="sm">Governance</Text>
           </GridItem>
           <GridItem>
-            <Text fontSize="lg" p="5px">
+            <Text fontSize="lg" as={"b"} color={"black"}>
               Our Policies
             </Text>
             <Text fontSize="sm">Privacy Policy</Text>
@@ -181,7 +181,7 @@ const Footer = () => {
             <Text fontSize="sm">Disclaimer</Text>
           </GridItem>
           <GridItem>
-            <Text fontSize="lg" p="5px">
+            <Text fontSize="lg" as={"b"} color={"black"}>
               Our Services
             </Text>
             <Text fontSize="sm">Order</Text>
@@ -194,7 +194,7 @@ const Footer = () => {
             <Text fontSize="sm">Care Plan</Text>
           </GridItem>
           <GridItem>
-            <Text fontSize="lg" p="5px">
+            <Text fontSize="lg" as={"b"} color={"black"}>
               Connect
             </Text>
             <Text>Social Links</Text>
@@ -232,11 +232,11 @@ const Footer = () => {
             </Flex>
             <Text>Want daily dose of health?</Text>
             <Button color="white" bg="#ff6f61">
-              SING UP
+              Sign Up
             </Button>
           </GridItem>
           <GridItem>
-            <Text fontSize="lg" p="5px">
+            <Text fontSize="lg" as={"b"} color={"black"}>
               Download App
             </Text>
             {/* <Image

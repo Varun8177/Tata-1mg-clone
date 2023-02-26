@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 const PopularCategories = () => {
   const pc = [
@@ -42,8 +42,8 @@ const PopularCategories = () => {
 
   return (
     <div>
-      <Box
-        bg="grey.100"
+      <Center
+        bgColor={"white"}
         w="100%"
         h="250px"
         // border="1px solid black"
@@ -74,7 +74,7 @@ const PopularCategories = () => {
             );
           })}
         </Flex>
-      </Box>
+      </Center>
     </div>
   );
 };

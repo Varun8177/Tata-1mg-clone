@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 const FeatureBrands = () => {
   const fb = [
@@ -41,11 +41,11 @@ const FeatureBrands = () => {
   ];
 
   //ShopByHealthConcerns.jsx
-  
+
   return (
     <div>
-      <Box
-        bg="grey.100"
+      <Center
+        bgColor={"white"}
         w="100%"
         h="200px"
         // border="1px solid black"
@@ -53,30 +53,27 @@ const FeatureBrands = () => {
         mt="10"
         mb="10"
       >
-      
         <Flex w="80%" m="auto" gap="5">
-          {fb.map((item,i) => {
+          {fb.map((item, i) => {
             return (
-              
-                <Box
-                  _hover={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-                  p="5"
-                  align="center"
-                  key={i}
-                >
-                  <Image
-                    src={item.img}
-                    alt={item.name}
-                    height={200}
-                    width={200}
-                  />
-                  <Text>{item.name}</Text>
-                </Box>
-              
+              <Box
+                _hover={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
+                p="5"
+                align="center"
+                key={i}
+              >
+                <Image
+                  src={item.img}
+                  alt={item.name}
+                  height={200}
+                  width={200}
+                />
+                <Text>{item.name}</Text>
+              </Box>
             );
           })}
         </Flex>
-      </Box>
+      </Center>
     </div>
   );
 };

@@ -16,10 +16,12 @@ import {
   MenuList,
   Show,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { BsChevronDoubleDown } from "react-icons/bs";
 
 const NavBottomSection = () => {
+  const router = useRouter();
   const [HealthResource, setHealthResource] = useState(false);
   const [Vitamins, setVitamins] = useState(false);
   const [Diabetes, setDiabetes] = useState(false);
@@ -84,9 +86,15 @@ const NavBottomSection = () => {
                 "2xl": "13px",
               }}
             >
-              <MenuItem>All Disesase</MenuItem>
-              <MenuItem>Medicines</MenuItem>
-              <MenuItem>Medicines by therapeutic class</MenuItem>
+              <MenuItem onClick={() => router.push("/products")}>
+                All Disesase
+              </MenuItem>
+              <MenuItem onClick={() => router.push("/products")}>
+                Medicines
+              </MenuItem>
+              <MenuItem onClick={() => router.push("/products")}>
+                Medicines by therapeutic class
+              </MenuItem>
             </MenuList>
           </Menu>
           <Menu isOpen={Vitamins}>
@@ -134,23 +142,45 @@ const NavBottomSection = () => {
               <Grid templateColumns={"repeat(3,250px)"}>
                 <Box borderRight={"1px solid #f4f5f7"}>
                   <MenuGroup title="Vitamins and Supplements">
-                    <MenuItem>Multivitamins</MenuItem>
-                    <MenuItem>Vitamins A-Z </MenuItem>
-                    <MenuItem>Mineral Supplements </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Multivitamins
+                    </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Vitamins A-Z{" "}
+                    </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Mineral Supplements{" "}
+                    </MenuItem>
                   </MenuGroup>
                   <MenuGroup title="Nutritional drinks ">
-                    <MenuItem>Adult daily Nutrition</MenuItem>
-                    <MenuItem>Kids Nutrition</MenuItem>
-                    <MenuItem>Kids</MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Adult daily Nutrition
+                    </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Kids Nutrition
+                    </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Kids
+                    </MenuItem>
                   </MenuGroup>
                 </Box>
                 <Box borderRight={"1px solid #f4f5f7"}>
                   <MenuGroup title="Protein Supplements">
-                    <MenuItem>Whey Protein</MenuItem>
-                    <MenuItem>Amino acids</MenuItem>
-                    <MenuItem>Mass Gainers</MenuItem>
-                    <MenuItem>Worout essentials</MenuItem>
-                    <MenuItem>Fat burners</MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Whey Protein
+                    </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Amino acids
+                    </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Mass Gainers
+                    </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Worout essentials
+                    </MenuItem>
+                    <MenuItem onClick={() => router.push("/products")}>
+                      Fat burners
+                    </MenuItem>
                   </MenuGroup>
                   <MenuGroup title="Omega & Fish Oil">
                     <MenuItem>Fish oil</MenuItem>
