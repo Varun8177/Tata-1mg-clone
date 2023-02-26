@@ -62,7 +62,7 @@ const FullBodyHealthCheckups = () => {
         <Flex w="80%" m="auto" gap="5">
           {checkups.map((item) => {
             return (
-              <>
+              
                 <Box
                   _hover={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
                   p="5"
@@ -127,7 +127,7 @@ const FullBodyHealthCheckups = () => {
                     </Flex>
                   </Stack>
                 </Box>
-              </>
+              
             );
           })}
         </Flex>
