@@ -6,3 +6,4 @@ export const FILTERPRODUCTS = 'admin/filterproducts'
 export const DELETEPRODUCT = 'admin/deleteproduct'
 export const UPDATEPRODUCT = 'admin/updateproduct'
 export const ADDPRODUCT = 'admin/addproduct'
+export const AddCartItem = "add/cart"

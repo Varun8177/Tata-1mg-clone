@@ -1,4 +1,5 @@
-import AuthModal from "@/components/authCom/SignIn/SignInModal";
+import SignInModal from "@/components/authCom/SignIn/SignInModal";
+import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
 import { userLogout } from "@/redux/auth/action";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
@@ -17,22 +18,27 @@ import {
 import { auth } from "config/firebase";
 import { signOut } from "firebase/auth";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CiMedicalCase, CiMedicalCross, CiMedicalMask } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 import { FcConferenceCall } from "react-icons/fc";
-import { GiMeditation } from "react-icons/gi";
+import { GiConsoleController, GiMeditation } from "react-icons/gi";
 import { ImLab } from "react-icons/im";
 import { TbDiscount2, TbHelp } from "react-icons/tb";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavTopSection = () => {
+  const { isAuth, userName } = useSelector((state) => state.authReducer);
+  const cartData = useSelector((state) => state.AdminReducer.cart);
   const dispatch = useDispatch();
+  const router = useRouter();
   const handleLogout = async () => {
     dispatch(userLogout());
     await signOut(auth);
   };
+  console.log(cartData);
   return (
     <Flex
       ml={{
@@ -200,7 +206,7 @@ const NavTopSection = () => {
         }}
       >
         {/* <IoPersonOutline size={"30"} /> */}
-        {auth ? (
+        {isAuth ? (
           <>
             <Menu>
               <MenuButton
@@ -210,6 +216,7 @@ const NavTopSection = () => {
                 variant={"unstyled"}
               />
               <MenuList>
+                <MenuItem>welcome {userName}</MenuItem>
                 <MenuItem>View Profile</MenuItem>
                 <MenuItem>My orders</MenuItem>
                 <MenuItem>
@@ -246,18 +253,26 @@ const NavTopSection = () => {
                   icon={<AiOutlineShoppingCart size={"30"} />}
                   variant={"unstyled"}
                 />
-                <MenuList>
+                <MenuList zIndex={5}>
                   <Flex justifyContent={"space-around"} w={"100%"}>
                     <Text as={"b"}>Order Summary</Text>
                     <Text>2 Items</Text>
                   </Flex>
                   <MenuDivider />
                   <Flex justifyContent={"space-around"} w={"100%"}>
-                    <Text fontSize={13}>xyz prod...</Text>
+                    <Text fontSize={13}>
+                      {cartData.length >= 1
+                        ? cartData[cartData.length - 1].title.substr(0, 13)
+                        : null}
+                    </Text>
                     <Text fontSize={13}>Qty:1</Text>
                   </Flex>
                   <Flex justifyContent={"space-around"} w={"100%"}>
-                    <Text fontSize={13}>xyz prod...</Text>
+                    <Text fontSize={13}>
+                      {cartData.length >= 2
+                        ? cartData[cartData.length - 2].title.substr(0, 13)
+                        : null}
+                    </Text>
                     <Text fontSize={13}>Qty:1</Text>
                   </Flex>
                   <MenuItem>
@@ -266,6 +281,9 @@ const NavTopSection = () => {
                       border={"1p solid red"}
                       color={"500"}
                       as={"b"}
+                      onClick={() => {
+                        router.push("/cart");
+                      }}
                     >
                       Proceed to cart
                     </Text>
@@ -283,93 +301,17 @@ const NavTopSection = () => {
                 textAlign={"center"}
                 zIndex={2}
               >
-                1
+                {cartData.length}
               </Text>
             </Flex>
           </>
         ) : (
-          <AuthModal />
+          <>
+            <SignUpModal />
+            <SignInModal />
+          </>
         )}
 
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<FaUser size={"30"} />}
-            variant={"unstyled"}
-          />
-          <MenuList>
-            <MenuItem>View Profile</MenuItem>
-            <MenuItem>My orders</MenuItem>
-            <MenuItem>
-              Previously Ordered Items{" "}
-              <Badge ml={"5"} colorScheme="green">
-                New
-              </Badge>
-            </MenuItem>
-            <MenuItem>
-              Rate Your recent Purchases{" "}
-              <Badge ml={"5"} colorScheme="green">
-                New
-              </Badge>
-            </MenuItem>
-            <MenuItem>
-              Previously Ordered Items{" "}
-              <Badge ml={"5"} colorScheme="green">
-                New
-              </Badge>
-            </MenuItem>
-            <MenuItem>My Lab tests</MenuItem>
-            <MenuItem>My Consultations</MenuItem>
-            <MenuItem>My Health records</MenuItem>
-            <MenuItem>Manage Payments </MenuItem>
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
-          </MenuList>
-        </Menu>
-        <Text>Offers</Text>
-        <Flex>
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<AiOutlineShoppingCart size={"30"} />}
-              variant={"unstyled"}
-            />
-            <MenuList>
-              <Flex justifyContent={"space-around"} w={"100%"}>
-                <Text as={"b"}>Order Summary</Text>
-                <Text>2 Items</Text>
-              </Flex>
-              <MenuDivider />
-              <Flex justifyContent={"space-around"} w={"100%"}>
-                <Text fontSize={13}>xyz prod...</Text>
-                <Text fontSize={13}>Qty:1</Text>
-              </Flex>
-              <Flex justifyContent={"space-around"} w={"100%"}>
-                <Text fontSize={13}>xyz prod...</Text>
-                <Text fontSize={13}>Qty:1</Text>
-              </Flex>
-              <MenuItem>
-                <Text m={"auto"} border={"1p solid red"} color={"500"} as={"b"}>
-                  Proceed to cart
-                </Text>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-          <Text
-            color={"white"}
-            bgColor={"500"}
-            borderRadius={"3px"}
-            ml={"-15px"}
-            mt={"-5px"}
-            h={"20px"}
-            w={"20px"}
-            textAlign={"center"}
-            zIndex={2}
-          >
-            1
-          </Text>
-        </Flex>
         <Text>Need help?</Text>
       </Flex>
     </Flex>
