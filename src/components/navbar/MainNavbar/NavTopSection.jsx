@@ -218,7 +218,9 @@ const NavTopSection = () => {
               />
               <MenuList>
                 <MenuItem>welcome {userName}</MenuItem>
-                <MenuItem>View Profile</MenuItem>
+                <MenuItem onClick={() => router.push("/profile")}>
+                  View Profile
+                </MenuItem>
                 <MenuItem>My orders</MenuItem>
                 <MenuItem>
                   Previously Ordered Items{" "}

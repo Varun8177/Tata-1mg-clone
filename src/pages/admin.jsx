@@ -1,38 +1,49 @@
 import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Bar, Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { useDispatch, useSelector } from "react-redux";
-import { GetRequest } from "@/redux/admin/admin.action";
+import {
+  GetOrdersDataRequest,
+  GetRequest,
+  GetUserDataRequest,
+} from "@/redux/admin/admin.action";
 
 const Admin = () => {
   const prod = useSelector((store) => store.AdminReducer.products);
+  const data = useSelector((store) => store.AdminReducer.userData);
+  const Orderdata = useSelector((store) => store.AdminReducer.orders);
   const dispatch = useDispatch();
+  let total = Orderdata.reduce((acc, el) => acc + Number(el.orders), 0);
+
   const InitialData = () => {
     dispatch(GetRequest());
   };
   useEffect(() => {
     InitialData();
+    dispatch(GetUserDataRequest());
+    dispatch(GetOrdersDataRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(prod);
-  const data = [
-    { id: 1, day: "monday", userGain: 88, userLoast: 823 },
-    { id: 2, day: "tuesday", userGain: 12, userLoast: 823 },
-    { id: 3, day: "wednesday", userGain: 24, userLoast: 823 },
-    { id: 4, day: "thursday", userGain: 56, userLoast: 823 },
-    { id: 5, day: "friday", userGain: 32, userLoast: 823 },
-    { id: 6, day: "saturday", userGain: 54, userLoast: 823 },
-    { id: 7, day: "sunday", userGain: 76, userLoast: 823 },
-  ];
+
   const userData = {
     labels: data.map((data) => data.day),
     datasets: [
       {
         label: "Users Gained",
         data: data.map((data) => data.userGain),
+        backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
+      },
+    ],
+  };
+  const OrdersData = {
+    labels: Orderdata.map((data) => data.day),
+    datasets: [
+      {
+        label: "Orders Placed",
+        data: Orderdata.map((data) => data.orders),
         backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
       },
     ],
@@ -88,9 +99,14 @@ const Admin = () => {
               color={"#577590"}
               value={String(prod.length).split("").join(" ")}
               text={"Total Products"}
+              location={"/admin/productdetails"}
             />
             <Boxes color={"#43aa8b"} value={"1 0"} text={"Users online"} />
-            <Boxes color={"#90be6d"} value={"5"} text={"orders"} />
+            <Boxes
+              color={"#90be6d"}
+              value={String(total).split("").join(" ")}
+              text={"orders"}
+            />
           </Grid>
           <Grid
             w={"90%"}
@@ -142,7 +158,7 @@ const Admin = () => {
               borderRadius={"10px"}
             >
               {" "}
-              <Pie data={userData} />
+              <Pie data={OrdersData} />
             </Box>
           </Grid>
         </Box>

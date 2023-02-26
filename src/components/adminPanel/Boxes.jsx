@@ -1,7 +1,9 @@
 import { Avatar, Box, Flex, Hide, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-function Boxes({ color, value, text }) {
+function Boxes({ color, value, text, location }) {
+  const router = useRouter();
   return (
     <Box
       h={{
@@ -25,7 +27,7 @@ function Boxes({ color, value, text }) {
       pt={"15px"}
     >
       <Flex alignItems={"center"} w={"100%"} justifyContent={"space-around"}>
-        <Avatar bgColor={"white"} name={String(value)} />
+        <Avatar bgColor={"white"} color={"black"} name={String(value)} />
         <Text color={"black"}>{text}</Text>
       </Flex>
       <Flex
@@ -40,6 +42,10 @@ function Boxes({ color, value, text }) {
         }}
         w={"fit-content"}
         ml={"20px"}
+        cursor={"pointer"}
+        onClick={() => {
+          router.push(location);
+        }}
       >
         <Text w={"fit-content"}>View Details</Text>
         <FaLongArrowAltRight style={{ marginLeft: "20px" }} />

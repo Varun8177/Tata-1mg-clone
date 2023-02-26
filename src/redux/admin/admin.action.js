@@ -12,6 +12,39 @@ export const GetRequest = () => async (dispatch) => {
     }
 }
 
+export const GetUserDataRequest = () => async (dispatch) => {
+    dispatch({ type: types.LOADING })
+    try {
+        const res = await axios.get(`https://63f5d74059c944921f678f16.mockapi.io/users`)
+        dispatch({ type: types.GETUSERDATA, payload: res.data })
+    } catch (error) {
+        dispatch({ type: types.ERROR })
+    }
+}
+
+export const PostUserDataRequest = (details) => async (dispatch) => {
+    const res = await axios.post(`https://63f5d74059c944921f678f16.mockapi.io/users/`, details)
+    if (res.data) {
+        dispatch({ type: types.POSTUSERDATA, payload: res.data })
+    }
+}
+
+export const GetOrdersDataRequest = () => async (dispatch) => {
+    dispatch({ type: types.LOADING })
+    try {
+        const res = await axios.get(`https://63f5d74059c944921f678f16.mockapi.io/orders`)
+        dispatch({ type: types.GETORDERSDATA, payload: res.data })
+    } catch (error) {
+        dispatch({ type: types.ERROR })
+    }
+}
+
+export const PostOrdersDataRequest = (details) => async (dispatch) => {
+    const res = await axios.post(`https://63f5d74059c944921f678f16.mockapi.io/orders`, details)
+    if (res.data) {
+        dispatch({ type: types.POSTORDERSDATA, payload: res.data })
+    }
+}
 export const FilterProd = (value) => async (dispatch) => {
     try {
         const res = await axios.get(`https://health-prime.onrender.com/products`)
