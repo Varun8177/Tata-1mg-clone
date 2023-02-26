@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
-
 
 import SignInModal from '@/components/authCom/SignIn/SignInModal'
 import SignUpModal from '@/components/authCom/SignUp/SignUpModal'
@@ -26,4 +22,3 @@ const signIn = () => {
 }
 
 export default signIn
->>>>>>> 08ec100b9875bb80ab787aa0025c1629fb92f575

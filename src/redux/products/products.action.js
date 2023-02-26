@@ -12,3 +12,4 @@ export const getData = (sort, order) => async (dispatch) => {
         dispatch({ type: types.REQUEST_ERROR, payload: error.message })
     }
 }
+
