@@ -159,14 +159,14 @@ const AdminProducts = () => {
                   return (
                     <Flex key={item.id}>
                       <Image
-                        src={item.url}
-                        alt={item.name}
+                        src={item.src}
+                        alt={item.id}
                         w={"100px"}
                         h={"100px"}
                         objectFit={"contain"}
                       />
                       <Stack>
-                        <Text>{item.name.substr(0, 29)}...</Text>
+                        <Text>{item.title.substr(0, 29)}...</Text>
                         <Text>Price: {item.price}</Text>
                         {/* <Text>{item.title.substr(0, 29)}...</Text> */}
                         <Flex>
@@ -193,9 +193,9 @@ export default AdminProducts;
 
 function EditButton({ item }) {
   const dispatch = useDispatch();
-  const [selectedImage, setSelectedImage] = useState(item.url);
-  const Remove = () => setSelectedImage(item.url);
-  const [title, setTitle] = useState(item.name);
+  const [selectedImage, setSelectedImage] = useState(item.src);
+  const Remove = () => setSelectedImage(item.src);
+  const [title, setTitle] = useState(item.title);
   const [price, setPrice] = useState(item.price);
 
   const upload = (event) => {
@@ -309,7 +309,7 @@ function EditButton({ item }) {
             <Button
               variant="ghost"
               onClick={() => {
-                const changes = { name: title, price, url: selectedImage };
+                const changes = { title: title, price, src: selectedImage };
                 dispatch(UpdateProd(item.id, changes));
               }}
             >
@@ -424,8 +424,8 @@ function AddProduct() {
                 ) {
                   dispatch(
                     AddProd({
-                      name: title,
-                      url: selectedImage,
+                      title: title,
+                      src: selectedImage,
                       price,
                       detail: description,
                     })

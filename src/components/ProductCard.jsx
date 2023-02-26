@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const ProductCard = (props) => {
   const router = useRouter();
+  const { isAuth, userName } = useSelector((state) => state.authReducer);
   const cartData = useSelector((state) => state.AdminReducer.cart);
   const dispatch = useDispatch();
   const goToSingleProductPage = () => {
@@ -33,6 +34,7 @@ const ProductCard = (props) => {
     >
       <Box maxW={"100%"} h={"150px"} mb={"10px"} align={"center"}>
         <Image
+          objectFit={"contain"}
           h="100%"
           src={props.src}
           alt={props.id}
@@ -103,6 +105,7 @@ const ProductCard = (props) => {
             dispatch({ type: AddCartItem, payload: props });
             console.log(cartData);
           }}
+          display={isAuth ? "block" : "none"}
         >
           ADD
         </Button>

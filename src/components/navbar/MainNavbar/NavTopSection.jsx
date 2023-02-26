@@ -76,6 +76,7 @@ const NavTopSection = () => {
           height={"50"}
           alt={"logo"}
           width={"120"}
+          onClick={() => router.push("/")}
         />
         <Hide breakpoint="(max-width: 397px)">
           <Text
@@ -307,7 +308,7 @@ const NavTopSection = () => {
           </>
         ) : (
           <>
-            <SignUpModal />
+            <SignUpModal text={"Sign-Up"} />
             <SignInModal />
           </>
         )}
