@@ -1,32 +1,34 @@
 import * as types from "./actionTypes";
 
 const initialState = {
- isAuth: false,
- userName: null
+    isAuth: false,
+    userName: null
 }
 
-const reducer = (state=initialState, action) => {
+const reducer = (state = initialState, action) => {
     const { type, payload } = action;
-    switch(type){
+    switch (type) {
         case types.USER_LOGIN: {
-            return {...state, userName: payload ,isAuth: true}
+            return { ...state, userName: payload, isAuth: true }
         }
 
         case types.USER_REGISTER: {
-            return {...state,userName: payload, isAuth: true}
+            return { ...state, userName: payload, isAuth: true }
         }
         case types.USER_STATUS_UPDATE: {
-            return {...state, userName:payload , isAuth:true}
+            return { ...state, userName: payload, isAuth: true }
         }
         case types.USER_LOGOUT: {
-            return {...state, userName:null, isAuth: false}
+            return { ...state, userName: null, isAuth: false }
         }
 
-         default: {
+        default: {
             return state
         }
     }
-    
+
 }
 
-export default reducer;
+export {
+    reducer
+};

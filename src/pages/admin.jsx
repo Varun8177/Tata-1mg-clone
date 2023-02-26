@@ -1,12 +1,51 @@
 import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { Bar, Pie } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js/auto";
+import { useDispatch, useSelector } from "react-redux";
+import { GetRequest } from "@/redux/admin/admin.action";
 
 const Admin = () => {
+  const prod = useSelector((store) => store.AdminReducer.products);
+  const dispatch = useDispatch();
+  const InitialData = () => {
+    dispatch(GetRequest());
+  };
+  useEffect(() => {
+    InitialData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(prod);
+  const data = [
+    { id: 1, day: "monday", userGain: 88, userLoast: 823 },
+    { id: 2, day: "tuesday", userGain: 12, userLoast: 823 },
+    { id: 3, day: "wednesday", userGain: 24, userLoast: 823 },
+    { id: 4, day: "thursday", userGain: 56, userLoast: 823 },
+    { id: 5, day: "friday", userGain: 32, userLoast: 823 },
+    { id: 6, day: "saturday", userGain: 54, userLoast: 823 },
+    { id: 7, day: "sunday", userGain: 76, userLoast: 823 },
+  ];
+  const userData = {
+    labels: data.map((data) => data.day),
+    datasets: [
+      {
+        label: "Users Gained",
+        data: data.map((data) => data.userGain),
+        backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
+      },
+    ],
+  };
   return (
-    <Box bgColor={"#d8dff7"} h={"90vh"}>
-      <Flex bgColor={"#d8dff7"} border={"1px solid black"} w={"99%"} m={"auto"}>
+    <Box
+      bgColor={"#d8dff7"}
+      h={{
+        base: "130vh",
+        lg: "90vh",
+      }}
+    >
+      <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
         <Box
           bgColor={"white"}
           h={"80vh"}
@@ -17,11 +56,16 @@ const Admin = () => {
           <Sidebar />
         </Box>
         <Box
-          border={"1px solid red"}
+          // border={"1px solid red"}
           w={"100%"}
-          h={"80vh"}
+          h={{
+            base: "120vh",
+            lg: "80vh",
+          }}
           m={"auto"}
           mt="30px"
+          bgColor={"white"}
+          p={"6"}
         >
           <Text>Welcome Back, </Text>
           <Heading as={"b"}>Varun Ergurala</Heading>
@@ -40,9 +84,13 @@ const Admin = () => {
             }}
             gap={"6"}
           >
-            <Boxes color={"blue"} />
-            <Boxes color={"teal"} />
-            <Boxes color={"500"} />
+            <Boxes
+              color={"#577590"}
+              value={String(prod.length).split("").join(" ")}
+              text={"Total Products"}
+            />
+            <Boxes color={"#43aa8b"} value={"1 0"} text={"Users online"} />
+            <Boxes color={"#90be6d"} value={"5"} text={"orders"} />
           </Grid>
           <Grid
             w={"90%"}
@@ -59,17 +107,20 @@ const Admin = () => {
             gap={"6"}
           >
             <Box
+              boxShadow={"lg"}
               bgColor={"white"}
               h={{
                 base: "80px",
                 sm: "150px",
                 md: "220px",
-                lg: "250px",
-                xl: "280px",
+                lg: "180px",
+                xl: "200px",
                 "2xl": "300px",
               }}
               borderRadius={"10px"}
-            ></Box>
+            >
+              <Bar data={userData} />
+            </Box>
             <Box
               mt={{
                 base: "10px",
@@ -84,12 +135,15 @@ const Admin = () => {
                 base: "80px",
                 sm: "150px",
                 md: "220px",
-                lg: "250px",
-                xl: "280px",
+                lg: "180px",
+                xl: "200px",
                 "2xl": "300px",
               }}
               borderRadius={"10px"}
-            ></Box>
+            >
+              {" "}
+              <Pie data={userData} />
+            </Box>
           </Grid>
         </Box>
       </Flex>
