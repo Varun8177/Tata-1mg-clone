@@ -16,7 +16,7 @@ import { Profile } from "./profile";
 
 import FeatureBrands from "@/components/FeatureBrands";
 import PopularCategories from "@/components/PopularCategories";
-import HomeSlider from "@/components/homeSlider";
+import HomeSlider from "@/components/HomeSlider";
 import PathologyTests from "./../components/PathologyTests";
 import PopularCombo from "@/components/PopularCombo";
 import SugarSubtitutes from "@/components/SugarSubtitutes";
