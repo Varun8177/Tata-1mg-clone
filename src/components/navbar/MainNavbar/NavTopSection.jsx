@@ -1,4 +1,4 @@
-import { userLogout } from "@/redux/auth/action";
+import { userLogout, userStatusUpdate } from "@/redux/auth/action";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Badge,
@@ -16,7 +16,7 @@ import {
 import { auth } from "config/firebase";
 import { signOut } from "firebase/auth";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CiMedicalCase, CiMedicalCross, CiMedicalMask } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
@@ -27,11 +27,20 @@ import { TbDiscount2, TbHelp } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 
 const NavTopSection = () => {
+
 const dispatch = useDispatch();
   const handleLogout = async() => {
     dispatch(userLogout());
     await signOut(auth)
 }
+console.log("use")
+ useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+     if(user){
+      dispatch(userStatusUpdate(user.displayName))
+     }
+    })
+  },[])
   return (
     <Flex
       ml={{
