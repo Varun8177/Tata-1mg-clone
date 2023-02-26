@@ -1,5 +1,5 @@
 import *as types from './admin.types'
-
+// import * as types2 from '../products/products.actionTypes'
 const initialState = {
     loading: false,
     error: false,
@@ -44,6 +44,12 @@ const AdminReducer = (state = initialState, { type, payload }) => {
             return { ...state, orders: payload }
         case types.POSTORDERSDATA:
             return { ...state, orders: [payload, ...state.orders] }
+        case types.DeleteCartItem: {
+            let x = state.cart.filter((item) => {
+                return item.id !== payload.id
+            })
+            return { ...state, cart: x }
+        }
         default:
             return state
     }

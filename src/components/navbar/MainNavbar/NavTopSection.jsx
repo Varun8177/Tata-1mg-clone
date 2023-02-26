@@ -1,6 +1,10 @@
+
+import { userLogout, userStatusUpdate } from "@/redux/auth/action";
+
 import SignInModal from "@/components/authCom/SignIn/SignInModal";
 import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
-import { userLogout } from "@/redux/auth/action";
+
+
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Badge,
@@ -18,8 +22,12 @@ import {
 import { auth } from "config/firebase";
 import { signOut } from "firebase/auth";
 import Image from "next/image";
+
+import React, { useEffect } from "react";
+
 import { useRouter } from "next/router";
-import React from "react";
+
+
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CiMedicalCase, CiMedicalCross, CiMedicalMask } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
@@ -30,15 +38,28 @@ import { TbDiscount2, TbHelp } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 
 const NavTopSection = () => {
+
+
+
+
   const { isAuth, userName } = useSelector((state) => state.authReducer);
   const cartData = useSelector((state) => state.AdminReducer.cart);
   const dispatch = useDispatch();
   const router = useRouter();
-  const handleLogout = async () => {
+ 
+  const dispatch = useDispatch();
+  const handleLogout = async() => {
     dispatch(userLogout());
-    await signOut(auth);
-  };
-  console.log(cartData);
+    await signOut(auth)
+}
+ useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+     if(user){
+      dispatch(userStatusUpdate(user.displayName))
+     }
+    })
+  },[])
+
   return (
     <Flex
       ml={{

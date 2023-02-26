@@ -9,14 +9,17 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { useToast } from '@chakra-ui/react'
 
 const ProductCard = (props) => {
-  const router = useRouter();
-  const { isAuth, userName } = useSelector((state) => state.authReducer);
   const cartData = useSelector((state) => state.AdminReducer.cart);
+  const { isAuth } = useSelector((state) => state.authReducer);
+  const [addText, setAddText] = useState("ADD");
+  const router = useRouter();
+  const toast = useToast()
   const dispatch = useDispatch();
   const goToSingleProductPage = () => {
     router.push(`products/${props.id}`);
@@ -102,12 +105,24 @@ const ProductCard = (props) => {
             color: "white",
           }}
           onClick={() => {
-            dispatch({ type: AddCartItem, payload: props });
-            console.log(cartData);
+            isAuth && dispatch({ type: AddCartItem, payload: props });
+            // console.log(cartData);
+            if (!isAuth) {
+              toast({
+                title: 'Product cannot be added.',
+                description: "Please login first.",
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+                position: 'top',
+                bg: '#ff6f61'
+              })
+            }
+            isAuth && setAddText("ADDED ✓");
           }}
           display={isAuth ? "block" : "none"}
         >
-          ADD
+          {addText}
         </Button>
       </Flex>
     </GridItem>

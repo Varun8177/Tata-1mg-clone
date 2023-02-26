@@ -18,6 +18,11 @@ const ProductReducer = (state = initialState, action) => {
         case types.REQUEST_ERROR: {
             return { ...state, isLoading: false, isError: true }
         }
+        case types.FILTERDATA:
+            {
+                console.log('xsd', payload)
+                return state
+            }
         default: {
             return state;
         }

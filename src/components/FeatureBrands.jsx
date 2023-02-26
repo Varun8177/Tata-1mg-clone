@@ -55,14 +55,14 @@ const FeatureBrands = () => {
       >
       
         <Flex w="80%" m="auto" gap="5">
-          {fb.map((item) => {
+          {fb.map((item,i) => {
             return (
-              <>
+              
                 <Box
                   _hover={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
                   p="5"
                   align="center"
-                  key={item.id}
+                  key={i}
                 >
                   <Image
                     src={item.img}
@@ -72,7 +72,7 @@ const FeatureBrands = () => {
                   />
                   <Text>{item.name}</Text>
                 </Box>
-              </>
+              
             );
           })}
         </Flex>

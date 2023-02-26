@@ -23,16 +23,14 @@ import React, { useState } from 'react'
 const FilterAndSort = ({ handleFilter, handleSortPrice, handleSortRating, handleSortReset }) => {
     const router = useRouter();
     const btnRef = React.useRef()
-    const [isChecked, setIsChecked] = useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const handleQueryChange = (e) => {
-        setIsChecked(e.target.checked);
-        router.push({
-            pathname: router.pathname,
-            query: { ...router.query, q: e.target.value }
-        })
+    const [filterValues, setFilterValues] = useState([]);
+    const handleFilterChange = (value) => {
+        setFilterValues(value)
+        handleFilter(value)
     }
+
 
     return (
         <>
@@ -40,7 +38,7 @@ const FilterAndSort = ({ handleFilter, handleSortPrice, handleSortRating, handle
                 <Box
                     bg='white'
                     w={{ "lg": "190px", "md": "250px" }}
-                    h={{ "lg": "670px", "md": "730px" }}
+                    h={{ "lg": "500px", "md": "500px" }}
                     ml={{ "lg": "7%", "md": "5%" }}
                     mt='15px'
                     p={5}
@@ -49,22 +47,21 @@ const FilterAndSort = ({ handleFilter, handleSortPrice, handleSortRating, handle
                     <Box m='20px 0'>
                         <Heading fontSize={'14px'}>FILTER</Heading>
                         <CheckboxGroup colorScheme='green'
-                            onChange={(e) => handleFilter(e)} >
+                            value={filterValues} onChange={handleFilterChange}>
                             <Stack
                                 color={'grey'}
                                 spacing={[1, 1]}
                                 direction={['column']}
                             >
-                                <Checkbox fontSize='10px' checked={isChecked} onChange={handleQueryChange} value='products'>Products</Checkbox>
-                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='vitamins-suppliments'>Suppliments</Checkbox>
-                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='combo'>Combos</Checkbox>
-                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='medicine'>Medicines</Checkbox>
-                                <Checkbox checked={isChecked} onChange={handleQueryChange} value='devices'>Devices</Checkbox>
+                                <Checkbox fontSize='10px' value='Capsules'>Capsules</Checkbox>
+                                <Checkbox value='Suppliments'>Suppliments</Checkbox>
+                                <Checkbox value='Proteins'>Proteins</Checkbox>
+                                <Checkbox value='masks'>masks</Checkbox>
                             </Stack>
                         </CheckboxGroup>
                     </Box>
                     <Divider />
-                    <Box m='20px 0'>
+                    {/* <Box m='20px 0'>
                         <Heading fontSize={'14px'}>SORT BY DISCOUNT</Heading>
                         <RadioGroup color={'grey'} colorScheme='green'>
                             <Stack direction='column' fontSize={'12px'}>
@@ -75,7 +72,7 @@ const FilterAndSort = ({ handleFilter, handleSortPrice, handleSortRating, handle
                             </Stack>
                         </RadioGroup>
                     </Box>
-                    <Divider />
+                    <Divider /> */}
                     <Box m='20px 0'>
                         <Heading fontSize={'14px'}>SORT BY PRICE</Heading>
                         <RadioGroup colorScheme='green' onChange={(value) => handleSortPrice(value) && console.log(value)}>
@@ -144,7 +141,7 @@ const FilterAndSort = ({ handleFilter, handleSortPrice, handleSortRating, handle
                                         </CheckboxGroup>
                                     </Box>
                                     <Divider />
-                                    <Box m='10px 0'>
+                                    {/* <Box m='10px 0'>
                                         <Heading fontSize={'14px'}>SORT BY DISCOUNT</Heading>
                                         <RadioGroup color={'grey'} colorScheme='green'>
                                             <Stack direction='column' fontSize={'12px'}>
@@ -155,7 +152,7 @@ const FilterAndSort = ({ handleFilter, handleSortPrice, handleSortRating, handle
                                             </Stack>
                                         </RadioGroup>
                                     </Box>
-                                    <Divider />
+                                    <Divider /> */}
                                     <Box m='10px 0'>
                                         <Heading fontSize={'14px'}>SORT BY PRICE</Heading>
                                         <RadioGroup colorScheme='green'>
