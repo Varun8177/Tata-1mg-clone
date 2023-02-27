@@ -12,6 +12,5 @@ export const UPDATEPRODUCT = 'admin/updateproduct'
 export const ADDPRODUCT = 'admin/addproduct'
 export const AddCartItem = "add/cart"
 export const DeleteCartItem = "delete/cart"
-export const FILTERDATA = 'filterRequest'
 
 export const GETADMINSDATA = 'admin/getADMIN'

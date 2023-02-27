@@ -5,7 +5,6 @@ import Pagination from "@/components/Pagination_m";
 import ProductCard from "@/components/ProductCard";
 import ProductsSkeleton from "@/components/ProductsSkeleton";
 import TopSectionProductsPage from "@/components/TopSectionProductsPage";
-import { FILTERDATA } from "@/redux/admin/admin.types";
 import { getData } from "@/redux/products/products.action";
 import { Box, Grid } from "@chakra-ui/react";
 import Link from "next/link";
@@ -47,9 +46,7 @@ const Products = () => {
   };
   //   console.log(sort, order);
 
-  const handleFilter = (value) => {
-    dispatch({ type: FILTERDATA, payload: value[0] });
-  };
+  const handleFilter = (value) => {};
 
   useEffect(() => {
     dispatch(getData(sort, order));
