@@ -6,8 +6,6 @@ Health Prime is a clone of TATA 1mg.com. With Health Prime, you can buy medicine
 - Next JS
 - Chakra UI
 
-You can also take the glimpse of our Project, just follow the below steps:
-    1.enter the tripster folder and type npm start in the terminal.
 ## Features :sparkles:
 1. Any user can be able to purchase the products from our website.
 2. For each product, we have created a detailed description page.
