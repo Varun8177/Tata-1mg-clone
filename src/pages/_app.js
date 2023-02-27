@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <Provider store={store}>
 
-        <Box top='90vh' position='fixed' left={{
+        <Box zIndex={'10'} top='90vh' position='fixed' left={{
           base: '90%',
           sm: "90%",
           md: "90%",

@@ -1,3 +1,4 @@
+import { REQUEST_FILTER } from "@/redux/products/products.actionTypes";
 import {
   Box,
   Button,
@@ -17,8 +18,10 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
+import { typescript } from "next.config";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const FilterAndSort = ({
   handleFilter,
@@ -29,12 +32,15 @@ const FilterAndSort = ({
   const router = useRouter();
   const btnRef = React.useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
 
   const [filterValues, setFilterValues] = useState([]);
   const handleFilterChange = (value) => {
     setFilterValues(value);
     handleFilter(value);
+    dispatch({ type: REQUEST_FILTER, payload: filterValues });
   };
+  console.log(filterValues)
 
   return (
     <>
@@ -56,8 +62,8 @@ const FilterAndSort = ({
               onChange={handleFilterChange}
             >
               <Stack color={"grey"} spacing={[1, 1]} direction={["column"]}>
-                <Checkbox fontSize="10px" value="Capsules">
-                  Capsules
+                <Checkbox fontSize="10px" value="calcium">
+                  Calcium
                 </Checkbox>
                 <Checkbox value="Suppliments">Suppliments</Checkbox>
                 <Checkbox value="Proteins">Proteins</Checkbox>
