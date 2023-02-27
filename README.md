@@ -1,6 +1,7 @@
 # Introduction:
-Tripster - Clone of makemytrip
-Health Prime is a clone of TATA 1mg.com. With Health Prime, you can buy medicines online and get them delivered at your doorstep anywhere in India!. 
+Health Prime - Clone of TATA 1mg.com
+- With Health Prime, you can buy medicines online and get them delivered at your doorstep anywhere in India!. 
+- We are 5 members in the project team Varun Ergurala, Meenakshi Arora, Raj ,Sohel Syed ,reddyvari tejeshkumarreddy
 
 # Technology Stack Used :
 - Next JS
@@ -15,5 +16,7 @@ Health Prime is a clone of TATA 1mg.com. With Health Prime, you can buy medicine
 6. Once the user created his account the next time user can be able to direct login.
 7. On the Home page of the website, we are creating a very beautiful interface with responsive along with various carousals.
 8. On the product page, we have provided multiple features like sorting, searching and filtering, etc.
+9. Admin Dashboard to control products
+
 ## Demo :movie_camera:
 -Deployed Link: https://roasted-geese-6392-xh5g-1a2mpp2iy-varun8177.vercel.app/
