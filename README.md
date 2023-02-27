@@ -6,6 +6,9 @@ Health Prime - Clone of TATA 1mg.com
 # Technology Stack Used :
 - Next JS
 - Chakra UI
+- FireBase
+- Redux 
+- Json-Server
 
 ## Features :sparkles:
 1. Any user can be able to purchase the products from our website.
