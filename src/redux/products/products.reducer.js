@@ -18,6 +18,15 @@ const ProductReducer = (state = initialState, action) => {
         case types.REQUEST_ERROR: {
             return { ...state, isLoading: false, isError: true }
         }
+        case types.REQUEST_FILTER: {
+            console.log('reducer', payload)
+            let res = state.products.filter((item) => {
+                return item.title.split(' ').join("").trim().toLowerCase().indexOf(payload) !== -1 ? true : false;
+            })
+            return {
+                ...state, products: res
+            }
+        }
 
         default: {
             return state;
