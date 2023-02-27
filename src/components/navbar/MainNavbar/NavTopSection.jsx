@@ -58,7 +58,6 @@ const NavTopSection = () => {
   let x = data?.filter((item) => {
     return item.name === userName;
   });
-  console.log("basd", x);
   return (
     <Flex
       ml={{

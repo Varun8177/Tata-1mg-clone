@@ -17,7 +17,6 @@ const Summary = () => {
   const [adress, setAdd] = useState("");
   let cartData = useSelector((state) => state.AdminReducer.cart);
   // setAdd((add)=>add)
-  console.log(adress);
   return (
     <>
       <CartNavbar />

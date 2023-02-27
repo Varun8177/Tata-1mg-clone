@@ -315,6 +315,5 @@ export async function getStaticProps(context) {
   } = context;
   let res = await fetch(`https://dead-earrings-tick.cyclic.app/products/${id}`);
   let data = await res.json();
-  console.log(data);
   return { props: { data } };
 }

@@ -1,6 +1,6 @@
-import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import useValueChange from "@/components/customHooks/useValueChange";
+import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import { GetAdminDataRequest } from "@/redux/admin/admin.action";
 import { userLogout } from "@/redux/auth/action";
 import { EditIcon } from "@chakra-ui/icons";
@@ -30,11 +30,13 @@ const AdminSettings = () => {
   const [editEmail, setEditEmail] = useState(false);
   const [editMobile, setEditMobile] = useState(false);
   const [editGender, setEditGender] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(data[0].profile);
-  const [name, setname] = useValueChange(data[0].name);
-  const [email, setEmail] = useValueChange(data[0].email);
-  const [mobile, setMobile] = useValueChange(data[0].contact);
-  const [gender, setGender] = useValueChange(data[0].name);
+  const [selectedImage, setSelectedImage] = useState(
+    "https://i.postimg.cc/8PSx1xFj/new-profile.jpg"
+  );
+  const [name, setname] = useValueChange("Varun Ergurala");
+  const [email, setEmail] = useValueChange("varun@gmail.com");
+  const [mobile, setMobile] = useValueChange("8177836651");
+  const [gender, setGender] = useValueChange("male");
   const dispatch = useDispatch();
   const router = useRouter();
   const Remove = () => setSelectedImage(null);
@@ -49,13 +51,12 @@ const AdminSettings = () => {
 
   useEffect(() => {
     setDomLoaded(true);
-  }, []);
-  useEffect(() => {
     dispatch(GetAdminDataRequest());
   }, []);
+
   return (
     <>
-      {" "}
+      <CartNavbar />{" "}
       {domLoaded && (
         <Box bgColor={"#d8dff7"} h={"90vh"}>
           <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
@@ -283,12 +284,7 @@ const AdminSettings = () => {
                       h={"250px"}
                       src={selectedImage}
                     />
-                    <Input
-                      bgColor={"500"}
-                      type="file"
-                      name="myImage"
-                      onChange={upload}
-                    />
+                    <input type="file" name="myImage" onChange={upload} />
                   </Box>
                 </Stack>
               </Flex>

@@ -17,7 +17,7 @@ const Admin = () => {
   const prod = useSelector((store) => store.AdminReducer.products);
   const data = useSelector((store) => store.AdminReducer.userData);
   const Orderdata = useSelector((store) => store.AdminReducer.orders);
-  const AdminName = useSelector((store) => store.AdminReducer.Admins);
+  // const AdminName = useSelector((store) => store.AdminReducer.Admins);
   const dispatch = useDispatch();
   let total = Orderdata.reduce((acc, el) => acc + Number(el.orders), 0);
 
@@ -28,7 +28,7 @@ const Admin = () => {
     InitialData();
     dispatch(GetUserDataRequest());
     dispatch(GetOrdersDataRequest());
-    dispatch(GetAdminDataRequest());
+    // dispatch(GetAdminDataRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -85,7 +85,7 @@ const Admin = () => {
             p={"6"}
           >
             <Text>Welcome Back, </Text>
-            <Heading as={"b"}>{AdminName[0].name}</Heading>
+            <Heading as={"b"}>Varun Ergurala</Heading>
 
             <Grid
               w={"90%"}
