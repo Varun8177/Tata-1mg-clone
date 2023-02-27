@@ -1,5 +1,6 @@
 import Sidebar from "@/components/adminPanel/Sidebar";
 import useValueChange from "@/components/customHooks/useValueChange";
+import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import { GetAdminDataRequest } from "@/redux/admin/admin.action";
 import { userLogout } from "@/redux/auth/action";
 import { EditIcon } from "@chakra-ui/icons";
@@ -55,7 +56,7 @@ const AdminSettings = () => {
 
   return (
     <>
-      {" "}
+      <CartNavbar />{" "}
       {domLoaded && (
         <Box bgColor={"#d8dff7"} h={"90vh"}>
           <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>

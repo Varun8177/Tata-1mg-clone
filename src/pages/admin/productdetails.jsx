@@ -66,7 +66,7 @@ const AdminProducts = () => {
 
   return (
     <Box bgColor={"#d8dff7"} h={"90vh"}>
-      <Flex bgColor={"#d8dff7"} border={"1px solid black"} w={"99%"} m={"auto"}>
+      <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
         <Box
           bgColor={"white"}
           h={"80vh"}
