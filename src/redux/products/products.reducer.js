@@ -20,7 +20,6 @@ const ProductReducer = (state = initialState, action) => {
         }
         case types.FILTERDATA:
             {
-                console.log('xsd', payload)
                 return state
             }
         default: {

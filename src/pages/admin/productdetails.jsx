@@ -335,7 +335,6 @@ function AddProduct() {
   );
 
   const upload = (event) => {
-    console.log(event.target.files[0]);
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
   };
 
