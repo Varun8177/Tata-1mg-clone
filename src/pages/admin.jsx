@@ -6,6 +6,7 @@ import { Bar, Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  GetAdminDataRequest,
   GetOrdersDataRequest,
   GetRequest,
   GetUserDataRequest,
@@ -16,6 +17,7 @@ const Admin = () => {
   const prod = useSelector((store) => store.AdminReducer.products);
   const data = useSelector((store) => store.AdminReducer.userData);
   const Orderdata = useSelector((store) => store.AdminReducer.orders);
+  const AdminName = useSelector((store) => store.AdminReducer.Admins);
   const dispatch = useDispatch();
   let total = Orderdata.reduce((acc, el) => acc + Number(el.orders), 0);
 
@@ -26,6 +28,7 @@ const Admin = () => {
     InitialData();
     dispatch(GetUserDataRequest());
     dispatch(GetOrdersDataRequest());
+    dispatch(GetAdminDataRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -74,7 +77,7 @@ const Admin = () => {
             w={"100%"}
             h={{
               base: "120vh",
-              lg: "80vh",
+              lg: "90vh",
             }}
             m={"auto"}
             mt="30px"
@@ -82,7 +85,7 @@ const Admin = () => {
             p={"6"}
           >
             <Text>Welcome Back, </Text>
-            <Heading as={"b"}>Varun Ergurala</Heading>
+            <Heading as={"b"}>{AdminName[0].name}</Heading>
 
             <Grid
               w={"90%"}

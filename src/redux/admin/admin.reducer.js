@@ -6,7 +6,8 @@ const initialState = {
     products: [],
     cart: [],
     userData: [],
-    orders: []
+    orders: [],
+    Admins: []
 }
 
 const AdminReducer = (state = initialState, { type, payload }) => {
@@ -50,6 +51,8 @@ const AdminReducer = (state = initialState, { type, payload }) => {
             })
             return { ...state, cart: x }
         }
+        case types.GETADMINSDATA:
+            return { ...state, Admins: payload }
         default:
             return state
     }

@@ -18,11 +18,18 @@ import {
 } from "@chakra-ui/react";
 import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
-import React from "react";
+import React, { useEffect } from "react";
 import { BsGithub } from "react-icons/bs";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { GetAdminDataRequest } from "@/redux/admin/admin.action";
 
 const AdminsSection = () => {
+  const data = useSelector((store) => store.AdminReducer.Admins);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(GetAdminDataRequest());
+  }, []);
   return (
     <Box bgColor={"#d8dff7"} h={"90vh"}>
       <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
@@ -44,7 +51,16 @@ const AdminsSection = () => {
           pt={"20px"}
         >
           <Flex justifyContent={"space-around"} borderBottomWidth={1} pb={"5"}>
-            <Input placeholder="Search by name " variant={"filled"} w={"50%"} />
+            <Input
+              placeholder="Search by name "
+              variant={"filled"}
+              w={"50%"}
+              onChange={(e) => {
+                data.filter((item) => {
+                  return item.name.includes(e.target.value);
+                });
+              }}
+            />
             <Menu>
               <MenuButton
                 _hover={{ bgColor: "500" }}
@@ -88,42 +104,68 @@ const AdminsSection = () => {
             alignItems={"center"}
             h={"400px"}
           >
-            {Array(5)
-              .fill(0)
-              .map((item, i) => {
-                return (
-                  <Box
-                    pt={"10"}
-                    borderRadius={"10px"}
-                    w={"200px"}
-                    h={"280px"}
-                    bgColor={"gray.200"}
-                    key={i}
-                  >
-                    <Center>
-                      <Avatar size={"xl"} />
-                    </Center>
-                    <Center>
-                      <Text as={"b"}>Varun Ergurala</Text>
-                    </Center>
-                    <Center>
-                      <Grid templateColumns={"repeat(2,1fr)"}>
-                        <Text>Position:</Text>
-                        <Text>Admin</Text>
-                        <Text>Status:</Text>
-                        <Text>Online</Text>
-                        <Text>Contact:</Text>
-                        <Text>7984684894</Text>
-                      </Grid>
-                    </Center>
-                  </Box>
-                );
-              })}
+            {data.map((item, i) => {
+              return (
+                <Box
+                  borderRadius={"10px"}
+                  w={"220px"}
+                  h={"340px"}
+                  bgColor={"gray.200"}
+                  key={i}
+                >
+                  <Image
+                    src={item.profile}
+                    alt={item.name}
+                    h={"200px"}
+                    w={"280px"}
+                    objectFit={"cover"}
+                  />
+                  <Center>
+                    <Text as={"b"}>{item.name}</Text>
+                  </Center>
+                  <Center>
+                    <Grid templateColumns={"repeat(2,1fr)"}>
+                      <Text>Position:</Text>
+                      <Text>{item.position}</Text>
+                      <Text>Contact:</Text>
+                      <Text>{item.contact}</Text>
+                    </Grid>
+                  </Center>
+                  <Flex w="100%" justifyContent={"space-evenly"}>
+                    <Image
+                      src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
+                      alt="fb"
+                      width="30"
+                      height="30"
+                    />
+                    <Image
+                      src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
+                      alt="fb"
+                      width="30"
+                      height="30"
+                    />
+                    <Image
+                      src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
+                      alt="fb"
+                      width="30"
+                      height="30"
+                    />
+
+                    <Image
+                      src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
+                      alt="fb"
+                      width="30"
+                      height="30"
+                    />
+                  </Flex>
+                </Box>
+              );
+            })}
           </Grid>
-          <Flex w={"20%"} m={"auto"} justifyContent={"space-evenly"}>
+          {/* <Flex w={"20%"} m={"auto"} justifyContent={"space-evenly"}>
             <Button>Next</Button>
             <Button>Previous</Button>
-          </Flex>
+          </Flex> */}
         </Box>
       </Flex>
     </Box>

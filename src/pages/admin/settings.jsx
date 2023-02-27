@@ -1,6 +1,8 @@
 import Boxes from "@/components/adminPanel/Boxes";
 import Sidebar from "@/components/adminPanel/Sidebar";
 import useValueChange from "@/components/customHooks/useValueChange";
+import { GetAdminDataRequest } from "@/redux/admin/admin.action";
+import { userLogout } from "@/redux/auth/action";
 import { EditIcon } from "@chakra-ui/icons";
 import {
   Avatar,
@@ -13,32 +15,44 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { auth } from "config/firebase";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { TiTick } from "react-icons/ti";
+import { useDispatch, useSelector } from "react-redux";
 
 const AdminSettings = () => {
+  const data = useSelector((store) => store.AdminReducer.Admins);
   const [domLoaded, setDomLoaded] = useState(false);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [editMobile, setEditMobile] = useState(false);
   const [editGender, setEditGender] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [name, setname] = useValueChange("");
-  const [email, setEmail] = useValueChange("");
-  const [mobile, setMobile] = useValueChange("");
-  const [gender, setGender] = useValueChange("");
+  const [selectedImage, setSelectedImage] = useState(data[0].profile);
+  const [name, setname] = useValueChange(data[0].name);
+  const [email, setEmail] = useValueChange(data[0].email);
+  const [mobile, setMobile] = useValueChange(data[0].contact);
+  const [gender, setGender] = useValueChange(data[0].name);
+  const dispatch = useDispatch();
+  const router = useRouter();
   const Remove = () => setSelectedImage(null);
-
+  const handleLogout = async () => {
+    dispatch(userLogout());
+    await signOut(auth);
+  };
   const upload = (event) => {
     console.log(event.target.files[0]);
-    setSelectedImage(event.target.files[0]);
+    setSelectedImage(URL.createObjectURL(event.target.files[0]));
   };
 
   useEffect(() => {
     setDomLoaded(true);
   }, []);
-
+  useEffect(() => {
+    dispatch(GetAdminDataRequest());
+  }, []);
   return (
     <>
       {" "}
@@ -248,32 +262,34 @@ const AdminSettings = () => {
                   <br />
                   <br />
                   <br />
-                  <Button bgColor={"500"} w={"200px"}>
+                  <Button
+                    bgColor={"500"}
+                    w={"200px"}
+                    onClick={() => {
+                      handleLogout();
+                      router.push("/");
+                    }}
+                  >
                     Sign Out
                   </Button>
                 </Stack>
                 <Stack>
-                  {selectedImage ? (
-                    <Box textAlign={"center"}>
-                      <Image
-                        objectFit={"cover"}
-                        borderRadius={"50%"}
-                        alt="not found"
-                        width={"250px"}
-                        h={"250px"}
-                        src={URL.createObjectURL(selectedImage)}
-                      />
-                      <br />
-                      <Button bgColor={"500"} onClick={Remove}>
-                        Remove
-                      </Button>
-                    </Box>
-                  ) : (
-                    <>
-                      <Avatar w={"250px"} h={"250px"} />
-                      <input type="file" name="myImage" onChange={upload} />
-                    </>
-                  )}
+                  <Box textAlign={"center"}>
+                    <Image
+                      objectFit={"cover"}
+                      borderRadius={"50%"}
+                      alt="not found"
+                      width={"250px"}
+                      h={"250px"}
+                      src={selectedImage}
+                    />
+                    <Input
+                      bgColor={"500"}
+                      type="file"
+                      name="myImage"
+                      onChange={upload}
+                    />
+                  </Box>
                 </Stack>
               </Flex>
             </Box>

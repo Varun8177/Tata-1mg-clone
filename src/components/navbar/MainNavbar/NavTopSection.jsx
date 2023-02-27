@@ -33,12 +33,15 @@ import { GiMeditation } from "react-icons/gi";
 import { ImLab } from "react-icons/im";
 import { TbDiscount2, TbHelp } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
+import { GETADMINSDATA } from "@/redux/admin/admin.types";
+import { GetAdminDataRequest } from "@/redux/admin/admin.action";
 
 const NavTopSection = () => {
   const { isAuth, userName } = useSelector((state) => state.authReducer);
   const cartData = useSelector((state) => state.AdminReducer.cart);
   const dispatch = useDispatch();
   const router = useRouter();
+  const data = useSelector((store) => store.AdminReducer.Admins);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -46,8 +49,16 @@ const NavTopSection = () => {
         dispatch(userStatusUpdate(user.displayName));
       }
     });
+    dispatch(GetAdminDataRequest());
   }, []);
-
+  const handleLogout = async () => {
+    dispatch(userLogout());
+    await signOut(auth);
+  };
+  let x = data?.filter((item) => {
+    return item.name === userName;
+  });
+  console.log("basd", x);
   return (
     <Flex
       ml={{
@@ -255,10 +266,12 @@ const NavTopSection = () => {
                 <MenuItem>My Consultations</MenuItem>
                 <MenuItem>My Health records</MenuItem>
                 <MenuItem>Manage Payments </MenuItem>
-                <MenuItem onClick={() => router.push("/admin")}>
-                  admins here{" "}
-                </MenuItem>
-                <MenuItem>Logout</MenuItem>
+                {x[0] && (
+                  <MenuItem onClick={() => router.push("/admin")}>
+                    admins here
+                  </MenuItem>
+                )}
+                <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
               </MenuList>
             </Menu>
             <Text>Offers</Text>

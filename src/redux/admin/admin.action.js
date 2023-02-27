@@ -79,3 +79,13 @@ export const AddProd = (details) => async (dispatch) => {
         dispatch({ type: types.ADDPRODUCT, payload: res.data })
     }
 }
+
+export const GetAdminDataRequest = () => async (dispatch) => {
+    dispatch({ type: types.LOADING })
+    try {
+        const res = await axios.get(`https://63fbcdd06deb8bdb814adc47.mockapi.io/admins`)
+        dispatch({ type: types.GETADMINSDATA, payload: res.data })
+    } catch (error) {
+        dispatch({ type: types.ERROR })
+    }
+}
