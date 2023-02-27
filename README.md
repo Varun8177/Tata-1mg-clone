@@ -14,7 +14,7 @@ Health Prime - Clone of TATA 1mg.com
 4. Cart is always maintained globally at any time we can check cart details from the navbar section.
 5. For the order of any product, a new user must be needed to create an account and logged in first.
 6. Once the user created his account the next time user can be able to direct login.
-7. On the Home page of the website, we are creating a very beautiful interface with responsive along with various carousals.
+7. On the Home page of the website, we are creating a very beautiful interface with various carousals.
 8. On the product page, we have provided multiple features like sorting, searching and filtering, etc.
 9. Admin Dashboard to control products
 
