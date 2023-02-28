@@ -16,22 +16,26 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Image,
+  Container
 } from "@chakra-ui/react";
 
-import Image from "next/image";
+// {{xl:"", lg:"", md:"", sm:"", base:""}}
+
+// import Image from "next/image";
 const Footer = () => {
   return (
     <Stack bg="#fff" m="auto" w="100%" mt="10">
-      <Box m="auto" w="95%" p={10}>
-        <Heading as="h2" size="lg" mb={"30px"}>
-          Stay Healthy with Tata 1mg: Your Favourite Online Pharmacy and
+      <Box m="auto" w="95%" p={{ xl: "10", lg: "10", md: "5", sm: "2", base: '2' }}>
+        <Heading as="h2" size={{ xl: "lg", lg: "40px", md: "30px", sm: "20px", base: '20px' }} mb={"30px"}>
+          Stay Healthy with Health Prime: Your Favourite Online Pharmacy and
           Healthcare Platform
         </Heading>
         <Text as="b" size="md" mb={"20px"}>
           We Bring Care to Health.
         </Text>
-        <Text mb={"10px"} color={"gray"}>
-          Tata 1mg is {"India's"} leading digital healthcare platform. From
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
+          Health Prime is {"India's"} leading digital healthcare platform. From
           doctor consultations on chat to online pharmacy and lab tests at home:
           we have it all covered for you. Having delivered over 25 million
           orders in 1000+ cities till date, we are on a mission to bring{" "}
@@ -40,80 +44,66 @@ const Footer = () => {
         </Text>
 
         <Text as="b" size="md" mt={"20px"}>
-          Tata 1mg: Your Favourite Online Pharmacy!
+          Health Prime: Your Favourite Online Pharmacy!
         </Text>
-        <Text mb={"10px"} color={"gray"}>
-          Tata 1mg is {"India's "}leading online chemist with over 2 lakh
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
+          Health Prime is {"India's "}leading online chemist with over 2 lakh
           medicines available at the best prices. We are your one-stop
           destination for other healthcare products as well, such as over the
           counter pharmaceuticals, healthcare devices and homeopathy and
           ayurveda medicines.
         </Text>
-        <Text mb={"10px"} color={"gray"}>
-          With Tata 1mg, you can buy medicines online and get them delivered at
-          your doorstep anywhere in India! But, is ordering medicines online a
-          difficult process? Not at all! Simply search for the products you want
-          to buy, add to cart and checkout. Now all you need to do is sit back
-          as we get your order delivered to you.
-        </Text>
-        <Text mb={"10px"} color={"gray"}>
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
           In case you need assistance, just give us a call and we will help you
           complete your order.
         </Text>
-        <Text mb={"10px"} color={"gray"}>
-          And there is more! At Tata 1mg, you can buy health products and
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
+          And there is more! At Health Prime, you can buy health products and
           medicines online at best discounts.
         </Text>
-        <Text mb={"10px"} color={"gray"}>
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
           Now, {"isn't"} that easy? Why go all the way to the medicine store and
-          wait in line, when you have Tata 1mg Pharmacy at your service.
+          wait in line, when you have Health Prime Pharmacy at your service.
         </Text>
         <Text as="b" size="md" mb={"30px"}>
           The Feathers in Our Cap
         </Text>
-        <Text mb={"10px"} color={"gray"}>
-          At Tata 1mg, our goal is to make healthcare understandable, accessible
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
+          At Health Prime, our goal is to make healthcare understandable, accessible
           and affordable in India. We set out on our journey in 2015, and have
           come a long way since then. Along the way, we have been conferred with
           prestigious titles like BML Munjal Award {"for 'Business"} Excellence
           through Learning and {"Development',"} Best Online Pharmacy in India
-          Award and Top 50 venture in The Smart CEO-Startup50 India. We have
-          been selected as the only company from across the globe for SD#3{" "}
-          {"Health"} & Well Being for {"all"} by Unreasonable group, US State
-          Department. In 2019 alone we received three awards including the BMW
-          Simply Unstoppable Award.
+          Award and Top 50 venture in The Smart CEO-Startup50 India.
         </Text>
         <Text as="b" size="md" mb={"30px"}>
           The Services We Offer
         </Text>
-        <Text mb={"10px"} color={"gray"}>
-          Tata 1mg is {"India's"} leading digital healthcare platform, where you
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
+          Health Prime is {"India's"} leading digital healthcare platform, where you
           can buy medicines online with discount. Buy medicine online in Delhi,
           Mumbai, Bangalore, Hyderabad, Pune, Gurgaon, Noida, Kolkata, Chennai,
-          Ahmedabad, Lucknow and around a 1000 more cities. Besides delivering
-          your online medicine order at your doorstep, we provide accurate,
-          authoritative & trustworthy information on medicines and help people
-          use their medicines effectively and safely.
+          Ahmedabad, Lucknow and around a 1000 more cities.
         </Text>
-        <Text mb={"10px"} color={"gray"}>
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
           We also facilitate lab tests at home. You can avail over 2,000 tests
           and get tested by 120+ top and verified labs at the best prices. Need
           to consult a doctor? On our platform, you can talk to over 20 kinds of
           specialists in just a few clicks.
         </Text>
-        <Text mb={"10px"} color={"gray"}>
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
           Customer centricity is the core of our values. Our team of highly
           trained and experienced doctors, phlebotomists and pharmacists looks
           into each order to give you a fulfilling experience.
         </Text>
-        <Text mb={"10px"} color={"gray"}>
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
           We’ve made healthcare accessible to millions by giving them quality
           care at affordable prices. Customer centricity is the core of our
           values. Our team of highly trained and experienced doctors,
           phlebotomists and pharmacists looks into each order to give you a
           fulfilling experience.
         </Text>
-        <Text mb={"10px"} color={"gray"}>
+        <Text mb={"10px"} fontSize={{ xl: "16px", lg: "16px", md: "14px", sm: "12px", base: '12px' }} color='#666666'>
           Visit our online medical store now, and avail online medicine purchase
           at a discount. Stay Healthy!
         </Text>
@@ -144,113 +134,132 @@ const Footer = () => {
       </Box>
       <Box p={5}>
         <Center gap="10px">
-          <Text>Get the link to download App</Text>
-          <Input placeholder="Enter Phone Number" variant="filled" w="400px" />
-          <Button color="white" bg="#ff6f61">
+          <Text display={{ md: "none", sm: "none", "base": 'none' }}>Get the link to download App</Text>
+          <Input placeholder="Enter Phone Number" variant="filled" w={{ xl: "400px", lg: "400px", md: "300px", sm: "250px", base: '250px' }} />
+          <Button color="white" bg="#ff6f61" _hover={{
+            bg: "#fd7c70",
+          }}>
             Send Link
           </Button>
         </Center>
       </Box>
-      <Box p={10} bg="#fffcf8" w="100%" m="auto" mt="10">
+      <Box p={10} bg="#fffcf8" w="100%" m="auto" mt="10" >
         <Grid templateColumns="repeat(5, 1fr)" gap={6} ml="10" color={"gray"}>
-          <GridItem p="5px" color={"gray"}>
-            <Text fontSize="lg" as={"b"} color={"black"}>
+
+          <GridItem p="5px" color={"gray"} display={{ xl: "grid", lg: "grid", md: "grid", sm: "none", base: "none" }} >
+            <Text fontSize="16px" fontWeight={'500'} color={"#042430"} lineHeight='40px'>
               Know Us
             </Text>
-            <Text fontSize="sm">About Us</Text>
-            <Text fontSize="sm">Contact Us</Text>
-            <Text fontSize="sm">Press Coverage</Text>
-            <Text fontSize="sm">Careers</Text>
-            <Text fontSize="sm">Business Partnership</Text>
-            <Text fontSize="sm">Become a Health</Text>
-            <Text fontSize="sm">Partner</Text>
-            <Text fontSize="sm">Corporate</Text>
-            <Text fontSize="sm">Governance</Text>
+            <Box fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
+              <Text> About Us</Text>
+              <Text >Contact Us</Text>
+              <Text >Press Coverage</Text>
+              <Text >Careers</Text>
+              <Text >Business Partnership</Text>
+              <Text >Become a Health</Text>
+              <Text >Partner</Text>
+              <Text >Corporate</Text>
+              <Text >Governance</Text>
+            </Box>
           </GridItem>
-          <GridItem>
-            <Text fontSize="lg" as={"b"} color={"black"}>
+          <GridItem p="5px" color={"gray"} display={{ xl: "grid", lg: "grid", md: "grid", sm: "none", base: "none" }}>
+            <Text fontSize="16px" fontWeight={'500'} color={"#042430"} lineHeight='40px'>
               Our Policies
             </Text>
-            <Text fontSize="sm">Privacy Policy</Text>
-            <Text fontSize="sm">Terms and Conditions</Text>
-            <Text fontSize="sm">Editorial Policy</Text>
-            <Text fontSize="sm">Return Policy</Text>
-            <Text fontSize="sm">IP Policy</Text>
-            <Text fontSize="sm">Grievance Redressal Policy</Text>
-            <Text fontSize="sm">Fake Jobs and Fraud</Text>
-            <Text fontSize="sm">Disclaimer</Text>
+            <Box fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
+              <Text >Privacy Policy</Text>
+              <Text >Terms and Conditions</Text>
+              <Text >Editorial Policy</Text>
+              <Text >Return Policy</Text>
+              <Text >IP Policy</Text>
+              <Text >Grievance Redressal Policy</Text>
+              <Text >Fake Jobs and Fraud</Text>
+              <Text >Disclaimer</Text>
+            </Box>
           </GridItem>
-          <GridItem>
-            <Text fontSize="lg" as={"b"} color={"black"}>
+          <GridItem display={{ xl: "grid", lg: "grid", md: "grid", sm: "none", base: "none" }} >
+            <Text fontSize="16px" fontWeight={'500'} color={"#042430"} lineHeight='40px'>
               Our Services
             </Text>
-            <Text fontSize="sm">Order</Text>
-            <Text fontSize="sm">Order</Text>
-            <Text fontSize="sm">Book Lab test</Text>
-            <Text fontSize="sm">Consult a Doctor</Text>
-            <Text fontSize="sm">Ayurveda</Text>
-            <Text fontSize="sm">Articles</Text>
-            <Text fontSize="sm">Hindi Articles</Text>
-            <Text fontSize="sm">Care Plan</Text>
+            <Box fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
+              <Text>Order</Text>
+              <Text>Order</Text>
+              <Text>Book Lab test</Text>
+              <Text>Consult a Doctor</Text>
+              <Text>Ayurveda</Text>
+              <Text>Articles</Text>
+              <Text>Hindi Articles</Text>
+              <Text>Care Plan</Text>
+            </Box>
           </GridItem>
+
+
+
+
           <GridItem>
-            <Text fontSize="lg" as={"b"} color={"black"}>
+            <Text fontSize="16px" fontWeight={'500'} color={"#042430"} lineHeight='40px'>
               Connect
             </Text>
-            <Text>Social Links</Text>
-            <Flex w="250px" gap="5px">
-              <Image
-                src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
-                alt="fb"
-                width="30"
-                height="30"
-              />
-              <Image
-                src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
-                alt="fb"
-                width="30"
-                height="30"
-              />
-              <Image
-                src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
-                alt="fb"
-                width="30"
-                height="30"
-              />
-              <Image
-                src="https://onemg.gumlet.io/tywtfwyzxb8ujnqmbuau.svg"
-                alt="fb"
-                width="30"
-                height="30"
-              />
-              <Image
-                src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
-                alt="fb"
-                width="30"
-                height="30"
-              />
-            </Flex>
-            <Text>Want daily dose of health?</Text>
-            <Button color="white" bg="#ff6f61">
-              Sign Up
-            </Button>
+            <Box fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
+
+              <Text>Social Links</Text>
+              <Flex w="150px" gap="5px">
+                <Image
+                  src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
+                  alt="fb"
+                  width="30"
+                  height="30"
+                />
+                <Image
+                  src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
+                  alt="fb"
+                  width="30"
+                  height="30"
+                />
+                <Image
+                  src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
+                  alt="fb"
+                  width="30"
+                  height="30"
+                />
+                <Image
+                  src="https://onemg.gumlet.io/tywtfwyzxb8ujnqmbuau.svg"
+                  alt="fb"
+                  width="30"
+                  height="30"
+                />
+                <Image
+                  src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
+                  alt="fb"
+                  width="30"
+                  height="30"
+                />
+              </Flex>
+              <Text>Want daily dose of health?</Text>
+              <Button color="white" bg="#ff6f61" _hover={{
+                bg: "#fd7c70",
+              }}>
+                Sign Up
+              </Button>
+            </Box>
           </GridItem>
           <GridItem>
-            <Text fontSize="lg" as={"b"} color={"black"}>
+            <Text fontSize="12px" as={"b"} color={"black"} display={{ xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}>
               Download App
             </Text>
-            {/* <Image
-              src="https://e7.pngegg.com/pngimages/598/19/png-clipart-google-play-and-app-store-logos-app-store-google-play-apple-apple-text-logo.png"
-              alt="google"
-              width="250"
-              height="250"
-            /> */}
-            {/* <Image src="" alt="apple" /> */}
+            <Box display={{ xl: "grid", lg: "grid", md: "grid", sm: "none", base: "none" }}>
+              <Image w='120px' m='20px 0' src="https://s3.amazonaws.com/img.mynetdiary.com/images/app-store-badge.svg"
+                alt="apple store" />
+              <Image w='120px' h='' src="https://s3.amazonaws.com/img.mynetdiary.com/images/google-play-badge.svg"
+                alt="google play store" />
+            </Box>
           </GridItem>
         </Grid>
+
         <Divider h="2px" />
         <Box w="90%" m="auto" mt="10" mb="10">
-          <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+          <Grid templateColumns={{ xl: "repeat(3, 1fr)", lg: "repeat(3, 1fr)" }}
+            gap={6}>
             <GridItem>
               <Flex>
                 <Image
@@ -263,8 +272,8 @@ const Footer = () => {
                   <Text as="b" fontSize="xl">
                     Reliable
                   </Text>
-                  <Text color="grey" fontSize="sm">
-                    All products displayed on Tata 1mg are procured from
+                  <Text fontSize={{ xl: "12px", lg: "12px", md: "10px", sm: "10px", base: '10px' }} fontWeight='400' lineHeight={'22px'} color='#666666'>
+                    All products displayed on Health Prime are procured from
                     verified and licensed pharmacies. All labs listed on the
                     platform are accredited
                   </Text>
@@ -283,8 +292,8 @@ const Footer = () => {
                   <Text as="b" fontSize="xl">
                     Secure
                   </Text>
-                  <Text color="grey" fontSize="sm">
-                    Tata 1mg uses Secure Sockets Layer (SSL) 128-bit encryption
+                  <Text fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
+                    Health Prime uses Secure Sockets Layer (SSL) 128-bit encryption
                     and is Payment Card Industry Data Security Standard (PCI
                     DSS) compliant
                   </Text>
@@ -303,7 +312,7 @@ const Footer = () => {
                   <Text as="b" fontSize="xl">
                     Affordable
                   </Text>
-                  <Text color="grey" fontSize="sm">
+                  <Text fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
                     Find affordable medicine substitutes, save up to 50% on
                     health products, up to 80% off on lab tests and free doctor
                     consultations.
@@ -318,21 +327,22 @@ const Footer = () => {
           <Image
             src="https://res.cloudinary.com/du8msdgbj/image/upload/v1580717209/URS_ebgmxc.png"
             alt="logo1"
-            width="100"
-            height="100"
+            width={{ xl: "150px", lg: "100px", md: "90px", sm: "75px", base: '75px' }}
+          // height="100"
           />
-          <Text as="b" fontSize="xl">
+          <Text as="b" fontSize={{ xl: "32px", lg: "28px", md: "24px", sm: "20px", base: '20px' }}>
             {"India's"} only LegitScript and ISO/ IEC 27001 certified online
             healthcare platform
           </Text>
         </Box>
+
         <Box>
           <Accordion allowToggle>
             <AccordionItem>
               <h2>
                 <AccordionButton>
                   <Box as="span" flex="1" textAlign="left">
-                    Know more about Tata 1mg
+                    Know more about Health Prime
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
@@ -340,8 +350,8 @@ const Footer = () => {
               <AccordionPanel pb={4}>
                 {/* 1 */}
                 <Text as="b">Access medical and health information</Text>
-                <Text>
-                  Tata 1mg provides you with medical information which is
+                <Text fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
+                  Health Prime provides you with medical information which is
                   curated, written and verified by experts, accurate and
                   trustworthy. Our experts create high-quality content about
                   medicines, diseases, lab investigations, Over-The-Counter
@@ -350,16 +360,16 @@ const Footer = () => {
                 </Text>
                 {/* 2 */}
                 <Text as="b">Order medicines online</Text>
-                <Text>
+                <Text fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
                   Get free medicine home delivery in over 1800 cities across
                   India. You can also order Ayurvedic, Homeopathic and other
                   Over-The-Counter (OTC) health products. Your safety is our top
-                  priority. All products displayed on Tata 1mg are procured from
+                  priority. All products displayed on Health Prime are procured from
                   verified and licensed pharmacies.
                 </Text>
                 {/* 3 */}
                 <Text as="b">Book lab tests</Text>
-                <Text>
+                <Text fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
                   Book any lab tests and preventive health packages from
                   certified labs and get tested from the comfort of your home.
                   Enjoy free home sample collection, view reports online and
@@ -367,7 +377,7 @@ const Footer = () => {
                 </Text>
                 {/* 4 */}
                 <Text as="b">Consult a doctor online</Text>
-                <Text>
+                <Text fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
                   Got a health query? Consult doctors online from the comfort of
                   your home for free. Chat privately with our registered medical
                   specialists to connect directly with verified doctors. Your
@@ -377,9 +387,10 @@ const Footer = () => {
             </AccordionItem>
           </Accordion>
         </Box>
+
         <Box>
-          <Text color="grey" as="b" fontSize="sm">
-            © 2023 Tata 1mg. All rights reserved. In compliance with Drugs and
+          <Text as="b" fontSize={'12px'} fontWeight='400' lineHeight={'22px'} color='#666666'>
+            © 2023 Health Prime. All rights reserved. In compliance with Drugs and
             Cosmetics Act, 1940 and Drugs and Cosmetics Rules, 1945, we{" "}
             {"don't"}
             process requests for Schedule X and other habit forming drugs.
