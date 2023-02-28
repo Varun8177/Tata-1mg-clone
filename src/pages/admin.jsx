@@ -17,7 +17,7 @@ const Admin = () => {
   const prod = useSelector((store) => store.AdminReducer.products);
   const data = useSelector((store) => store.AdminReducer.userData);
   const Orderdata = useSelector((store) => store.AdminReducer.orders);
-  // const AdminName = useSelector((store) => store.AdminReducer.Admins);
+  const AdminName = useSelector((store) => store.AdminReducer.Admins);
   const dispatch = useDispatch();
   let total = Orderdata.reduce((acc, el) => acc + Number(el.orders), 0);
 
@@ -28,7 +28,7 @@ const Admin = () => {
     InitialData();
     dispatch(GetUserDataRequest());
     dispatch(GetOrdersDataRequest());
-    // dispatch(GetAdminDataRequest());
+    dispatch(GetAdminDataRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -68,7 +68,10 @@ const Admin = () => {
             h={"80vh"}
             borderRadius={"10px"}
             mt="30px"
-            mr={"30px"}
+            mr={{
+              base: "0",
+              md: "30px",
+            }}
           >
             <Sidebar />
           </Box>
@@ -85,7 +88,7 @@ const Admin = () => {
             p={"6"}
           >
             <Text>Welcome Back, </Text>
-            <Heading as={"b"}>Varun Ergurala</Heading>
+            <Heading as={"b"}>{AdminName[0]?.name}</Heading>
 
             <Grid
               w={"90%"}
@@ -154,8 +157,7 @@ const Admin = () => {
                 }}
                 bgColor={"white"}
                 h={{
-                  base: "80px",
-                  sm: "150px",
+                  base: "200px",
                   md: "220px",
                   lg: "180px",
                   xl: "200px",
