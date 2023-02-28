@@ -62,9 +62,7 @@ const FilterAndSort = ({
               onChange={handleFilterChange}
             >
               <Stack color={"grey"} spacing={[1, 1]} direction={["column"]}>
-                <Checkbox fontSize="10px" value="calcium">
-                  Calcium
-                </Checkbox>
+                <Checkbox fontSize="10px" value="calcium">Calcium</Checkbox>
                 <Checkbox value="Suppliments">Suppliments</Checkbox>
                 <Checkbox value="Proteins">Proteins</Checkbox>
                 <Checkbox value="masks">masks</Checkbox>
@@ -147,16 +145,21 @@ const FilterAndSort = ({
                     <Heading fontSize={"14px"} mt="20px">
                       FILTER
                     </Heading>
-                    <CheckboxGroup colorScheme="green">
+                    <CheckboxGroup
+                      colorScheme="green"
+                      value={filterValues}
+                      onChange={handleFilterChange}
+                    >
                       <Stack
                         color={"grey"}
                         fontSize={"12px"}
                         spacing={[1, 1]}
                         direction={["column"]}
                       >
-                        <Checkbox value="a">category</Checkbox>
-                        <Checkbox value="b">category</Checkbox>
-                        <Checkbox value="c">category</Checkbox>
+                        <Checkbox fontSize="10px" value="calcium">Calcium</Checkbox>
+                        <Checkbox value="Suppliments">Suppliments</Checkbox>
+                        <Checkbox value="Proteins">Proteins</Checkbox>
+                        <Checkbox value="masks">masks</Checkbox>
                       </Stack>
                     </CheckboxGroup>
                   </Box>

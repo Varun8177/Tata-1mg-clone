@@ -22,7 +22,10 @@ import PopularCombo from "@/components/PopularCombo";
 import SugarSubtitutes from "@/components/SugarSubtitutes";
 import MainNavbar from "@/components/navbar/MainNavbar/MainNavbar";
 import Footer from "@/components/footer";
+import { useRouter } from "next/router";
+
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -63,7 +66,15 @@ export default function Home() {
         <Flex w="80%" m="auto">
           <Text>Shop by health concerns</Text>
           <Spacer />
-          <Button bg="#ff6f61" color="white" size="xs">
+          <Button
+            bg="#ff6f61"
+            color="white"
+            size="xs"
+            _hover={{
+              bg: "#fd7c70",
+            }}
+            onClick={() => router.push('/products')}
+          >
             SEE ALL
           </Button>
         </Flex>
@@ -72,7 +83,15 @@ export default function Home() {
         <Flex w="80%" m="auto">
           <Text>Featured brands</Text>
           <Spacer />
-          <Button bg="#ff6f61" color="white" size="xs">
+          <Button
+            bg="#ff6f61"
+            color="white"
+            size="xs"
+            _hover={{
+              bg: "#fd7c70",
+            }}
+            onClick={() => router.push('/products')}
+          >
             SEE ALL
           </Button>
         </Flex>
@@ -80,7 +99,15 @@ export default function Home() {
         <Flex w="80%" m="auto">
           <Text>Full body health checkups</Text>
           <Spacer />
-          <Button bg="#ff6f61" color="white" size="xs">
+          <Button
+            bg="#ff6f61"
+            color="white"
+            size="xs"
+            _hover={{
+              bg: "#fd7c70",
+            }}
+            onClick={() => router.push('/products')}
+          >
             SEE ALL
           </Button>
         </Flex>
@@ -90,7 +117,15 @@ export default function Home() {
         <Flex w="80%" m="auto">
           <Text>Pathology Tests | Up to 70% off</Text>
           <Spacer />
-          <Button bg="#ff6f61" color="white" size="xs">
+          <Button
+            bg="#ff6f61"
+            color="white"
+            size="xs"
+            _hover={{
+              bg: "#fd7c70",
+            }}
+            onClick={() => router.push('/products')}
+          >
             SEE ALL
           </Button>
         </Flex>
@@ -99,7 +134,15 @@ export default function Home() {
         <Flex w="80%" m="auto">
           <Text>Popular categories</Text>
           <Spacer />
-          <Button bg="#ff6f61" color="white" size="xs">
+          <Button
+            bg="#ff6f61"
+            color="white"
+            size="xs"
+            _hover={{
+              bg: "#fd7c70",
+            }}
+            onClick={() => router.push('/products')}
+          >
             SEE ALL
           </Button>
         </Flex>
@@ -108,7 +151,15 @@ export default function Home() {
         <Flex w="80%" m="auto">
           <Text>Popular Combo Deals</Text>
           <Spacer />
-          <Button bg="#ff6f61" color="white" size="xs">
+          <Button
+            bg="#ff6f61"
+            color="white"
+            size="xs"
+            _hover={{
+              bg: "#fd7c70",
+            }}
+            onClick={() => router.push('/products')}
+          >
             SEE ALL
           </Button>
         </Flex>
@@ -117,7 +168,15 @@ export default function Home() {
         <Flex w="80%" m="auto">
           <Text>Sugar substitutes</Text>
           <Spacer />
-          <Button bg="#ff6f61" color="white" size="xs">
+          <Button
+            bg="#ff6f61"
+            color="white"
+            size="xs"
+            _hover={{
+              bg: "#fd7c70",
+            }}
+            onClick={() => router.push('/products')}
+          >
             SEE ALL
           </Button>
         </Flex>
