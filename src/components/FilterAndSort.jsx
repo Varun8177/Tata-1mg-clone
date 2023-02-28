@@ -1,3 +1,4 @@
+import { sortData } from "@/pages/api/hello";
 import { REQUEST_FILTER } from "@/redux/products/products.actionTypes";
 import {
   Box,
@@ -38,9 +39,9 @@ const FilterAndSort = ({
   const handleFilterChange = (value) => {
     setFilterValues(value);
     handleFilter(value);
-    dispatch({ type: REQUEST_FILTER, payload: filterValues });
+    dispatch({ type: REQUEST_FILTER, payload: value });
   };
-  console.log(filterValues)
+  console.log(filterValues, "xyz");
 
   return (
     <>
@@ -66,8 +67,8 @@ const FilterAndSort = ({
                   Calcium
                 </Checkbox>
                 <Checkbox value="Suppliments">Suppliments</Checkbox>
-                <Checkbox value="Proteins">Proteins</Checkbox>
-                <Checkbox value="masks">masks</Checkbox>
+                <Checkbox value="protein">Proteins</Checkbox>
+                <Checkbox value="mask">masks</Checkbox>
               </Stack>
             </CheckboxGroup>
           </Box>
@@ -101,7 +102,11 @@ const FilterAndSort = ({
             <Heading fontSize={"14px"}>SORT BY RATING</Heading>
             <RadioGroup
               colorScheme="green"
-              onChange={(value) => handleSortRating(value)}
+              onChange={(value) => {
+                // setSort(value);
+                handleSortRating(value);
+              }}
+              // value={Sort}
             >
               <Stack color={"grey"} direction="column" fontSize={"12px"}>
                 <Radio value="asc">Low to high</Radio>
@@ -118,7 +123,10 @@ const FilterAndSort = ({
               bg: "#ff6f61",
               color: "white",
             }}
-            onClick={() => handleSortReset()}
+            onClick={() => {
+              setFilterValues([]);
+              handleSortReset();
+            }}
           >
             Reset
           </Button>

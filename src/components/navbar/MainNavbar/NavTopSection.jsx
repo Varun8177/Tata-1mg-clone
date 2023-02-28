@@ -35,6 +35,7 @@ import { TbDiscount2, TbHelp } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { GETADMINSDATA } from "@/redux/admin/admin.types";
 import { GetAdminDataRequest } from "@/redux/admin/admin.action";
+import Link from "next/link";
 
 const NavTopSection = () => {
   const { isAuth, userName } = useSelector((state) => state.authReducer);
@@ -90,13 +91,14 @@ const NavTopSection = () => {
         }}
         alignItems={"center"}
       >
-        <Image
-          src={"/healthPrimeLogo.png"}
-          height={"50"}
-          alt={"logo"}
-          width={"120"}
-          onClick={() => router.push("/")}
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/healthPrimeLogo.png"}
+            height={"50"}
+            alt={"logo"}
+            width={"120"}
+          />
+        </Link>
         <Hide breakpoint="(max-width: 397px)">
           <Text
             fontSize={{

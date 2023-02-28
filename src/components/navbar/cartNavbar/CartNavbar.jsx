@@ -7,6 +7,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const CartNavbar = () => {
@@ -34,12 +35,14 @@ const CartNavbar = () => {
         }}
         alignItems={"center"}
       >
-        <Image
-          src={"/healthPrimeLogo.png"}
-          height={"50"}
-          alt={"logo"}
-          width={"120"}
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/healthPrimeLogo.png"}
+            height={"50"}
+            alt={"logo"}
+            width={"120"}
+          />
+        </Link>
         <InputGroup>
           <Input
             size="sm"

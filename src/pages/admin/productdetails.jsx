@@ -148,6 +148,7 @@ const AdminProducts = () => {
               Reset
             </Button>
           </Flex>
+
           <Grid templateColumns={"repeat(3,1fr)"} p={"5"} gap={"5"}>
             {data.length > 0 &&
               data

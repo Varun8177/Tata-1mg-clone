@@ -2,11 +2,15 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { Box, Center, Button, Image } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { RESETCART } from "@/redux/admin/admin.types";
 const Final = () => {
   const router = useRouter();
-  setTimeout(() => {
-    router.push("/");
-  }, 3000);
+  useEffect(() => {
+    setTimeout(() => {
+      router.push("/");
+    }, 3000);
+  }, []);
   return (
     <>
       <Center h={"100vh"}>
