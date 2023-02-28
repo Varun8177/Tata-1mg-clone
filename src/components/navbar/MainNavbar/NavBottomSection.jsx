@@ -17,10 +17,10 @@ import {
   Show,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsChevronDoubleDown } from "react-icons/bs";
 
-const NavBottomSection = () => {
+const NavBottomSection = ({ show }) => {
   const router = useRouter();
   const [HealthResource, setHealthResource] = useState(false);
   const [Vitamins, setVitamins] = useState(false);
@@ -32,6 +32,7 @@ const NavBottomSection = () => {
   const [Homeopathy, setHomeopathy] = useState(false);
   const [Featured, setFeatured] = useState(false);
   const [Covid, setCovid] = useState(false);
+
   return (
     <>
       <Show breakpoint="(min-width: 900px)">
@@ -46,6 +47,9 @@ const NavBottomSection = () => {
         >
           <Menu isOpen={HealthResource}>
             <MenuButton
+              onMouseLeave={() => {
+                setHealthResource(false);
+              }}
               onMouseOver={() => {
                 setHealthResource(true);
                 setAyurveda(false);
@@ -74,6 +78,18 @@ const NavBottomSection = () => {
             </MenuButton>
             <MenuList
               zIndex={10}
+              onMouseOver={() => {
+                setHealthResource(true);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               onMouseLeave={() => {
                 setHealthResource(false);
               }}
@@ -99,6 +115,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={Vitamins}>
             <MenuButton
+              onMouseLeave={() => {
+                setVitamins(false);
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(false);
@@ -127,6 +146,18 @@ const NavBottomSection = () => {
             </MenuButton>
             <MenuList
               zIndex={10}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(true);
+              }}
               onMouseLeave={() => {
                 setVitamins(false);
               }}
@@ -207,6 +238,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={Diabetes}>
             <MenuButton
+              onMouseLeave={() => {
+                setDiabetes(false);
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(false);
@@ -235,6 +269,18 @@ const NavBottomSection = () => {
             </MenuButton>
             <MenuList
               zIndex={10}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(true);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
+              }}
               onMouseLeave={() => {
                 setDiabetes(false);
               }}
@@ -286,6 +332,9 @@ const NavBottomSection = () => {
                 setPersonalCare(false);
                 setVitamins(false);
               }}
+              onMouseLeave={() => {
+                setHealthCare(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -304,6 +353,18 @@ const NavBottomSection = () => {
               zIndex={10}
               onMouseLeave={() => {
                 setHealthCare(false);
+              }}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(true);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
               }}
               fontSize={{
                 base: "8px",
@@ -352,6 +413,9 @@ const NavBottomSection = () => {
                 setPersonalCare(true);
                 setVitamins(false);
               }}
+              onMouseLeave={() => {
+                setPersonalCare(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -370,6 +434,18 @@ const NavBottomSection = () => {
               zIndex={10}
               onMouseLeave={() => {
                 setPersonalCare(false);
+              }}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(true);
+                setVitamins(false);
               }}
               fontSize={{
                 base: "8px",
@@ -452,6 +528,9 @@ const NavBottomSection = () => {
                 setPersonalCare(false);
                 setVitamins(false);
               }}
+              onMouseLeave={() => {
+                setHealthConditions(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -470,6 +549,18 @@ const NavBottomSection = () => {
               zIndex={10}
               onMouseLeave={() => {
                 setHealthConditions(false);
+              }}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(true);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
               }}
               fontSize={{
                 base: "8px",
@@ -528,6 +619,9 @@ const NavBottomSection = () => {
                 setPersonalCare(false);
                 setVitamins(false);
               }}
+              onMouseLeave={() => {
+                setAyurveda(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -546,6 +640,18 @@ const NavBottomSection = () => {
               zIndex={10}
               onMouseLeave={() => {
                 setAyurveda(false);
+              }}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(true);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
               }}
               fontSize={{
                 base: "8px",
@@ -614,6 +720,9 @@ const NavBottomSection = () => {
                 setPersonalCare(false);
                 setVitamins(false);
               }}
+              onMouseLeave={() => {
+                setHomeopathy(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -632,6 +741,18 @@ const NavBottomSection = () => {
               zIndex={10}
               onMouseLeave={() => {
                 setHomeopathy(false);
+              }}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(true);
+                setPersonalCare(false);
+                setVitamins(false);
               }}
               fontSize={{
                 base: "8px",
@@ -702,6 +823,9 @@ const NavBottomSection = () => {
                 setPersonalCare(false);
                 setVitamins(false);
               }}
+              onMouseLeave={() => {
+                setFeatured(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -720,6 +844,18 @@ const NavBottomSection = () => {
               zIndex={10}
               onMouseLeave={() => {
                 setFeatured(false);
+              }}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(false);
+                setDiabetes(false);
+                setFeatured(true);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
               }}
               fontSize={{
                 base: "8px",
@@ -783,6 +919,9 @@ const NavBottomSection = () => {
                 setPersonalCare(false);
                 setVitamins(false);
               }}
+              onMouseLeave={() => {
+                setCovid(false);
+              }}
               rightIcon={<ChevronDownIcon />}
               variant={"unstyled"}
               fontSize={{
@@ -801,6 +940,18 @@ const NavBottomSection = () => {
               zIndex={10}
               onMouseLeave={() => {
                 setCovid(false);
+              }}
+              onMouseOver={() => {
+                setHealthResource(false);
+                setAyurveda(false);
+                setCovid(true);
+                setDiabetes(false);
+                setFeatured(false);
+                setHealthCare(false);
+                setHealthConditions(false);
+                setHomeopathy(false);
+                setPersonalCare(false);
+                setVitamins(false);
               }}
               fontSize={{
                 base: "8px",
