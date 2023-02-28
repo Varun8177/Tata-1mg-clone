@@ -1,7 +1,12 @@
-# Introduction:
-Health Prime - Clone of TATA 1mg.com
-- With Health Prime, you can buy medicines online and get them delivered at your doorstep anywhere in India!. 
-- We are 5 members in the project team Varun Ergurala, Meenakshi Arora, Raj ,Sohel Syed ,reddyvari tejeshkumarreddy
+# Health Prime - Clone of TATA 1mg.com
+Health Prime helps you to buy medicines online and get them delivered at your doorstep anywhere in India!.
+
+# Team Members
+- Varun Ergurala
+- Meenakshi Arora
+- Raj 
+- Sohel Syed 
+- Reddyvari tejeshkumarreddy
 
 # Technology Stack Used :
 - Next JS
