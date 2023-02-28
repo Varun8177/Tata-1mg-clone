@@ -77,7 +77,19 @@ const SugarSubtitutes = () => {
         mb="10"
       >
         {/* <Flex w="80%" m="auto" gap="5"> */}
-        <Grid templateColumns="repeat(7, 1fr)" gap={6} w="80%" m="auto">
+        <Grid
+          templateColumns={{
+            base: "repeat(1,1fr)",
+            sm: "repeat(2,1fr)",
+            md: "repeat(2,1fr)",
+            lg: "repeat(3,1fr)",
+            xl: "repeat(5,1fr)",
+            "2xl": "repeat(7,1fr)",
+          }}
+          gap={6}
+          w="80%"
+          m="auto"
+        >
           {arr.map((item) => {
             return (
               <Box

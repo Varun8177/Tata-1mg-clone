@@ -1,6 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import { Box, Center, Heading, Text, Flex, Stack, Tag } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Heading,
+  Text,
+  Flex,
+  Stack,
+  Tag,
+  Grid,
+} from "@chakra-ui/react";
 const FullBodyHealthCheckups = () => {
   const checkups = [
     {
@@ -53,13 +62,26 @@ const FullBodyHealthCheckups = () => {
       <Center
         bgColor={"white"}
         w="100%"
-        h="200px"
         // border="1px solid black"
         boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         mt="10"
         mb="10"
       >
-        <Flex w="80%" m="auto" gap="5">
+        <Grid
+          templateColumns={{
+            base: "repeat(1,1fr)",
+            sm: "repeat(1,1fr)",
+            md: "repeat(2,1fr)",
+            lg: "repeat(2,1fr)",
+            xl: "repeat(3,1fr)",
+            "2xl": "repeat(4,1fr)",
+          }}
+          pt={"5"}
+          pb={"5"}
+          w="80%"
+          m="auto"
+          gap="5"
+        >
           {checkups.map((item) => {
             return (
               <Box
@@ -67,7 +89,14 @@ const FullBodyHealthCheckups = () => {
                 p="5"
                 align="left"
                 key={item.id}
-                w="400px"
+                w={{
+                  base: "100%",
+                  sm: "100%",
+                  md: "300px",
+                  lg: "270px",
+                  xl: "300px",
+                  "2xl": "300px",
+                }}
                 h="180px"
                 borderWidth={2}
                 borderRadius={5}
@@ -128,7 +157,7 @@ const FullBodyHealthCheckups = () => {
               </Box>
             );
           })}
-        </Flex>
+        </Grid>
       </Center>
     </div>
   );

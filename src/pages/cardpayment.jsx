@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Button,
+  Image,
   Input,
   Modal,
   ModalBody,
@@ -16,9 +17,12 @@ import {
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
+import { RESETCART } from "@/redux/admin/admin.types";
+import { useDispatch } from "react-redux";
 
 export default function Cardpayment() {
   const [cards, setCards] = useState("true");
+  const dispatch = useDispatch();
   const [cash, setCash] = useState("false");
   const [captcha, setCaptch] = useState("");
   const [cardnum, setcardnum] = useState("");
@@ -135,6 +139,7 @@ export default function Cardpayment() {
                 color={"white"}
                 onClick={() => {
                   if (check == captcha) {
+                    // dispatch({ type: RESETCART });
                     router.push("/final");
                   } else {
                     toast({
@@ -165,7 +170,7 @@ export default function Cardpayment() {
   const cashdel = () => {
     return (
       <div style={{ padding: "40px" }}>
-        <img
+        <Image
           src="https://onemg.gumlet.io/marketing/280ca862-d1ae-4025-999a-b37d0ef5b430.jpg"
           alt=""
         />
@@ -188,9 +193,9 @@ export default function Cardpayment() {
           <div style={{ marginTop: "30px" }}>
             <p style={{ fontSize: "14px", fontWeight: "bold" }}>CARD NUMBER</p>
             <input
-              type="text"
               maxLength={16}
               minLength={16}
+              type={"text"}
               placeholder="XXXX XXXX XXXX XXXX"
               style={{ borderBlockEnd: "1px solid grey", marginTop: "20px" }}
               onChange={(e) => {
@@ -206,7 +211,7 @@ export default function Cardpayment() {
 
             <span class="expiration" style={{ marginTop: "20px" }}>
               <input
-                type="text"
+                type={"text"}
                 name="month"
                 placeholder="MM"
                 maxlength="2"
@@ -220,7 +225,7 @@ export default function Cardpayment() {
               <span>/</span>
               <input
                 style={{ marginTop: "20px", borderBlockEnd: "1px solid grey" }}
-                type="text"
+                type={"text"}
                 name="year"
                 placeholder="YY"
                 maxlength="2"
@@ -235,7 +240,7 @@ export default function Cardpayment() {
                 <p style={{ fontSize: "10px" }}>security code</p>
 
                 <input
-                  type="text"
+                  type={"text"}
                   name="month"
                   placeholder="CVV"
                   maxLength={3}
@@ -279,22 +284,22 @@ export default function Cardpayment() {
               gap: "10px",
             }}
           >
-            <img
+            <Image
               style={{ width: "20px", height: "20px" }}
               src="https://onemg.gumlet.io/marketing/7f77216d-f9fc-4740-8c10-be627b0b6005.jpg"
               alt=""
             />
-            <img
+            <Image
               style={{ width: "20px", height: "20px" }}
               src="https://onemg.gumlet.io/marketing/0d7023e4-b2bb-4322-8ca0-3b917294e722.jpg"
               alt=""
             />
-            <img
+            <Image
               style={{ width: "20px", height: "20px" }}
               src="https://onemg.gumlet.io/marketing/b0f4092b-f799-4bc8-af01-b28426f1b13e.jpg"
               alt=""
             />
-            <img
+            <Image
               style={{ width: "20px", height: "20px" }}
               src="https://onemg.gumlet.io/marketing/ff2df2be-ddaf-4b6f-9be2-ea422f06633d.jpg"
               alt=""
@@ -338,7 +343,7 @@ export default function Cardpayment() {
                 marginBottom: "30px",
               }}
             >
-              <img
+              <Image
                 src="https://onemg.gumlet.io/marketing/9b1695ca-b1a9-4893-9157-963047689acb.jpg"
                 alt=""
               />
@@ -354,7 +359,7 @@ export default function Cardpayment() {
               boxShadow: " rgba(149, 157, 165, 0.2) 0px 8px 24px",
             }}
           >
-            <img
+            <Image
               src="https://onemg.gumlet.io/marketing/280ca862-d1ae-4025-999a-b37d0ef5b430.jpg"
               alt=""
             />
@@ -384,7 +389,7 @@ export default function Cardpayment() {
               display: "flex",
             }}
           >
-            <img
+            <Image
               src="https://onemg.gumlet.io/marketing/01e510d5-905f-4aab-be4d-8470cb7389ce.jpg"
               alt=""
             />

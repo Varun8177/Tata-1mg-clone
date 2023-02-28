@@ -43,7 +43,7 @@ const Products = () => {
   const handleSortReset = () => {
     setSort("");
     setOrder("");
-    dispatch(getData(sort, order));
+    dispatch(getData("", ""));
   };
   //   console.log(sort, order);
 
@@ -79,7 +79,8 @@ const Products = () => {
           <TopSectionProductsPage />
           <Grid
             templateColumns={{
-              lg: "repeat(4, 1fr)",
+              xl: "repeat(4, 1fr)",
+              lg: "repeat(3, 1fr)",
               md: "repeat(2, 1fr)",
               base: "repeat(1, 1fr)",
             }}
@@ -109,7 +110,7 @@ const Products = () => {
         items={items}
         currentPage={currentPage}
       />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Center, Flex, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import { Box, Center, Flex, Grid, Text } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
 const FeatureBrands = () => {
   const fb = [
     {
@@ -47,13 +47,24 @@ const FeatureBrands = () => {
       <Center
         bgColor={"white"}
         w="100%"
-        h="200px"
         // border="1px solid black"
         boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         mt="10"
         mb="10"
       >
-        <Flex w="80%" m="auto" gap="5">
+        <Grid
+          templateColumns={{
+            base: "repeat(1,1fr)",
+            sm: "repeat(2,1fr)",
+            md: "repeat(2,1fr)",
+            lg: "repeat(3,1fr)",
+            xl: "repeat(6,1fr)",
+            "2xl": "repeat(7,1fr)",
+          }}
+          w="80%"
+          m="auto"
+          gap="5"
+        >
           {fb.map((item, i) => {
             return (
               <Box
@@ -65,14 +76,14 @@ const FeatureBrands = () => {
                 <Image
                   src={item.img}
                   alt={item.name}
-                  height={200}
-                  width={200}
+                  height={"120px"}
+                  width={"150px"}
                 />
                 <Text>{item.name}</Text>
               </Box>
             );
           })}
-        </Flex>
+        </Grid>
       </Center>
     </div>
   );

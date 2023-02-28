@@ -12,11 +12,9 @@ import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import Footer from "@/components/footer";
 import { useState } from "react";
 const Summary = () => {
-  const add = useSelector((state) => state.adressReducer);
+  const adress = useSelector((state) => state.adressReducer);
   const data = useSelector((state) => state.AdminReducer.cart);
-  const [adress, setAdd] = useState("");
   let cartData = useSelector((state) => state.AdminReducer.cart);
-  // setAdd((add)=>add)
   return (
     <>
       <CartNavbar />
