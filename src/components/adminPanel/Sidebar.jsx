@@ -5,6 +5,7 @@ import {
   Grid,
   Heading,
   Hide,
+  Menu,
   Show,
   Stack,
   Table,
@@ -186,33 +187,7 @@ const Sidebar = () => {
             </Flex>
           </Hide>
           <Show below="md">
-            <Table w={"60px"} bgcolor={"white"} mr={"20px"}>
-              <Thead>
-                <Th>Menu</Th>
-              </Thead>
-              <Tbody>
-                <Tr>
-                  <Td cursor={"pointer"}>
-                    <AiFillHome />
-                  </Td>
-                </Tr>
-                <Tr>
-                  <Td cursor={"pointer"}>
-                    <BsClipboardData />
-                  </Td>
-                </Tr>
-                <Tr>
-                  <Td cursor={"pointer"}>
-                    <FiActivity />
-                  </Td>
-                </Tr>
-                <Tr>
-                  <Td cursor={"pointer"}>
-                    <FiSettings />
-                  </Td>
-                </Tr>
-              </Tbody>
-            </Table>
+            <Menu></Menu>
           </Show>
         </>
       )}
