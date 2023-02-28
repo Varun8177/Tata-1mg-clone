@@ -24,6 +24,7 @@ const TopSectionProductsPage = () => {
                 alt='Dan Abramov'
                 w='100%'
                 m={'12px 0'}
+                objectFit='cover'
             />
             <Box
                 display={{ "lg": "flex", "md": "none", "base": "none" }}
@@ -32,14 +33,17 @@ const TopSectionProductsPage = () => {
                 <Image
                     src='https://onemg.gumlet.io/q_auto,h_187,f_auto,a_ignore,w_350/483095fe-4263-45ad-9916-1da74bd70b61.png'
                     alt='Dan Abramov'
+                    w='auto'
                 />
                 <Image
                     src='https://onemg.gumlet.io/q_auto,h_187,f_auto,a_ignore,w_350/d9081b44-9fba-42ad-a9f0-7ed99abffe0b.png'
                     alt='Dan Abramov'
+                    w='auto'
                 />
                 <Image
                     src='https://onemg.gumlet.io/q_auto,h_187,f_auto,a_ignore,w_350/14bfa337-4a8d-4cd2-9fce-44ae14394470.png'
                     alt='Dan Abramov'
+                    w='auto'
                 />
             </Box>
             <Heading
