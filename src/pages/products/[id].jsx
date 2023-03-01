@@ -284,7 +284,7 @@ const SingleProductPage = ({ data }) => {
           <Text as={"b"} ml={"20px"}>
             Similar Products
           </Text>
-          <Flex>
+          <Flex flexWrap={"wrap"}>
             {Dummydata?.map((item, i) => {
               // return <Link key={i + 1} href={`products/${item.id}`}>
               return <ProductCard key={i + 1} {...item} />;
