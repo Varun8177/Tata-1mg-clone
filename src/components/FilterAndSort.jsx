@@ -1,4 +1,5 @@
 import { sortData } from "@/pages/api/hello";
+import { FilterDataReq } from "@/redux/products/products.action";
 import { REQUEST_FILTER } from "@/redux/products/products.actionTypes";
 import {
   Box,
@@ -36,10 +37,12 @@ const FilterAndSort = ({
   const dispatch = useDispatch();
 
   const [filterValues, setFilterValues] = useState([]);
+  const [sort, setSort] = useState();
+  const [Rating, setRating] = useState();
   const handleFilterChange = (value) => {
     setFilterValues(value);
     handleFilter(value);
-    dispatch({ type: REQUEST_FILTER, payload: value });
+    dispatch(FilterDataReq(value));
   };
   console.log(filterValues, "xyz");
 
@@ -63,7 +66,9 @@ const FilterAndSort = ({
               onChange={handleFilterChange}
             >
               <Stack color={"grey"} spacing={[1, 1]} direction={["column"]}>
-                <Checkbox fontSize="10px" value="calcium">Calcium</Checkbox>
+                <Checkbox fontSize="10px" value="calcium">
+                  Calcium
+                </Checkbox>
                 <Checkbox value="Suppliments">Suppliments</Checkbox>
                 <Checkbox value="protein">Proteins</Checkbox>
                 <Checkbox value="mask">masks</Checkbox>
@@ -87,7 +92,11 @@ const FilterAndSort = ({
             <Heading fontSize={"14px"}>SORT BY PRICE</Heading>
             <RadioGroup
               colorScheme="green"
-              onChange={(value) => handleSortPrice(value)}
+              onChange={(value) => {
+                handleSortPrice(value);
+                setSort(value);
+              }}
+              value={sort}
             >
               <Stack color={"grey"} direction="column" fontSize={"12px"}>
                 <Radio value="asc">Low to high</Radio>
@@ -103,8 +112,9 @@ const FilterAndSort = ({
               onChange={(value) => {
                 // setSort(value);
                 handleSortRating(value);
+                setRating(value);
               }}
-              // value={Sort}
+              value={Rating}
             >
               <Stack color={"grey"} direction="column" fontSize={"12px"}>
                 <Radio value="asc">Low to high</Radio>
@@ -124,6 +134,8 @@ const FilterAndSort = ({
             onClick={() => {
               setFilterValues([]);
               handleSortReset();
+              setSort("");
+              setRating("");
             }}
           >
             Reset
@@ -164,7 +176,9 @@ const FilterAndSort = ({
                         spacing={[1, 1]}
                         direction={["column"]}
                       >
-                        <Checkbox fontSize="10px" value="calcium">Calcium</Checkbox>
+                        <Checkbox fontSize="10px" value="calcium">
+                          Calcium
+                        </Checkbox>
                         <Checkbox value="Suppliments">Suppliments</Checkbox>
                         <Checkbox value="Proteins">Proteins</Checkbox>
                         <Checkbox value="masks">masks</Checkbox>

@@ -101,7 +101,7 @@ const Summary = () => {
                     </div>
                     <div>
                       <Text fontSize={"12px"}>
-                        $ <span>{item.price}</span>
+                        ₹ <span>{item.price}</span>
                       </Text>
                     </div>
                   </div>

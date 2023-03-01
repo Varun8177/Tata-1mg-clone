@@ -2,7 +2,7 @@ import Sidebar from "@/components/adminPanel/Sidebar";
 import useValueChange from "@/components/customHooks/useValueChange";
 import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import { GetAdminDataRequest } from "@/redux/admin/admin.action";
-import { userLogout } from "@/redux/auth/action";
+import { userLogout, userStatusUpdate } from "@/redux/auth/action";
 import { EditIcon } from "@chakra-ui/icons";
 import {
   Avatar,
@@ -25,17 +25,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 const AdminSettings = () => {
   const data = useSelector((store) => store.AdminReducer.Admins);
+  const { isAuth, userName } = useSelector((state) => state.authReducer);
   const [domLoaded, setDomLoaded] = useState(false);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [editMobile, setEditMobile] = useState(false);
   const [editGender, setEditGender] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(
-    "https://i.postimg.cc/8PSx1xFj/new-profile.jpg"
-  );
-  const [name, setname] = useValueChange("Varun Ergurala");
-  const [email, setEmail] = useValueChange("varun@gmail.com");
-  const [mobile, setMobile] = useValueChange("8177836651");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [name, setname] = useValueChange("");
+  const [email, setEmail] = useValueChange("");
+  const [mobile, setMobile] = useValueChange("");
   const [gender, setGender] = useValueChange("male");
   const dispatch = useDispatch();
   const router = useRouter();
@@ -45,15 +44,22 @@ const AdminSettings = () => {
     await signOut(auth);
   };
   const upload = (event) => {
-    console.log(event.target.files[0]);
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
   };
 
   useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(userStatusUpdate(user.displayName));
+      }
+    });
     setDomLoaded(true);
     dispatch(GetAdminDataRequest());
   }, []);
 
+  let x = data?.filter((item) => {
+    return item.name === userName;
+  });
   return (
     <>
       <CartNavbar />{" "}
@@ -107,6 +113,7 @@ const AdminSettings = () => {
                           </Button>
                           <Button
                             onClick={() => {
+                              setname("");
                               setEditName(false);
                             }}
                           >
@@ -116,7 +123,7 @@ const AdminSettings = () => {
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        {name}
+                        {name.length ? name : x[0]?.name}
                       </Text>
                     )}
                   </Box>
@@ -153,6 +160,7 @@ const AdminSettings = () => {
                           </Button>
                           <Button
                             onClick={() => {
+                              setEmail("");
                               setEditEmail(false);
                             }}
                           >
@@ -162,7 +170,7 @@ const AdminSettings = () => {
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        {email}
+                        {email.length ? email : x[0]?.email}
                       </Text>
                     )}
                   </Box>
@@ -199,6 +207,7 @@ const AdminSettings = () => {
                           </Button>
                           <Button
                             onClick={() => {
+                              setMobile("");
                               setEditMobile(false);
                             }}
                           >
@@ -208,7 +217,7 @@ const AdminSettings = () => {
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        {mobile}
+                        {mobile.length ? mobile : x[0]?.contact}
                       </Text>
                     )}
                   </Box>
@@ -245,6 +254,7 @@ const AdminSettings = () => {
                           </Button>
                           <Button
                             onClick={() => {
+                              setGender("");
                               setEditGender(false);
                             }}
                           >
@@ -254,7 +264,7 @@ const AdminSettings = () => {
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        {gender}
+                        {gender.length ? gender : x[0]?.gender}
                       </Text>
                     )}
                   </Box>
@@ -282,7 +292,7 @@ const AdminSettings = () => {
                       alt="not found"
                       width={"250px"}
                       h={"250px"}
-                      src={selectedImage}
+                      src={selectedImage ? selectedImage : x[0]?.profile}
                     />
                     <input type="file" name="myImage" onChange={upload} />
                   </Box>

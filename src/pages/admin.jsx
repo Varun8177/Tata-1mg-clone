@@ -12,6 +12,8 @@ import {
   GetUserDataRequest,
 } from "@/redux/admin/admin.action";
 import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
+import { auth } from "config/firebase";
+import { userStatusUpdate } from "@/redux/auth/action";
 
 const Admin = () => {
   const prod = useSelector((store) => store.AdminReducer.products);
@@ -19,6 +21,7 @@ const Admin = () => {
   const Orderdata = useSelector((store) => store.AdminReducer.orders);
   const AdminName = useSelector((store) => store.AdminReducer.Admins);
   const dispatch = useDispatch();
+  const { isAuth, userName } = useSelector((state) => state.authReducer);
   let total = Orderdata.reduce((acc, el) => acc + Number(el.orders), 0);
 
   const InitialData = () => {
@@ -26,11 +29,20 @@ const Admin = () => {
   };
   useEffect(() => {
     InitialData();
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(userStatusUpdate(user.displayName));
+      }
+    });
     dispatch(GetUserDataRequest());
     dispatch(GetOrdersDataRequest());
     dispatch(GetAdminDataRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  let x = AdminName?.filter((item) => {
+    return item.name === userName;
+  });
 
   const userData = {
     labels: data.map((data) => data.day),
@@ -88,7 +100,7 @@ const Admin = () => {
             p={"6"}
           >
             <Text>Welcome Back, </Text>
-            <Heading as={"b"}>{AdminName[0]?.name}</Heading>
+            <Heading as={"b"}>{x[0]?.name}</Heading>
 
             <Grid
               w={"90%"}

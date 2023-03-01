@@ -36,27 +36,38 @@ export default function SignUpCard() {
   const [registerPass, setRegisterPass] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
+  const [load, setLoad] = useState(false);
   const toast = useToast();
   const handleSignUp = async () => {
+    setLoad(true);
     try {
       const res = await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPass
       );
+
       const user = await res.user;
+      setLoad(false);
       await updateProfile(user, {
         displayName: name,
       });
-
+      toast({
+        title: "Signup Successfull",
+        description: `welcome, ${user.displayName}`,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       dispatch(userRegister(user.displayName));
     } catch (error) {
       toast({
         description: error.message,
         status: "error",
-        duration: 9000,
+        duration: 3000,
         isClosable: true,
       });
+      setLoad(false);
     }
   };
   return (
@@ -131,6 +142,7 @@ export default function SignUpCard() {
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
+                isLoading={load}
                 loadingText="Submitting"
                 size="lg"
                 color={"white"}

@@ -12,3 +12,14 @@ export const getData = (sort, order) => async (dispatch) => {
     }
 }
 
+
+export const FilterDataReq = (value) => async (dispatch) => {
+    dispatch({ type: types.REQUEST_SUCCESS })
+    try {
+        let result = await axios.get(`https://health-prime.onrender.com/products?q=${value}`);
+        dispatch({ type: types.GET_PRODUCT_REQUEST, payload: result.data })
+        return result.data;
+    } catch (error) {
+        dispatch({ type: types.REQUEST_ERROR, payload: error.message })
+    }
+}
