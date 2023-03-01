@@ -106,7 +106,7 @@ const Cart = () => {
             gap={{ base: "50px" }}
             direction={{ lg: "row", md: "column", base: "column" }}
             p={{ lg: "10px 80px", md: "10px 40px", base: "column" }}
-          // border='1px solid'
+            // border='1px solid'
           >
             <Box>
               {cartData.map((item, i) => {
@@ -123,7 +123,7 @@ const Cart = () => {
                     display={{ lg: "flex", md: "flex", base: "row" }}
                     justifyContent="space-between"
                     boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
-                  // border='1px solid'
+                    // border='1px solid'
                   >
                     <Box>
                       <Text
@@ -196,7 +196,7 @@ const Cart = () => {
               fontSize="12px"
               fontWeight="500"
               gap="5px"
-            // border='1px solid'
+              // border='1px solid'
             >
               <Box
                 display="flex"

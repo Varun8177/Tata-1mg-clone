@@ -51,8 +51,8 @@ const AdminReducer = (state = initialState, { type, payload }) => {
             })
             return { ...state, cart: x }
         }
-        // case types.RESETCART:
-        //     return state
+        case types.RESETCART:
+            return { ...state, cart: [] }
         case types.GETADMINSDATA:
             return { ...state, Admins: payload }
         default:

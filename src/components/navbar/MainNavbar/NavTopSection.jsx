@@ -33,7 +33,7 @@ import { GiMeditation } from "react-icons/gi";
 import { ImLab } from "react-icons/im";
 import { TbDiscount2, TbHelp } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-import { GETADMINSDATA } from "@/redux/admin/admin.types";
+import { GETADMINSDATA, RESETCART } from "@/redux/admin/admin.types";
 import { GetAdminDataRequest } from "@/redux/admin/admin.action";
 import Link from "next/link";
 
@@ -284,42 +284,46 @@ const NavTopSection = () => {
                   icon={<AiOutlineShoppingCart size={"30"} />}
                   variant={"unstyled"}
                 />
-                <MenuList zIndex={5}>
-                  <Flex justifyContent={"space-around"} w={"100%"}>
-                    <Text as={"b"}>Order Summary</Text>
-                    <Text>2 Items</Text>
-                  </Flex>
-                  <MenuDivider />
-                  <Flex justifyContent={"space-around"} w={"100%"}>
-                    <Text fontSize={13}>
-                      {cartData.length >= 1
-                        ? cartData[cartData.length - 1].title.substr(0, 13)
-                        : null}
-                    </Text>
-                    <Text fontSize={13}>Qty:1</Text>
-                  </Flex>
-                  <Flex justifyContent={"space-around"} w={"100%"}>
-                    <Text fontSize={13}>
-                      {cartData.length >= 2
-                        ? cartData[cartData.length - 2].title.substr(0, 13)
-                        : null}
-                    </Text>
-                    <Text fontSize={13}>Qty:1</Text>
-                  </Flex>
-                  <MenuItem>
-                    <Text
-                      m={"auto"}
-                      border={"1p solid red"}
-                      color={"500"}
-                      as={"b"}
-                      onClick={() => {
-                        router.push("/cart");
-                      }}
-                    >
-                      Proceed to cart
-                    </Text>
-                  </MenuItem>
-                </MenuList>
+                {cartData?.length >= 1 && (
+                  <MenuList zIndex={5}>
+                    <Flex justifyContent={"space-around"} w={"100%"}>
+                      <Text as={"b"}>Order Summary</Text>
+                      <Text>{cartData?.length} Items</Text>
+                    </Flex>
+                    <MenuDivider />
+                    <Flex justifyContent={"space-around"} w={"100%"}>
+                      <Text fontSize={13}>
+                        {cartData?.length >= 1
+                          ? cartData[cartData?.length - 1].title.substr(0, 13)
+                          : null}
+                      </Text>
+                      <Text fontSize={13}>Qty:1</Text>
+                    </Flex>
+                    {cartData?.length > 1 && (
+                      <Flex justifyContent={"space-around"} w={"100%"}>
+                        <Text fontSize={13}>
+                          {cartData.length >= 2
+                            ? cartData[cartData.length - 2].title.substr(0, 13)
+                            : null}
+                        </Text>
+                        <Text fontSize={13}>Qty:1</Text>
+                      </Flex>
+                    )}
+                    <MenuItem>
+                      <Text
+                        m={"auto"}
+                        border={"1p solid red"}
+                        color={"500"}
+                        as={"b"}
+                        onClick={() => {
+                          router.push("/cart");
+                        }}
+                      >
+                        Proceed to cart
+                      </Text>
+                    </MenuItem>
+                  </MenuList>
+                )}
               </Menu>
               <Text
                 color={"white"}

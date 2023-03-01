@@ -46,7 +46,6 @@ const Payment = () => {
   const eventHandler = () => {
     if (
       add == "" ||
-      land == "" ||
       pin == "" ||
       local == "" ||
       city == "" ||
@@ -58,7 +57,7 @@ const Payment = () => {
         title: "adress not saved",
         description: "Please Fill the all details",
         status: "error",
-        duration: 4000,
+        duration: 3000,
         isClosable: true,
       });
     } else {
