@@ -26,9 +26,9 @@ const NavMiddleSection = () => {
   const throttledText = useThrottle(onChangeValue, 400)
 
   const searchMovies = async () => {
-    const data = await fetch(`https://dead-earrings-tick.cyclic.app/products`);
-    const res = await data.json();
-    setProducts(res)
+    // const data = await fetch(`https://dead-earrings-tick.cyclic.app/products`);
+    // const res = await data.json();
+    // setProducts(res)
   }
   useEffect(() => {
     searchMovies()

@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
         }
 
         case types.USER_REGISTER: {
-            return { ...state, userName: payload, isAuth: true }
+            return { ...state, userName: payload, isAuth: false }
         }
         case types.USER_STATUS_UPDATE: {
             return { ...state, userName: payload, isAuth: true }
