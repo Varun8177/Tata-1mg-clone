@@ -21,15 +21,15 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import SignUpCarousel from "./SignUpCarousel";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "config/firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { userRegister } from "@/redux/auth/action";
 import { useRouter } from "next/router";
 import SignInModal from "../SignIn/SignInModal";
 
 export default function SignUpCard() {
+  const [emptyInputError, setEmptyInputError] = useState(false)
   const { isAuth, userName } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
-  console.log(isAuth, userName);
   const router = useRouter();
   const [name, setName] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
@@ -39,6 +39,10 @@ export default function SignUpCard() {
   const [load, setLoad] = useState(false);
   const toast = useToast();
   const handleSignUp = async () => {
+    if(!name.length || !registerEmail || !registerPass){
+      setEmptyInputError(true)
+    } else {
+      setEmptyInputError(false)
     setLoad(true);
     try {
       const res = await createUserWithEmailAndPassword(
@@ -54,13 +58,13 @@ export default function SignUpCard() {
       });
       toast({
         title: "Signup Successfull",
-        description: `welcome, ${user.displayName}`,
+        description: `You are successfully registered`,
         status: "success",
         duration: 3000,
         isClosable: true,
       });
-      dispatch(userRegister(user.displayName));
     } catch (error) {
+      console.log(error.message)
       toast({
         description: error.message,
         status: "error",
@@ -68,7 +72,8 @@ export default function SignUpCard() {
         isClosable: true,
       });
       setLoad(false);
-    }
+    } }
+    await signOut(auth);
   };
   return (
     <Flex
@@ -141,6 +146,8 @@ export default function SignUpCard() {
               </InputGroup>
             </FormControl>
             <Stack spacing={10} pt={2}>
+              {emptyInputError ?  <Text color="tomato" textAlign="center">All Fields required</Text> : null}
+           
               <Button
                 isLoading={load}
                 loadingText="Submitting"

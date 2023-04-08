@@ -48,6 +48,8 @@ const NavTopSection = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(userStatusUpdate(user.displayName));
+      } else {
+        dispatch(userLogout());
       }
     });
     dispatch(GetAdminDataRequest());

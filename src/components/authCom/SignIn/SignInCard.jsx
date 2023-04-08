@@ -25,9 +25,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { userLogin } from "@/redux/auth/action";
 
 export default function SignInCard() {
+  const [emptyInputError, setEmptyInputError] = useState(false)
   const { isAuth, userName } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
-  console.log(isAuth, userName);
   const toast = useToast();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPass, setLoginPass] = useState("");
@@ -35,20 +35,33 @@ export default function SignInCard() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
+    if(!loginEmail || !loginPass) {
+      setEmptyInputError(true)
+    } else {
+      setEmptyInputError(false)
     setLoad(true);
     try {
       const res = await signInWithEmailAndPassword(auth, loginEmail, loginPass);
+      dispatch(userLogin(res.user.displayName));
       toast({
-        title: "Signup Successfull",
-        description: `welcome back, ${user.displayName}`,
+        title: "Login Successfull",
+        description: `welcome, ${res.user.displayName}`,
         status: "success",
         duration: 3000,
         isClosable: true,
       });
-      dispatch(userLogin(res.user.displayName));
+      
+      setLoad(false)
     } catch (e) {
       console.log(e);
-    }
+      toast({
+        description: e.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      setLoad(false);
+    } }
   };
   return (
     <Flex
@@ -109,6 +122,7 @@ export default function SignInCard() {
               </InputGroup>
             </FormControl>
             <Stack spacing={10} pt={2}>
+            {emptyInputError ?  <Text color="tomato" textAlign="center">All Fields required</Text> : null}
               <Button
                 isLoading={load}
                 loadingText="Submitting"

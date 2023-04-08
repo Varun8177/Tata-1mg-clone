@@ -85,12 +85,12 @@ const AdminProducts = () => {
           mt="30px"
         >
           <Flex justifyContent={"space-around"} borderBottomWidth={1} pb={"5"}>
-            <Input placeholder="Search by name " variant={"filled"} w={"50%"} />
+            <Input placeholder="Search by name " variant={"filled"} w={{xl:"50%", lg:"50%", md:"30%", sm:"30%"}} />
             <Menu>
               <MenuButton
                 _hover={{ bgColor: "500" }}
                 bgColor={"500"}
-                as={Button}
+                as={Button}         
                 rightIcon={<ChevronDownIcon />}
               >
                 Filter
@@ -149,7 +149,12 @@ const AdminProducts = () => {
             </Button>
           </Flex>
 
-          <Grid templateColumns={"repeat(3,1fr)"} p={"5"} gap={"5"}>
+          {/* <Grid templateColumns={"repeat(3,1fr)"} p={"5"} gap={"5"}> */}
+          <Grid 
+          templateColumns={{xl:"repeat(3,1fr)",lg:"repeat(3,1fr)",  md:"repeat(2,1fr)", sm:"repeat(2,1fr)" }}
+          p={{xl:"10", md:"5", sm:"2"}}
+          gap={{xl:"10", md:"4", sm:"2"}}
+          >
             {data.length > 0 &&
               data
                 .filter((item, i) => {
@@ -161,13 +166,13 @@ const AdminProducts = () => {
                       <Image
                         src={item.src}
                         alt={item.id}
-                        w={"100px"}
-                        h={"100px"}
+                        w={{xl:"100px",lg:"70px", md:"60px", md:"50px", sm:"30px"}}
+                        h={{xl:"100px",lg:"70px", md:"60px", md:"50px", sm:"30px"}}
                         objectFit={"contain"}
                       />
                       <Stack>
-                        <Text>{item.title.substr(0, 29)}...</Text>
-                        <Text>Price: {item.price}</Text>
+                        <Text fontSize={{xl:"19px", lg:"15px", sm:"12px"}}>{item.title.substr(0, 29)}...</Text>
+                        <Text fontSize={{xl:"19px", lg:"15px", sm:"12px"}}>Price: {item.price}</Text>
                         {/* <Text>{item.title.substr(0, 29)}...</Text> */}
                         <Flex>
                           <EditButton item={item} />
@@ -210,8 +215,8 @@ function EditButton({ item }) {
         <Text
           _hover={{ cursor: "pointer" }}
           textDecoration={"underline"}
-          w={"60px"}
-          h={"30px"}
+          w={{xl:"60px", lg:"50px", md:"40px", sm:"35px"}}
+          h={{xl:"30px", lg:"20px", md:"10px", sm:"5px"}}
           onClick={onOpen}
         >
           Edit
