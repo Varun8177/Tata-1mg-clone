@@ -51,7 +51,7 @@ const FilterAndSort = ({
       <Show above="sm">
         <Box
           bg="white"
-          w={{ lg: "190px", md: "250px" }}
+          w={{ lg: "80%", md: "90%" }}
           h={{ lg: "500px", md: "500px" }}
           ml={{ lg: "7%", md: "5%" }}
           mt="15px"
@@ -147,6 +147,7 @@ const FilterAndSort = ({
 
       <Hide above="sm">
         <>
+        <Box w="100%">
           <Button ref={btnRef} colorScheme="gray" onClick={onOpen}>
             Filter and Sort
           </Button>
@@ -244,6 +245,7 @@ const FilterAndSort = ({
               </DrawerBody>
             </DrawerContent>
           </Drawer>
+          </Box>
         </>
       </Hide>
     </>

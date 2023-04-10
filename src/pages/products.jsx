@@ -64,18 +64,21 @@ const Products = () => {
       </Head>
       <MainNavbar />
       <Box
-        display={{ lg: "flex", md: "flex", base: "grid" }}
-        gap={{ lg: "50px", md: "20px" }}
+        display={{ lg: "flex", md: "flex", sm:"flex", base: "grid" }}
+        gap={{ lg: "5%",md:"5%",sm:"0%" }}
         bg="#f6f6f6"
+        w="100%"
       >
+        <Box w={{lg:"20%", md:"20%", sm: "30%"}}>
         <FilterAndSort
           handleFilter={handleFilter}
           handleSortPrice={handleSortPrice}
           handleSortRating={handleSortRating}
           handleSortReset={handleSortReset}
         />
-
-        <Box className="allProductSection" p={{ base: "20px" }}>
+        </Box>
+        
+        <Box className="allProductSection" p={{ base: "20px" }} w={{lg:"75%", md:"70%", sm: "70%"}}>
           <TopSectionProductsPage />
           <Grid
             templateColumns={{
@@ -119,7 +122,7 @@ export default Products;
 
 // export async function getServerSideProps() {
 //     const data = await axios
-//         .get(`https://dead-earrings-tick.cyclic.app/products`)
+//         .get(`https://health-prime.onrender.com/products`)
 //         .then((res) => { return res.data })
 //         .catch((error) => console.log(error));
 //     return { props: { data } };

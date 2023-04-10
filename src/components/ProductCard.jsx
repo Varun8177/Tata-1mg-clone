@@ -27,7 +27,7 @@ const ProductCard = (props) => {
   };
   return (
     <GridItem
-      w="240px"
+      w={{lg:"100%", md:"100%", sm:"70%", base:"70%"}}
       h="auto"
       padding="5"
       textAlign="left"
