@@ -301,7 +301,7 @@ const SingleProductPage = ({ data }) => {
 export default SingleProductPage;
 
 export async function getStaticPaths() {
-  const res = await fetch(`https://dead-earrings-tick.cyclic.app/products`);
+  const res = await fetch(`https://health-prime.onrender.com/products`);
   let data = await res.json();
   return {
     paths: data.map((e) => ({ params: { id: e.id.toString() } })),
@@ -313,7 +313,7 @@ export async function getStaticProps(context) {
   const {
     params: { id },
   } = context;
-  let res = await fetch(`https://dead-earrings-tick.cyclic.app/products/${id}`);
+  let res = await fetch(`https://health-prime.onrender.com/products/${id}`);
   let data = await res.json();
   return { props: { data } };
 }
