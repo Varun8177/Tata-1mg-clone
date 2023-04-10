@@ -27,7 +27,7 @@ Health Prime helps you to buy medicines online and get them delivered at your do
 6. Once the user created his account the next time user can be able to direct login.
 7. On the Home page of the website, we are creating a very beautiful interface with various carousals.
 8. On the product page, we have provided multiple features like sorting, searching and filtering, etc.
-9. Admin Dashboard to control products
+9. Admin Dashboard to control products - admin credential -[ email - varunadmin@gmail.com | password - varunadmin@gmail.com ]
 
 # Installation :
 1. Clone this repo to your local machine using 
