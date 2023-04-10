@@ -1,8 +1,9 @@
 # Health Prime - Clone of TATA 1mg.com
 Health Prime helps you to buy medicines online and get them delivered at your doorstep anywhere in India!.
 
-## Demo :movie_camera:
-- Deployed Link: https://roasted-geese-6392-xh5g-1a2mpp2iy-varun8177.vercel.app/
+## Live Link
+
+Visit the live website [here](https://roasted-geese-6392-xh5g.vercel.app/) and start shopping!
 
 # Team Members
 - Varun Ergurala
