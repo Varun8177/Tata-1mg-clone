@@ -65,10 +65,10 @@ const AdminSettings = () => {
       <CartNavbar />{" "}
       {domLoaded && (
         <Box bgColor={"#d8dff7"} h={"90vh"}>
-          <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
+          <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"} flexDirection={{lg:"row", md:"row", sm:"column",base:"column"}}>
             <Box
               bgColor={"white"}
-              h={"80vh"}
+              h={{lg:"80vh", md:"80vh", sm:"auto", base:"auto"}}
               borderRadius={"10px"}
               mt="30px"
               mr={"30px"}
@@ -79,7 +79,7 @@ const AdminSettings = () => {
               <Heading m={"auto"} w={"fit-content"}>
                 Admin Settings
               </Heading>
-              <Flex justifyContent={"space-evenly"} mt={"30px"}>
+              <Flex justifyContent="center" alignItems="center" mt={"30px"} flexDirection={{xl:"row", lg:"row", md:"row", sm:"column", base:"column"}}>
                 <Stack w={"60%"}>
                   <Box mb={"20px"}>
                     <Flex
@@ -284,19 +284,19 @@ const AdminSettings = () => {
                     Sign Out
                   </Button>
                 </Stack>
-                <Stack>
+                <Flex justifyContent="center">
                   <Box textAlign={"center"}>
                     <Image
                       objectFit={"cover"}
                       borderRadius={"50%"}
                       alt="not found"
-                      width={"250px"}
-                      h={"250px"}
+                      width={{xl:'250px',lg:"250px",md:"200px",sm:"200px",base:"180px"}}
+                      h={{xl:'250px',lg:"250px",md:"200px",sm:"200px",base:"180px"}}
                       src={selectedImage ? selectedImage : x[0]?.profile}
                     />
                     <input type="file" name="myImage" onChange={upload} />
                   </Box>
-                </Stack>
+                </Flex>
               </Flex>
             </Box>
           </Flex>

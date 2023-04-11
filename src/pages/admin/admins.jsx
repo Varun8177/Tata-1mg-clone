@@ -35,10 +35,15 @@ const AdminsSection = () => {
     <>
       <CartNavbar />
       <Box bgColor={"#d8dff7"} h={"90vh"}>
-        <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
+        <Flex
+          bgColor={"#d8dff7"}
+          w={"99%"}
+          m={"auto"}
+          flexDirection={{ lg: "row", md: "row", sm: "column", base: "column" }}
+        >
           <Box
             bgColor={"white"}
-            h={"80vh"}
+            h={{ lg: "80vh", md: "80vh", sm: "auto", base: "auto" }}
             borderRadius={"10px"}
             mt="30px"
             mr={"30px"}
@@ -104,27 +109,30 @@ const AdminsSection = () => {
               </Menu>
             </Flex>
             <Grid
-              templateColumns={"repeat(5,1fr)"}
+              templateColumns={{
+                xl: "repeat(5,1fr)",
+                lg: "repeat(4,1fr)",
+                md: "repeat(3,1fr)",
+                sm: "repeat(3,1fr)",
+                base: "repeat(1,1fr)",
+              }}
               gap={"3"}
-              m={"auto"}
-              w={"fit-content"}
-              alignItems={"center"}
-              h={"400px"}
+              h={{ xl: "360px", lg: "300px", sm: "300px" }}
             >
               {data.map((item, i) => {
                 return (
                   <Box
                     borderRadius={"10px"}
-                    w={"220px"}
-                    h={"340px"}
+                    // w={{xl:"250px"}}
+                    h={{ xl: "360px", lg: "300px", sm: "300px" }}
                     bgColor={"gray.200"}
                     key={i}
                   >
                     <Image
                       src={item.profile}
                       alt={item.name}
-                      h={"200px"}
-                      w={"280px"}
+                      h={"65%"}
+                      w={"100%"}
                       objectFit={"cover"}
                     />
                     <Center>

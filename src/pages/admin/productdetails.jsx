@@ -66,10 +66,10 @@ const AdminProducts = () => {
 
   return (
     <Box bgColor={"#d8dff7"} h={"90vh"}>
-      <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
+      <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"} flexDirection={{lg:"row", md:"row", sm:"column",base:"column"}}>
         <Box
           bgColor={"white"}
-          h={"80vh"}
+          h={{lg:"80vh", md:"80vh", sm:"auto", base:"auto"}}
           borderRadius={"10px"}
           mt="30px"
           mr={"30px"}
@@ -77,6 +77,7 @@ const AdminProducts = () => {
           <Sidebar />
         </Box>
         <Box
+  
           bgColor={"white"}
           pt={"20px"}
           w={"100%"}
@@ -84,10 +85,12 @@ const AdminProducts = () => {
           m={"auto"}
           mt="30px"
         >
-          <Flex justifyContent={"space-around"} borderBottomWidth={1} pb={"5"}>
-            <Input placeholder="Search by name " variant={"filled"} w={{xl:"50%", lg:"50%", md:"30%", sm:"30%"}} />
+          <Flex gap="10px" borderBottomWidth={1} pb={"5"} flexDirection={{lg:"row",md:"column",sm:"column", base:"column"}}>
+            <Input placeholder="Search by name " variant={"filled"} w={{xl:"50%", lg:"50%", md:"100%", sm:"100%",base:"100%"}} />
+            <Grid justifyContent={"space-around"} gap="10px" templateColumns={{lg:"repeat(4,1fr)",md:"repeat(4,1fr)",sm:"repeat(4,1fr)",base:"repeat(2,1fr)",}} w={{xl:"50%", lg:"50%", md:"100%", sm:"100%", base:"100%"}}>
             <Menu>
               <MenuButton
+             
                 _hover={{ bgColor: "500" }}
                 bgColor={"500"}
                 as={Button}         
@@ -147,11 +150,13 @@ const AdminProducts = () => {
             <Button bgColor={"500"} onClick={() => dispatch(GetRequest())}>
               Reset
             </Button>
+            </Grid>
+            
           </Flex>
 
           {/* <Grid templateColumns={"repeat(3,1fr)"} p={"5"} gap={"5"}> */}
           <Grid 
-          templateColumns={{xl:"repeat(3,1fr)",lg:"repeat(3,1fr)",  md:"repeat(2,1fr)", sm:"repeat(2,1fr)" }}
+          templateColumns={{xl:"repeat(3,1fr)",lg:"repeat(3,1fr)",  md:"repeat(2,1fr)", sm:"repeat(2,1fr)", base:"repeat(1,1fr)" }}
           p={{xl:"10", md:"5", sm:"2"}}
           gap={{xl:"10", md:"4", sm:"2"}}
           >
@@ -166,8 +171,8 @@ const AdminProducts = () => {
                       <Image
                         src={item.src}
                         alt={item.id}
-                        w={{xl:"100px",lg:"70px", md:"60px", md:"50px", sm:"30px"}}
-                        h={{xl:"100px",lg:"70px", md:"60px", md:"50px", sm:"30px"}}
+                        w={{xl:"100px",lg:"70px", md:"60px", sm:"50px", base:"50px"}}
+                        h={{xl:"100px",lg:"70px", md:"60px", sm:"50px", base:"50px"}}
                         objectFit={"contain"}
                       />
                       <Stack>

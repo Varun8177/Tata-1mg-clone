@@ -23,6 +23,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { userLogin } from "@/redux/auth/action";
+import SignUpCard from "../SignUp/SignUpCard";
+import SignUpModal from "../SignUp/SignUpModal";
 
 export default function SignInCard() {
   const [emptyInputError, setEmptyInputError] = useState(false)
@@ -139,7 +141,7 @@ export default function SignInCard() {
             </Stack>
             <Stack pt={6}>
               <Text align={"center"}>
-                New user? <Link color={"blue.400"}>Signup</Link>
+                New user? <SignUpModal />
               </Text>
             </Stack>
           </Stack>

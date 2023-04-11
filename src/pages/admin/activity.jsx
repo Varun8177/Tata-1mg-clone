@@ -29,10 +29,10 @@ const Activity = () => {
   };
   return (
     <Box bgColor={"#d8dff7"} h={"90vh"}>
-      <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
+      <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"} flexDirection={{lg:"row", md:"row", sm:"column",base:"column"}}>
         <Box
           bgColor={"white"}
-          h={"80vh"}
+          h={{lg:"80vh", md:"80vh", sm:"auto", base:"auto"}}
           borderRadius={"10px"}
           mt="30px"
           mr={"30px"}
@@ -40,8 +40,7 @@ const Activity = () => {
           <Sidebar />
         </Box>
         <Box
-          // border={"1px solid red"}
-          w={"100%"}
+          w={{xl:"80%", lg:"70%", md:"70%", sm:"80%",base:"100%"}}
           h={"80vh"}
           m={"auto"}
           mt="30px"

@@ -1,11 +1,23 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
+import {
+  AddIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  EditIcon,
+  ExternalLinkIcon,
+  HamburgerIcon,
+  RepeatIcon,
+} from "@chakra-ui/icons";
 import {
   Button,
   Flex,
   Grid,
   Heading,
   Hide,
+  IconButton,
   Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Show,
   Stack,
   Table,
@@ -187,7 +199,56 @@ const Sidebar = () => {
             </Flex>
           </Hide>
           <Show below="md">
-            <Menu></Menu>
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Options"
+                icon={<HamburgerIcon />}
+                variant="outline"
+              />
+              <MenuList>
+                <MenuItem
+                  icon={<AiFillHome />}
+                  onClick={() => {
+                    router.push("/admin");
+                  }}
+                >
+                  <Text>Dashboard</Text>
+                </MenuItem>
+                <MenuItem
+                  icon={<BsClipboardData />}
+                  onClick={() => {
+                    router.push("/admin/productdetails");
+                  }}
+                >
+                  Products
+                </MenuItem>
+                <MenuItem
+                  icon={<FiActivity />}
+                  onClick={() => {
+                    router.push("/admin/activity");
+                  }}
+                >
+                  Activity
+                </MenuItem>
+                <MenuItem
+                  icon={<SiSketchfab />}
+                  onClick={() => {
+                    router.push("/admin/admins");
+                  }}
+                >
+                  Admins
+                </MenuItem>
+                <MenuItem
+                  icon={<FiSettings />}
+                  onClick={() => {
+                    router.push("/admin/settings");
+                  }}
+                >
+                  Settings
+                </MenuItem>
+              </MenuList>
+            </Menu>
           </Show>
         </>
       )}
