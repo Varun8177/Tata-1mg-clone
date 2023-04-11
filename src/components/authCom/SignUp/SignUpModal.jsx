@@ -31,7 +31,7 @@ export default function SignUpModal({ text }) {
         as={"b"}
         onClick={onOpen}
       >
-        {text}
+        Sign Up
       </Text>
 
       <Modal isOpen={isOpen} onClose={onClose} size="4xl">

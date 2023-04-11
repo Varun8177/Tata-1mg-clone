@@ -82,7 +82,6 @@ export default function SignUpCard() {
       align={"center"}
       justify={"center"}
       flexDirection={{ base: "column", md: "row", lg: "row" }}
-      // border="2px solid tomato"
       margin="auto"
       mt="10vh"
       borderRadius="15px"
@@ -91,9 +90,9 @@ export default function SignUpCard() {
       <Stack
         spacing={8}
         mx={"auto"}
-        w={{ base: "100%", md: "50%", lg: "50%" }}
-        py={12}
-        px={6}
+        w={{ base: "100%",sm: "100%", md: "50%", lg: "50%" }}
+        // py={12}
+        // px={6}
       >
         <Box
           rounded={"lg"}
@@ -107,18 +106,15 @@ export default function SignUpCard() {
                 <Heading>Sign up</Heading>
               </Center>
             </Box>
-            <HStack>
-              <Box>
                 <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
+                  <FormLabel> Name</FormLabel>
                   <Input
+                  w="100%"
                     type="text"
-                    w={"310px"}
+                    // w={"310px"}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </FormControl>
-              </Box>
-            </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input

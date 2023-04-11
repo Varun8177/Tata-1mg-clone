@@ -74,10 +74,16 @@ const Admin = () => {
           lg: "90vh",
         }}
       >
-        <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
+        <Flex
+          bgColor={"#d8dff7"}
+          w={"99%"}
+          m={"auto"}
+          flexDirection={{ lg: "row", md: "row", sm: "column", base: "column" }}
+        >
           <Box
             bgColor={"white"}
-            h={"80vh"}
+            // h={"80vh"}
+            h={{ lg: "80vh", md: "80vh", sm: "auto", base: "auto" }}
             borderRadius={"10px"}
             mt="30px"
             mr={{
@@ -88,7 +94,6 @@ const Admin = () => {
             <Sidebar />
           </Box>
           <Box
-            // border={"1px solid red"}
             w={"100%"}
             h={{
               base: "120vh",
